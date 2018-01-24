@@ -32,7 +32,7 @@
 //
 //----------------------------------------------------------------------------------
 #version 300 es
-precision mediump float;
+precision highp float;
 
 uniform mat4 g_ModelViewMatrix;
 uniform mat4 g_ModelViewProjectionMatrix;

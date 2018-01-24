@@ -20,7 +20,7 @@ HelloVulkan_debug_hpaths    += ./../../../extensions/include
 HelloVulkan_debug_hpaths    += ./../../../extensions/externals/include
 HelloVulkan_debug_hpaths    += ./../../../extensions/include/NsFoundation
 HelloVulkan_debug_hpaths    += ./../../../extensions/include/NvFoundation
-HelloVulkan_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+HelloVulkan_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 HelloVulkan_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 HelloVulkan_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 HelloVulkan_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -71,14 +71,14 @@ HelloVulkan_debug_common_cflags    += -MMD
 HelloVulkan_debug_common_cflags    += $(addprefix -D, $(HelloVulkan_debug_defines))
 HelloVulkan_debug_common_cflags    += $(addprefix -I, $(HelloVulkan_debug_hpaths))
 HelloVulkan_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-HelloVulkan_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+HelloVulkan_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 HelloVulkan_debug_cflags	:= $(HelloVulkan_debug_common_cflags)
 HelloVulkan_debug_cppflags	:= $(HelloVulkan_debug_common_cflags)
 HelloVulkan_debug_cppflags  += -std="gnu++11"
 HelloVulkan_debug_lflags    := $(HelloVulkan_custom_lflags)
 HelloVulkan_debug_lflags    += $(addprefix -L, $(HelloVulkan_debug_lpaths))
 HelloVulkan_debug_lflags    += -Wl,--start-group $(addprefix -l, $(HelloVulkan_debug_libraries)) -Wl,--end-group
-HelloVulkan_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+HelloVulkan_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 HelloVulkan_debug_objsdir  = $(OBJS_DIR)/HelloVulkan_debug
 HelloVulkan_debug_cpp_o    = $(addprefix $(HelloVulkan_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(HelloVulkan_cppfiles)))))
 HelloVulkan_debug_cc_o    = $(addprefix $(HelloVulkan_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(HelloVulkan_ccfiles)))))
@@ -148,7 +148,7 @@ HelloVulkan_release_hpaths    += ./../../../extensions/include
 HelloVulkan_release_hpaths    += ./../../../extensions/externals/include
 HelloVulkan_release_hpaths    += ./../../../extensions/include/NsFoundation
 HelloVulkan_release_hpaths    += ./../../../extensions/include/NvFoundation
-HelloVulkan_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+HelloVulkan_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 HelloVulkan_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 HelloVulkan_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 HelloVulkan_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -199,14 +199,14 @@ HelloVulkan_release_common_cflags    += -MMD
 HelloVulkan_release_common_cflags    += $(addprefix -D, $(HelloVulkan_release_defines))
 HelloVulkan_release_common_cflags    += $(addprefix -I, $(HelloVulkan_release_hpaths))
 HelloVulkan_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-HelloVulkan_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+HelloVulkan_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 HelloVulkan_release_cflags	:= $(HelloVulkan_release_common_cflags)
 HelloVulkan_release_cppflags	:= $(HelloVulkan_release_common_cflags)
 HelloVulkan_release_cppflags  += -std="gnu++11"
 HelloVulkan_release_lflags    := $(HelloVulkan_custom_lflags)
 HelloVulkan_release_lflags    += $(addprefix -L, $(HelloVulkan_release_lpaths))
 HelloVulkan_release_lflags    += -Wl,--start-group $(addprefix -l, $(HelloVulkan_release_libraries)) -Wl,--end-group
-HelloVulkan_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+HelloVulkan_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 HelloVulkan_release_objsdir  = $(OBJS_DIR)/HelloVulkan_release
 HelloVulkan_release_cpp_o    = $(addprefix $(HelloVulkan_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(HelloVulkan_cppfiles)))))
 HelloVulkan_release_cc_o    = $(addprefix $(HelloVulkan_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(HelloVulkan_ccfiles)))))

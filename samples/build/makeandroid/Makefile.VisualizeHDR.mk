@@ -24,7 +24,7 @@ VisualizeHDR_debug_hpaths    += ./../../../extensions/include
 VisualizeHDR_debug_hpaths    += ./../../../extensions/externals/include
 VisualizeHDR_debug_hpaths    += ./../../../extensions/include/NsFoundation
 VisualizeHDR_debug_hpaths    += ./../../../extensions/include/NvFoundation
-VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -69,14 +69,14 @@ VisualizeHDR_debug_common_cflags    += -MMD
 VisualizeHDR_debug_common_cflags    += $(addprefix -D, $(VisualizeHDR_debug_defines))
 VisualizeHDR_debug_common_cflags    += $(addprefix -I, $(VisualizeHDR_debug_hpaths))
 VisualizeHDR_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-VisualizeHDR_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+VisualizeHDR_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 VisualizeHDR_debug_cflags	:= $(VisualizeHDR_debug_common_cflags)
 VisualizeHDR_debug_cppflags	:= $(VisualizeHDR_debug_common_cflags)
 VisualizeHDR_debug_cppflags  += -std="gnu++11"
 VisualizeHDR_debug_lflags    := $(VisualizeHDR_custom_lflags)
 VisualizeHDR_debug_lflags    += $(addprefix -L, $(VisualizeHDR_debug_lpaths))
 VisualizeHDR_debug_lflags    += -Wl,--start-group $(addprefix -l, $(VisualizeHDR_debug_libraries)) -Wl,--end-group
-VisualizeHDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+VisualizeHDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 VisualizeHDR_debug_objsdir  = $(OBJS_DIR)/VisualizeHDR_debug
 VisualizeHDR_debug_cpp_o    = $(addprefix $(VisualizeHDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(VisualizeHDR_cppfiles)))))
 VisualizeHDR_debug_cc_o    = $(addprefix $(VisualizeHDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(VisualizeHDR_ccfiles)))))
@@ -140,7 +140,7 @@ VisualizeHDR_release_hpaths    += ./../../../extensions/include
 VisualizeHDR_release_hpaths    += ./../../../extensions/externals/include
 VisualizeHDR_release_hpaths    += ./../../../extensions/include/NsFoundation
 VisualizeHDR_release_hpaths    += ./../../../extensions/include/NvFoundation
-VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -185,14 +185,14 @@ VisualizeHDR_release_common_cflags    += -MMD
 VisualizeHDR_release_common_cflags    += $(addprefix -D, $(VisualizeHDR_release_defines))
 VisualizeHDR_release_common_cflags    += $(addprefix -I, $(VisualizeHDR_release_hpaths))
 VisualizeHDR_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-VisualizeHDR_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+VisualizeHDR_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 VisualizeHDR_release_cflags	:= $(VisualizeHDR_release_common_cflags)
 VisualizeHDR_release_cppflags	:= $(VisualizeHDR_release_common_cflags)
 VisualizeHDR_release_cppflags  += -std="gnu++11"
 VisualizeHDR_release_lflags    := $(VisualizeHDR_custom_lflags)
 VisualizeHDR_release_lflags    += $(addprefix -L, $(VisualizeHDR_release_lpaths))
 VisualizeHDR_release_lflags    += -Wl,--start-group $(addprefix -l, $(VisualizeHDR_release_libraries)) -Wl,--end-group
-VisualizeHDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+VisualizeHDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 VisualizeHDR_release_objsdir  = $(OBJS_DIR)/VisualizeHDR_release
 VisualizeHDR_release_cpp_o    = $(addprefix $(VisualizeHDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(VisualizeHDR_cppfiles)))))
 VisualizeHDR_release_cc_o    = $(addprefix $(VisualizeHDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(VisualizeHDR_ccfiles)))))

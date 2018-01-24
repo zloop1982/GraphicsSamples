@@ -19,7 +19,7 @@ PathRenderingBasic_debug_hpaths    += ./../../../extensions/include
 PathRenderingBasic_debug_hpaths    += ./../../../extensions/externals/include
 PathRenderingBasic_debug_hpaths    += ./../../../extensions/include/NsFoundation
 PathRenderingBasic_debug_hpaths    += ./../../../extensions/include/NvFoundation
-PathRenderingBasic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+PathRenderingBasic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 PathRenderingBasic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 PathRenderingBasic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 PathRenderingBasic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -66,14 +66,14 @@ PathRenderingBasic_debug_common_cflags    += -MMD
 PathRenderingBasic_debug_common_cflags    += $(addprefix -D, $(PathRenderingBasic_debug_defines))
 PathRenderingBasic_debug_common_cflags    += $(addprefix -I, $(PathRenderingBasic_debug_hpaths))
 PathRenderingBasic_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-PathRenderingBasic_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+PathRenderingBasic_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 PathRenderingBasic_debug_cflags	:= $(PathRenderingBasic_debug_common_cflags)
 PathRenderingBasic_debug_cppflags	:= $(PathRenderingBasic_debug_common_cflags)
 PathRenderingBasic_debug_cppflags  += -std="gnu++11"
 PathRenderingBasic_debug_lflags    := $(PathRenderingBasic_custom_lflags)
 PathRenderingBasic_debug_lflags    += $(addprefix -L, $(PathRenderingBasic_debug_lpaths))
 PathRenderingBasic_debug_lflags    += -Wl,--start-group $(addprefix -l, $(PathRenderingBasic_debug_libraries)) -Wl,--end-group
-PathRenderingBasic_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+PathRenderingBasic_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 PathRenderingBasic_debug_objsdir  = $(OBJS_DIR)/PathRenderingBasic_debug
 PathRenderingBasic_debug_cpp_o    = $(addprefix $(PathRenderingBasic_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(PathRenderingBasic_cppfiles)))))
 PathRenderingBasic_debug_cc_o    = $(addprefix $(PathRenderingBasic_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(PathRenderingBasic_ccfiles)))))
@@ -137,7 +137,7 @@ PathRenderingBasic_release_hpaths    += ./../../../extensions/include
 PathRenderingBasic_release_hpaths    += ./../../../extensions/externals/include
 PathRenderingBasic_release_hpaths    += ./../../../extensions/include/NsFoundation
 PathRenderingBasic_release_hpaths    += ./../../../extensions/include/NvFoundation
-PathRenderingBasic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+PathRenderingBasic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 PathRenderingBasic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 PathRenderingBasic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 PathRenderingBasic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -184,14 +184,14 @@ PathRenderingBasic_release_common_cflags    += -MMD
 PathRenderingBasic_release_common_cflags    += $(addprefix -D, $(PathRenderingBasic_release_defines))
 PathRenderingBasic_release_common_cflags    += $(addprefix -I, $(PathRenderingBasic_release_hpaths))
 PathRenderingBasic_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-PathRenderingBasic_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+PathRenderingBasic_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 PathRenderingBasic_release_cflags	:= $(PathRenderingBasic_release_common_cflags)
 PathRenderingBasic_release_cppflags	:= $(PathRenderingBasic_release_common_cflags)
 PathRenderingBasic_release_cppflags  += -std="gnu++11"
 PathRenderingBasic_release_lflags    := $(PathRenderingBasic_custom_lflags)
 PathRenderingBasic_release_lflags    += $(addprefix -L, $(PathRenderingBasic_release_lpaths))
 PathRenderingBasic_release_lflags    += -Wl,--start-group $(addprefix -l, $(PathRenderingBasic_release_libraries)) -Wl,--end-group
-PathRenderingBasic_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+PathRenderingBasic_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 PathRenderingBasic_release_objsdir  = $(OBJS_DIR)/PathRenderingBasic_release
 PathRenderingBasic_release_cpp_o    = $(addprefix $(PathRenderingBasic_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(PathRenderingBasic_cppfiles)))))
 PathRenderingBasic_release_cc_o    = $(addprefix $(PathRenderingBasic_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(PathRenderingBasic_ccfiles)))))

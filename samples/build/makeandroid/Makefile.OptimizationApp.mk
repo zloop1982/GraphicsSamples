@@ -27,7 +27,7 @@ OptimizationApp_debug_hpaths    += ./../../../extensions/include
 OptimizationApp_debug_hpaths    += ./../../../extensions/externals/include
 OptimizationApp_debug_hpaths    += ./../../../extensions/include/NsFoundation
 OptimizationApp_debug_hpaths    += ./../../../extensions/include/NvFoundation
-OptimizationApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+OptimizationApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 OptimizationApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 OptimizationApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 OptimizationApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -72,14 +72,14 @@ OptimizationApp_debug_common_cflags    += -MMD
 OptimizationApp_debug_common_cflags    += $(addprefix -D, $(OptimizationApp_debug_defines))
 OptimizationApp_debug_common_cflags    += $(addprefix -I, $(OptimizationApp_debug_hpaths))
 OptimizationApp_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-OptimizationApp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+OptimizationApp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 OptimizationApp_debug_cflags	:= $(OptimizationApp_debug_common_cflags)
 OptimizationApp_debug_cppflags	:= $(OptimizationApp_debug_common_cflags)
 OptimizationApp_debug_cppflags  += -std="gnu++11"
 OptimizationApp_debug_lflags    := $(OptimizationApp_custom_lflags)
 OptimizationApp_debug_lflags    += $(addprefix -L, $(OptimizationApp_debug_lpaths))
 OptimizationApp_debug_lflags    += -Wl,--start-group $(addprefix -l, $(OptimizationApp_debug_libraries)) -Wl,--end-group
-OptimizationApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+OptimizationApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 OptimizationApp_debug_objsdir  = $(OBJS_DIR)/OptimizationApp_debug
 OptimizationApp_debug_cpp_o    = $(addprefix $(OptimizationApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(OptimizationApp_cppfiles)))))
 OptimizationApp_debug_cc_o    = $(addprefix $(OptimizationApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(OptimizationApp_ccfiles)))))
@@ -143,7 +143,7 @@ OptimizationApp_release_hpaths    += ./../../../extensions/include
 OptimizationApp_release_hpaths    += ./../../../extensions/externals/include
 OptimizationApp_release_hpaths    += ./../../../extensions/include/NsFoundation
 OptimizationApp_release_hpaths    += ./../../../extensions/include/NvFoundation
-OptimizationApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+OptimizationApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 OptimizationApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 OptimizationApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 OptimizationApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -188,14 +188,14 @@ OptimizationApp_release_common_cflags    += -MMD
 OptimizationApp_release_common_cflags    += $(addprefix -D, $(OptimizationApp_release_defines))
 OptimizationApp_release_common_cflags    += $(addprefix -I, $(OptimizationApp_release_hpaths))
 OptimizationApp_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-OptimizationApp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+OptimizationApp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 OptimizationApp_release_cflags	:= $(OptimizationApp_release_common_cflags)
 OptimizationApp_release_cppflags	:= $(OptimizationApp_release_common_cflags)
 OptimizationApp_release_cppflags  += -std="gnu++11"
 OptimizationApp_release_lflags    := $(OptimizationApp_custom_lflags)
 OptimizationApp_release_lflags    += $(addprefix -L, $(OptimizationApp_release_lpaths))
 OptimizationApp_release_lflags    += -Wl,--start-group $(addprefix -l, $(OptimizationApp_release_libraries)) -Wl,--end-group
-OptimizationApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+OptimizationApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 OptimizationApp_release_objsdir  = $(OBJS_DIR)/OptimizationApp_release
 OptimizationApp_release_cpp_o    = $(addprefix $(OptimizationApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(OptimizationApp_cppfiles)))))
 OptimizationApp_release_cc_o    = $(addprefix $(OptimizationApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(OptimizationApp_ccfiles)))))

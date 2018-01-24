@@ -37,14 +37,14 @@
 
 #include "NV/NvLogs.h"
 NvAppContextGL::NvAppContextGL(NvPlatformInfo info) :
-      NvAppContext(info)
-    , m_windowWidth(0)
-    , m_windowHeight(0)
-    , mMainFBO(0)
-    , mUseFBOPair(false)
-    , mCurrentFBOIndex(0)
-    , m_fboWidth(0)
-    , m_fboHeight(0)
+NvAppContext(info)
+, m_windowWidth(0)
+, m_windowHeight(0)
+, mMainFBO(0)
+, mUseFBOPair(false)
+, mCurrentFBOIndex(0)
+, m_fboWidth(0)
+, m_fboHeight(0)
 {
     mFBOPair[0] = NULL;
     mFBOPair[1] = NULL;
@@ -62,11 +62,11 @@ bool NvAppContextGL::useOffscreenRendering(int32_t w, int32_t h) {
     glClear(GL_COLOR_BUFFER_BIT);
 
     mUseFBOPair = false;
-	endFrame();
+    endFrame();
     mUseFBOPair = true;
 
-	m_fboWidth = w;
-	m_fboHeight = h;
+    m_fboWidth = w;
+    m_fboHeight = h;
 
     NvSimpleFBO::Desc desc;
     desc.width = m_fboWidth;
@@ -75,23 +75,23 @@ bool NvAppContextGL::useOffscreenRendering(int32_t w, int32_t h) {
     desc.color.filter = GL_LINEAR;
     desc.color.type = GL_UNSIGNED_BYTE;
     desc.color.wrap = GL_CLAMP_TO_EDGE;
-	if (getConfiguration().apiVer.api == NvGLAPI::GL ||
-		getConfiguration().apiVer.majVersion >= 3 ||
-		isExtensionSupported("GL_OES_packed_depth_stencil"))
-	{
-		desc.depthstencil.format = 0x88F0; // GL_DEPTH24_STENCIL8_EXT
-	}
-	else
-	{
-		desc.depth.format = GL_DEPTH_COMPONENT;
-		desc.depth.type = GL_UNSIGNED_INT;
-		desc.depth.filter = GL_NEAREST;
-	}
+    if (getConfiguration().apiVer.api == NvGLAPI::GL ||
+        getConfiguration().apiVer.majVersion >= 3 ||
+        isExtensionSupported("GL_OES_packed_depth_stencil"))
+    {
+        desc.depthstencil.format = 0x88F0; // GL_DEPTH24_STENCIL8_EXT
+    }
+    else
+    {
+        desc.depth.format = GL_DEPTH_COMPONENT;
+        desc.depth.type = GL_UNSIGNED_INT;
+        desc.depth.filter = GL_NEAREST;
+    }
 
     mFBOPair[0] = new NvSimpleFBO(desc);
     mFBOPair[1] = new NvSimpleFBO(desc);
 
-	endFrame();
+    endFrame();
 
     return true;
 }
@@ -105,7 +105,8 @@ bool NvAppContextGL::isRenderingToMainScreen() {
         glGetIntegerv(0x8CA6, (GLint*)&currFBO);
 
         return (currFBO == 0);
-    } else {
+    }
+    else {
         return true;
     }
 }
@@ -132,11 +133,16 @@ void NvAppContextGL::endScene() {
 
 }
 
+bool NvAppContextGL::swapFBO() {
+    mCurrentFBOIndex = mCurrentFBOIndex ? 0 : 1;
+    mMainFBO = mFBOPair[mCurrentFBOIndex]->fbo;
+    glBindFramebuffer(GL_FRAMEBUFFER, mMainFBO);
+    return true;
+}
+
 void NvAppContextGL::endFrame() {
     if (mUseFBOPair) {
-        mCurrentFBOIndex = mCurrentFBOIndex ? 0 : 1;
-        mMainFBO = mFBOPair[mCurrentFBOIndex]->fbo;
-        glBindFramebuffer(GL_FRAMEBUFFER, mMainFBO);
+        swapFBO();
     }
     else {
         swap();
@@ -144,13 +150,13 @@ void NvAppContextGL::endFrame() {
 }
 
 void NvAppContextGL::contextInitRendering() {
-	NvImageGL::SupportsFormatConversion(getConfiguration().apiVer.api != NvGLAPI::GLES);
-	NvImage::setSupportsBGR(getConfiguration().apiVer.api != NvGLAPI::GLES);
+    NvImageGL::SupportsFormatConversion(getConfiguration().apiVer.api != NvGLAPI::GLES);
+    NvImage::setSupportsBGR(getConfiguration().apiVer.api != NvGLAPI::GLES);
 }
 
 void NvAppContextGL::initUI() {
-	extern void NvUIUseGL();
-	NvUIUseGL();
+    extern void NvUIUseGL();
+    NvUIUseGL();
 }
 
 bool NvAppContextGL::readFramebufferRGBX32(uint8_t *dest, int32_t& w, int32_t& h) {

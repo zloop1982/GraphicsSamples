@@ -37,6 +37,7 @@
 #include "NvAndroidWinUtil.h"
 #include "NV/NvLogs.h"
 #include <assert.h>
+#include <malloc.h>
 
 Engine::Engine(struct android_app* app) {
     mApp = app;

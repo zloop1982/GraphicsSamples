@@ -19,7 +19,7 @@ Bloom_debug_hpaths    += ./../../../extensions/include
 Bloom_debug_hpaths    += ./../../../extensions/externals/include
 Bloom_debug_hpaths    += ./../../../extensions/include/NsFoundation
 Bloom_debug_hpaths    += ./../../../extensions/include/NvFoundation
-Bloom_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+Bloom_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 Bloom_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Bloom_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Bloom_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -64,14 +64,14 @@ Bloom_debug_common_cflags    += -MMD
 Bloom_debug_common_cflags    += $(addprefix -D, $(Bloom_debug_defines))
 Bloom_debug_common_cflags    += $(addprefix -I, $(Bloom_debug_hpaths))
 Bloom_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-Bloom_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+Bloom_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 Bloom_debug_cflags	:= $(Bloom_debug_common_cflags)
 Bloom_debug_cppflags	:= $(Bloom_debug_common_cflags)
 Bloom_debug_cppflags  += -std="gnu++11"
 Bloom_debug_lflags    := $(Bloom_custom_lflags)
 Bloom_debug_lflags    += $(addprefix -L, $(Bloom_debug_lpaths))
 Bloom_debug_lflags    += -Wl,--start-group $(addprefix -l, $(Bloom_debug_libraries)) -Wl,--end-group
-Bloom_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+Bloom_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 Bloom_debug_objsdir  = $(OBJS_DIR)/Bloom_debug
 Bloom_debug_cpp_o    = $(addprefix $(Bloom_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Bloom_cppfiles)))))
 Bloom_debug_cc_o    = $(addprefix $(Bloom_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Bloom_ccfiles)))))
@@ -135,7 +135,7 @@ Bloom_release_hpaths    += ./../../../extensions/include
 Bloom_release_hpaths    += ./../../../extensions/externals/include
 Bloom_release_hpaths    += ./../../../extensions/include/NsFoundation
 Bloom_release_hpaths    += ./../../../extensions/include/NvFoundation
-Bloom_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+Bloom_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 Bloom_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Bloom_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Bloom_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -180,14 +180,14 @@ Bloom_release_common_cflags    += -MMD
 Bloom_release_common_cflags    += $(addprefix -D, $(Bloom_release_defines))
 Bloom_release_common_cflags    += $(addprefix -I, $(Bloom_release_hpaths))
 Bloom_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-Bloom_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+Bloom_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 Bloom_release_cflags	:= $(Bloom_release_common_cflags)
 Bloom_release_cppflags	:= $(Bloom_release_common_cflags)
 Bloom_release_cppflags  += -std="gnu++11"
 Bloom_release_lflags    := $(Bloom_custom_lflags)
 Bloom_release_lflags    += $(addprefix -L, $(Bloom_release_lpaths))
 Bloom_release_lflags    += -Wl,--start-group $(addprefix -l, $(Bloom_release_libraries)) -Wl,--end-group
-Bloom_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+Bloom_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 Bloom_release_objsdir  = $(OBJS_DIR)/Bloom_release
 Bloom_release_cpp_o    = $(addprefix $(Bloom_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Bloom_cppfiles)))))
 Bloom_release_cc_o    = $(addprefix $(Bloom_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Bloom_ccfiles)))))

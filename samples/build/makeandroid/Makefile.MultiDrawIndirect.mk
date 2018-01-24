@@ -19,7 +19,7 @@ MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/externals/include
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include/NsFoundation
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include/NvFoundation
-MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -66,14 +66,14 @@ MultiDrawIndirect_debug_common_cflags    += -MMD
 MultiDrawIndirect_debug_common_cflags    += $(addprefix -D, $(MultiDrawIndirect_debug_defines))
 MultiDrawIndirect_debug_common_cflags    += $(addprefix -I, $(MultiDrawIndirect_debug_hpaths))
 MultiDrawIndirect_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-MultiDrawIndirect_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+MultiDrawIndirect_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 MultiDrawIndirect_debug_cflags	:= $(MultiDrawIndirect_debug_common_cflags)
 MultiDrawIndirect_debug_cppflags	:= $(MultiDrawIndirect_debug_common_cflags)
 MultiDrawIndirect_debug_cppflags  += -std="gnu++11"
 MultiDrawIndirect_debug_lflags    := $(MultiDrawIndirect_custom_lflags)
 MultiDrawIndirect_debug_lflags    += $(addprefix -L, $(MultiDrawIndirect_debug_lpaths))
 MultiDrawIndirect_debug_lflags    += -Wl,--start-group $(addprefix -l, $(MultiDrawIndirect_debug_libraries)) -Wl,--end-group
-MultiDrawIndirect_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+MultiDrawIndirect_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 MultiDrawIndirect_debug_objsdir  = $(OBJS_DIR)/MultiDrawIndirect_debug
 MultiDrawIndirect_debug_cpp_o    = $(addprefix $(MultiDrawIndirect_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MultiDrawIndirect_cppfiles)))))
 MultiDrawIndirect_debug_cc_o    = $(addprefix $(MultiDrawIndirect_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MultiDrawIndirect_ccfiles)))))
@@ -137,7 +137,7 @@ MultiDrawIndirect_release_hpaths    += ./../../../extensions/include
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/externals/include
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/include/NsFoundation
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/include/NvFoundation
-MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -184,14 +184,14 @@ MultiDrawIndirect_release_common_cflags    += -MMD
 MultiDrawIndirect_release_common_cflags    += $(addprefix -D, $(MultiDrawIndirect_release_defines))
 MultiDrawIndirect_release_common_cflags    += $(addprefix -I, $(MultiDrawIndirect_release_hpaths))
 MultiDrawIndirect_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-MultiDrawIndirect_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+MultiDrawIndirect_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 MultiDrawIndirect_release_cflags	:= $(MultiDrawIndirect_release_common_cflags)
 MultiDrawIndirect_release_cppflags	:= $(MultiDrawIndirect_release_common_cflags)
 MultiDrawIndirect_release_cppflags  += -std="gnu++11"
 MultiDrawIndirect_release_lflags    := $(MultiDrawIndirect_custom_lflags)
 MultiDrawIndirect_release_lflags    += $(addprefix -L, $(MultiDrawIndirect_release_lpaths))
 MultiDrawIndirect_release_lflags    += -Wl,--start-group $(addprefix -l, $(MultiDrawIndirect_release_libraries)) -Wl,--end-group
-MultiDrawIndirect_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+MultiDrawIndirect_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 MultiDrawIndirect_release_objsdir  = $(OBJS_DIR)/MultiDrawIndirect_release
 MultiDrawIndirect_release_cpp_o    = $(addprefix $(MultiDrawIndirect_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MultiDrawIndirect_cppfiles)))))
 MultiDrawIndirect_release_cc_o    = $(addprefix $(MultiDrawIndirect_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MultiDrawIndirect_ccfiles)))))

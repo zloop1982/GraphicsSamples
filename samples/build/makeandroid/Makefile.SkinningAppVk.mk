@@ -21,7 +21,7 @@ SkinningAppVk_debug_hpaths    += ./../../../extensions/include
 SkinningAppVk_debug_hpaths    += ./../../../extensions/externals/include
 SkinningAppVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 SkinningAppVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-SkinningAppVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+SkinningAppVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 SkinningAppVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 SkinningAppVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 SkinningAppVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -72,14 +72,14 @@ SkinningAppVk_debug_common_cflags    += -MMD
 SkinningAppVk_debug_common_cflags    += $(addprefix -D, $(SkinningAppVk_debug_defines))
 SkinningAppVk_debug_common_cflags    += $(addprefix -I, $(SkinningAppVk_debug_hpaths))
 SkinningAppVk_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-SkinningAppVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+SkinningAppVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 SkinningAppVk_debug_cflags	:= $(SkinningAppVk_debug_common_cflags)
 SkinningAppVk_debug_cppflags	:= $(SkinningAppVk_debug_common_cflags)
 SkinningAppVk_debug_cppflags  += -std="gnu++11"
 SkinningAppVk_debug_lflags    := $(SkinningAppVk_custom_lflags)
 SkinningAppVk_debug_lflags    += $(addprefix -L, $(SkinningAppVk_debug_lpaths))
 SkinningAppVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(SkinningAppVk_debug_libraries)) -Wl,--end-group
-SkinningAppVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+SkinningAppVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 SkinningAppVk_debug_objsdir  = $(OBJS_DIR)/SkinningAppVk_debug
 SkinningAppVk_debug_cpp_o    = $(addprefix $(SkinningAppVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(SkinningAppVk_cppfiles)))))
 SkinningAppVk_debug_cc_o    = $(addprefix $(SkinningAppVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(SkinningAppVk_ccfiles)))))
@@ -149,7 +149,7 @@ SkinningAppVk_release_hpaths    += ./../../../extensions/include
 SkinningAppVk_release_hpaths    += ./../../../extensions/externals/include
 SkinningAppVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 SkinningAppVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-SkinningAppVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+SkinningAppVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 SkinningAppVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 SkinningAppVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 SkinningAppVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -200,14 +200,14 @@ SkinningAppVk_release_common_cflags    += -MMD
 SkinningAppVk_release_common_cflags    += $(addprefix -D, $(SkinningAppVk_release_defines))
 SkinningAppVk_release_common_cflags    += $(addprefix -I, $(SkinningAppVk_release_hpaths))
 SkinningAppVk_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-SkinningAppVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+SkinningAppVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 SkinningAppVk_release_cflags	:= $(SkinningAppVk_release_common_cflags)
 SkinningAppVk_release_cppflags	:= $(SkinningAppVk_release_common_cflags)
 SkinningAppVk_release_cppflags  += -std="gnu++11"
 SkinningAppVk_release_lflags    := $(SkinningAppVk_custom_lflags)
 SkinningAppVk_release_lflags    += $(addprefix -L, $(SkinningAppVk_release_lpaths))
 SkinningAppVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(SkinningAppVk_release_libraries)) -Wl,--end-group
-SkinningAppVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+SkinningAppVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 SkinningAppVk_release_objsdir  = $(OBJS_DIR)/SkinningAppVk_release
 SkinningAppVk_release_cpp_o    = $(addprefix $(SkinningAppVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(SkinningAppVk_cppfiles)))))
 SkinningAppVk_release_cc_o    = $(addprefix $(SkinningAppVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(SkinningAppVk_ccfiles)))))

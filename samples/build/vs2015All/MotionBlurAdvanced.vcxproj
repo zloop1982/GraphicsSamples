@@ -41,8 +41,10 @@
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
 		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-18</AndroidMinAPI>
-		<AndroidNativeAPI>android-18</AndroidNativeAPI>
+		<AndroidMinAPI>android-19</AndroidMinAPI>
+		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
+		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'" Label="Configuration">
 		<ConfigurationType>Application</ConfigurationType>
@@ -51,8 +53,10 @@
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
 		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-18</AndroidMinAPI>
-		<AndroidNativeAPI>android-18</AndroidNativeAPI>
+		<AndroidMinAPI>android-19</AndroidMinAPI>
+		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
+		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
 		<ConfigurationType>Application</ConfigurationType>
@@ -105,7 +109,7 @@
 	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Tegra-Android'">
 		<ClCompile>
 			<FloatingPointModel>Precise</FloatingPointModel>
-			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer</AdditionalOptions>
+			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../es3aep-kepler/MotionBlurAdvanced;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;GW_APP_NAME="MotionBlurAdvanced";GL_API_LEVEL_ES3_1_AEP;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -146,7 +150,7 @@
 	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'">
 		<ClCompile>
 			<FloatingPointModel>Precise</FloatingPointModel>
-			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer</AdditionalOptions>
+			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../es3aep-kepler/MotionBlurAdvanced;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;GW_APP_NAME="MotionBlurAdvanced";GL_API_LEVEL_ES3_1_AEP;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

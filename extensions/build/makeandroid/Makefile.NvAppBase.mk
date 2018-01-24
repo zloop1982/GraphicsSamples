@@ -11,6 +11,7 @@ NvAppBase_cfiles   += ./../../src/NvAppBase/android/NvAndroidNativeAppGlue.c
 NvAppBase_cppfiles   += ./../../src/NvAppBase/android/EngineAndroid.cpp
 NvAppBase_cppfiles   += ./../../src/NvAppBase/android/MainAndroid.cpp
 NvAppBase_cppfiles   += ./../../src/NvAppBase/android/NvAndroidWinUtil.cpp
+NvAppBase_cppfiles   += ./../../src/NvAppBase/android/NvFBOPool.cpp
 NvAppBase_cppfiles   += ./../../src/NvAppBase/android/NvThreadAnd.cpp
 NvAppBase_cppfiles   += ./../../src/NvAppBase/gl/NvAppContextGL.cpp
 NvAppBase_cppfiles   += ./../../src/NvAppBase/gl/NvSampleAppGL.cpp
@@ -32,7 +33,7 @@ NvAppBase_debug_hpaths    += ./../../include
 NvAppBase_debug_hpaths    += ./../../externals/include
 NvAppBase_debug_hpaths    += ./../../include/NsFoundation
 NvAppBase_debug_hpaths    += ./../../include/NvFoundation
-NvAppBase_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvAppBase_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvAppBase_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvAppBase_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvAppBase_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -54,7 +55,7 @@ NvAppBase_debug_common_cflags    += -MMD
 NvAppBase_debug_common_cflags    += $(addprefix -D, $(NvAppBase_debug_defines))
 NvAppBase_debug_common_cflags    += $(addprefix -I, $(NvAppBase_debug_hpaths))
 NvAppBase_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvAppBase_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+NvAppBase_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 NvAppBase_debug_cflags	:= $(NvAppBase_debug_common_cflags)
 NvAppBase_debug_cppflags	:= $(NvAppBase_debug_common_cflags)
 NvAppBase_debug_cppflags  += -std="gnu++11"
@@ -122,7 +123,7 @@ NvAppBase_release_hpaths    += ./../../include
 NvAppBase_release_hpaths    += ./../../externals/include
 NvAppBase_release_hpaths    += ./../../include/NsFoundation
 NvAppBase_release_hpaths    += ./../../include/NvFoundation
-NvAppBase_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvAppBase_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvAppBase_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvAppBase_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvAppBase_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -144,7 +145,7 @@ NvAppBase_release_common_cflags    += -MMD
 NvAppBase_release_common_cflags    += $(addprefix -D, $(NvAppBase_release_defines))
 NvAppBase_release_common_cflags    += $(addprefix -I, $(NvAppBase_release_hpaths))
 NvAppBase_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvAppBase_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+NvAppBase_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 NvAppBase_release_cflags	:= $(NvAppBase_release_common_cflags)
 NvAppBase_release_cppflags	:= $(NvAppBase_release_common_cflags)
 NvAppBase_release_cppflags  += -std="gnu++11"

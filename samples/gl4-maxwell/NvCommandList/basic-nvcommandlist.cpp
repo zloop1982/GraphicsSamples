@@ -343,7 +343,7 @@ namespace basiccmdlist
 			exit( EXIT_FAILURE );
 #if defined(ANDROID)
 		bindlessVboUbo = glIsSupportedREGAL("GL_NV_vertex_buffer_unified_memory") && requireExtension("GL_NV_uniform_buffer_unified_memory", false);
-#elif defined(_WIN32)
+#elif defined(LINUX) || defined(_WIN32)
 		bindlessVboUbo = GLEW_NV_vertex_buffer_unified_memory && requireExtension("GL_NV_uniform_buffer_unified_memory", false);
 #endif
 
@@ -459,7 +459,7 @@ namespace basiccmdlist
 	{
 #if defined(ANDROID)
 		if (textures.scene_color && glIsSupportedREGAL("GL_ARB_bindless_texture"))
-#elif defined(_WIN32)
+#elif defined(LINUX) || defined(_WIN32)
 		if (textures.scene_color && GLEW_ARB_bindless_texture)
 #endif
 		{
@@ -494,7 +494,7 @@ namespace basiccmdlist
 
 #if defined(ANDROID)
 		if (glIsSupportedREGAL("GL_ARB_bindless_texture"))
-#elif defined(_WIN32)
+#elif defined(LINUX) || defined(_WIN32)
 		if (GLEW_ARB_bindless_texture)
 #endif
 		{
@@ -678,8 +678,8 @@ namespace basiccmdlist
 	NVPproc sysGetProcAddress( const char* name ) {
 
 		NVPproc proc = NULL;
-#if defined (_WIN32)
-		proc = (NVPproc)wglGetProcAddress(name);
+#if defined(LINUX) || defined (_WIN32)
+		proc = (NVPproc)glfwGetProcAddress(name);
 #elif defined(ANDROID)
 		proc = (NVPproc)eglGetProcAddress(name);
 #endif

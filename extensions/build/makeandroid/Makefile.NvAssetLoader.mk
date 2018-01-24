@@ -20,7 +20,7 @@ NvAssetLoader_debug_hpaths    += ./../../include
 NvAssetLoader_debug_hpaths    += ./../../externals/include
 NvAssetLoader_debug_hpaths    += ./../../include/NsFoundation
 NvAssetLoader_debug_hpaths    += ./../../include/NvFoundation
-NvAssetLoader_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvAssetLoader_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvAssetLoader_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvAssetLoader_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvAssetLoader_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -42,7 +42,7 @@ NvAssetLoader_debug_common_cflags    += -MMD
 NvAssetLoader_debug_common_cflags    += $(addprefix -D, $(NvAssetLoader_debug_defines))
 NvAssetLoader_debug_common_cflags    += $(addprefix -I, $(NvAssetLoader_debug_hpaths))
 NvAssetLoader_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvAssetLoader_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+NvAssetLoader_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 NvAssetLoader_debug_cflags	:= $(NvAssetLoader_debug_common_cflags)
 NvAssetLoader_debug_cppflags	:= $(NvAssetLoader_debug_common_cflags)
 NvAssetLoader_debug_cppflags  += -std="gnu++11"
@@ -110,7 +110,7 @@ NvAssetLoader_release_hpaths    += ./../../include
 NvAssetLoader_release_hpaths    += ./../../externals/include
 NvAssetLoader_release_hpaths    += ./../../include/NsFoundation
 NvAssetLoader_release_hpaths    += ./../../include/NvFoundation
-NvAssetLoader_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvAssetLoader_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvAssetLoader_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvAssetLoader_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvAssetLoader_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -132,7 +132,7 @@ NvAssetLoader_release_common_cflags    += -MMD
 NvAssetLoader_release_common_cflags    += $(addprefix -D, $(NvAssetLoader_release_defines))
 NvAssetLoader_release_common_cflags    += $(addprefix -I, $(NvAssetLoader_release_hpaths))
 NvAssetLoader_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvAssetLoader_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+NvAssetLoader_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 NvAssetLoader_release_cflags	:= $(NvAssetLoader_release_common_cflags)
 NvAssetLoader_release_cppflags	:= $(NvAssetLoader_release_common_cflags)
 NvAssetLoader_release_cppflags  += -std="gnu++11"

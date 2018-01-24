@@ -41,8 +41,10 @@
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
 		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-16</AndroidMinAPI>
-		<AndroidNativeAPI>android-16</AndroidNativeAPI>
+		<AndroidMinAPI>android-19</AndroidMinAPI>
+		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
+		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'" Label="Configuration">
 		<ConfigurationType>StaticLibrary</ConfigurationType>
@@ -50,8 +52,11 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-16</AndroidTargetAPI>
-		<AndroidMinAPI>android-16</AndroidMinAPI>
+		<AndroidTargetAPI>android-21</AndroidTargetAPI>
+		<AndroidMinAPI>android-18</AndroidMinAPI>
+		<AndroidNativeAPI>android-18</AndroidNativeAPI>
+		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
+		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
 		<ConfigurationType>StaticLibrary</ConfigurationType>
@@ -104,7 +109,7 @@
 	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Tegra-Android'">
 		<ClCompile>
 			<FloatingPointModel>Precise</FloatingPointModel>
-			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer</AdditionalOptions>
+			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../src/cg4cpp;./../../include;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -137,7 +142,7 @@
 	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'">
 		<ClCompile>
 			<FloatingPointModel>Precise</FloatingPointModel>
-			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer</AdditionalOptions>
+			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../src/cg4cpp;./../../include;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

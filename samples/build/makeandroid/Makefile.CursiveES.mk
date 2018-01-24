@@ -21,7 +21,7 @@ CursiveES_debug_hpaths    += ./../../../extensions/include
 CursiveES_debug_hpaths    += ./../../../extensions/externals/include
 CursiveES_debug_hpaths    += ./../../../extensions/include/NsFoundation
 CursiveES_debug_hpaths    += ./../../../extensions/include/NvFoundation
-CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -69,14 +69,14 @@ CursiveES_debug_common_cflags    += -MMD
 CursiveES_debug_common_cflags    += $(addprefix -D, $(CursiveES_debug_defines))
 CursiveES_debug_common_cflags    += $(addprefix -I, $(CursiveES_debug_hpaths))
 CursiveES_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-CursiveES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+CursiveES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 CursiveES_debug_cflags	:= $(CursiveES_debug_common_cflags)
 CursiveES_debug_cppflags	:= $(CursiveES_debug_common_cflags)
 CursiveES_debug_cppflags  += -std="gnu++11"
 CursiveES_debug_lflags    := $(CursiveES_custom_lflags)
 CursiveES_debug_lflags    += $(addprefix -L, $(CursiveES_debug_lpaths))
 CursiveES_debug_lflags    += -Wl,--start-group $(addprefix -l, $(CursiveES_debug_libraries)) -Wl,--end-group
-CursiveES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+CursiveES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 CursiveES_debug_objsdir  = $(OBJS_DIR)/CursiveES_debug
 CursiveES_debug_cpp_o    = $(addprefix $(CursiveES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CursiveES_cppfiles)))))
 CursiveES_debug_cc_o    = $(addprefix $(CursiveES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CursiveES_ccfiles)))))
@@ -140,7 +140,7 @@ CursiveES_release_hpaths    += ./../../../extensions/include
 CursiveES_release_hpaths    += ./../../../extensions/externals/include
 CursiveES_release_hpaths    += ./../../../extensions/include/NsFoundation
 CursiveES_release_hpaths    += ./../../../extensions/include/NvFoundation
-CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -188,14 +188,14 @@ CursiveES_release_common_cflags    += -MMD
 CursiveES_release_common_cflags    += $(addprefix -D, $(CursiveES_release_defines))
 CursiveES_release_common_cflags    += $(addprefix -I, $(CursiveES_release_hpaths))
 CursiveES_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-CursiveES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+CursiveES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 CursiveES_release_cflags	:= $(CursiveES_release_common_cflags)
 CursiveES_release_cppflags	:= $(CursiveES_release_common_cflags)
 CursiveES_release_cppflags  += -std="gnu++11"
 CursiveES_release_lflags    := $(CursiveES_custom_lflags)
 CursiveES_release_lflags    += $(addprefix -L, $(CursiveES_release_lpaths))
 CursiveES_release_lflags    += -Wl,--start-group $(addprefix -l, $(CursiveES_release_libraries)) -Wl,--end-group
-CursiveES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+CursiveES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 CursiveES_release_objsdir  = $(OBJS_DIR)/CursiveES_release
 CursiveES_release_cpp_o    = $(addprefix $(CursiveES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CursiveES_cppfiles)))))
 CursiveES_release_cc_o    = $(addprefix $(CursiveES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CursiveES_ccfiles)))))

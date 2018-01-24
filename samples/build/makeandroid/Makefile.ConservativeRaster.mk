@@ -19,7 +19,7 @@ ConservativeRaster_debug_hpaths    += ./../../../extensions/include
 ConservativeRaster_debug_hpaths    += ./../../../extensions/externals/include
 ConservativeRaster_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ConservativeRaster_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ConservativeRaster_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ConservativeRaster_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ConservativeRaster_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ConservativeRaster_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ConservativeRaster_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -66,14 +66,14 @@ ConservativeRaster_debug_common_cflags    += -MMD
 ConservativeRaster_debug_common_cflags    += $(addprefix -D, $(ConservativeRaster_debug_defines))
 ConservativeRaster_debug_common_cflags    += $(addprefix -I, $(ConservativeRaster_debug_hpaths))
 ConservativeRaster_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ConservativeRaster_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ConservativeRaster_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ConservativeRaster_debug_cflags	:= $(ConservativeRaster_debug_common_cflags)
 ConservativeRaster_debug_cppflags	:= $(ConservativeRaster_debug_common_cflags)
 ConservativeRaster_debug_cppflags  += -std="gnu++11"
 ConservativeRaster_debug_lflags    := $(ConservativeRaster_custom_lflags)
 ConservativeRaster_debug_lflags    += $(addprefix -L, $(ConservativeRaster_debug_lpaths))
 ConservativeRaster_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ConservativeRaster_debug_libraries)) -Wl,--end-group
-ConservativeRaster_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ConservativeRaster_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ConservativeRaster_debug_objsdir  = $(OBJS_DIR)/ConservativeRaster_debug
 ConservativeRaster_debug_cpp_o    = $(addprefix $(ConservativeRaster_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ConservativeRaster_cppfiles)))))
 ConservativeRaster_debug_cc_o    = $(addprefix $(ConservativeRaster_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ConservativeRaster_ccfiles)))))
@@ -137,7 +137,7 @@ ConservativeRaster_release_hpaths    += ./../../../extensions/include
 ConservativeRaster_release_hpaths    += ./../../../extensions/externals/include
 ConservativeRaster_release_hpaths    += ./../../../extensions/include/NsFoundation
 ConservativeRaster_release_hpaths    += ./../../../extensions/include/NvFoundation
-ConservativeRaster_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ConservativeRaster_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ConservativeRaster_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ConservativeRaster_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ConservativeRaster_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -184,14 +184,14 @@ ConservativeRaster_release_common_cflags    += -MMD
 ConservativeRaster_release_common_cflags    += $(addprefix -D, $(ConservativeRaster_release_defines))
 ConservativeRaster_release_common_cflags    += $(addprefix -I, $(ConservativeRaster_release_hpaths))
 ConservativeRaster_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ConservativeRaster_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ConservativeRaster_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ConservativeRaster_release_cflags	:= $(ConservativeRaster_release_common_cflags)
 ConservativeRaster_release_cppflags	:= $(ConservativeRaster_release_common_cflags)
 ConservativeRaster_release_cppflags  += -std="gnu++11"
 ConservativeRaster_release_lflags    := $(ConservativeRaster_custom_lflags)
 ConservativeRaster_release_lflags    += $(addprefix -L, $(ConservativeRaster_release_lpaths))
 ConservativeRaster_release_lflags    += -Wl,--start-group $(addprefix -l, $(ConservativeRaster_release_libraries)) -Wl,--end-group
-ConservativeRaster_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ConservativeRaster_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ConservativeRaster_release_objsdir  = $(OBJS_DIR)/ConservativeRaster_release
 ConservativeRaster_release_cpp_o    = $(addprefix $(ConservativeRaster_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ConservativeRaster_cppfiles)))))
 ConservativeRaster_release_cc_o    = $(addprefix $(ConservativeRaster_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ConservativeRaster_ccfiles)))))

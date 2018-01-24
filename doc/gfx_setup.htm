@@ -137,6 +137,14 @@
 			<code>sudo apt-get install g++ xorg-dev libglu1-mesa-dev make</code><br />
 			Full <a href="https://developer.nvidia.com/codeworks-android">CodeWorks for Android</a> 1r4 for Linux x64 tools install.  Note that means that NDK r11/r12 are not yet supported.  CodeWorks 1r4 supports r10e.<br/>
 		</li>
+        <li>Install dos2unix and OpenJDK 8 and ensure that JAVA_HOME is set<br/>
+            <code>sudo apt-get install dos2unix</code><br />
+            <code>sudo apt-get install openjdk-8-jdk</code><br />
+            Use export in a shell to ensure that <code>JAVA_HOME</code> is set to OpenJDK 8, likely <code>/usr/lib/jvm/java-8-openjdk-amd64</code>.  If it is not set, then set it in a recurring setup file like <code>.bashrc</code><br/>
+            If you do not ensure that OpenJDK 8 is installed and the <code>JAVA_HOME</code> is set, the Ant/Java builds will likely fail with:<br/>
+            <code>Error: JAVA_HOME is not defined correctly.</code><br />
+            <code>We cannot execute /usr/bin/java</code><br />
+        </li>
 		<li>If using Ubuntu 12.04 LTS, building the Vulkan samples requires g++ 4.8:<br/>
 			<code>sudo apt-get install python-software-properties</code><br />
 			<code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test</code><br />

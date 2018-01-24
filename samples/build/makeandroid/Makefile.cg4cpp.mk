@@ -97,7 +97,7 @@ cg4cpp_debug_hpaths    += ./../../../extensions/extensions/include
 cg4cpp_debug_hpaths    += ./../../../extensions/extensions/externals/include
 cg4cpp_debug_hpaths    += ./../../../extensions/extensions/include/NsFoundation
 cg4cpp_debug_hpaths    += ./../../../extensions/extensions/include/NvFoundation
-cg4cpp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+cg4cpp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 cg4cpp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 cg4cpp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 cg4cpp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -119,7 +119,7 @@ cg4cpp_debug_common_cflags    += -MMD
 cg4cpp_debug_common_cflags    += $(addprefix -D, $(cg4cpp_debug_defines))
 cg4cpp_debug_common_cflags    += $(addprefix -I, $(cg4cpp_debug_hpaths))
 cg4cpp_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-cg4cpp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+cg4cpp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 cg4cpp_debug_cflags	:= $(cg4cpp_debug_common_cflags)
 cg4cpp_debug_cppflags	:= $(cg4cpp_debug_common_cflags)
 cg4cpp_debug_cppflags  += -std="gnu++11"
@@ -187,7 +187,7 @@ cg4cpp_release_hpaths    += ./../../../extensions/extensions/include
 cg4cpp_release_hpaths    += ./../../../extensions/extensions/externals/include
 cg4cpp_release_hpaths    += ./../../../extensions/extensions/include/NsFoundation
 cg4cpp_release_hpaths    += ./../../../extensions/extensions/include/NvFoundation
-cg4cpp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+cg4cpp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 cg4cpp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 cg4cpp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 cg4cpp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -209,7 +209,7 @@ cg4cpp_release_common_cflags    += -MMD
 cg4cpp_release_common_cflags    += $(addprefix -D, $(cg4cpp_release_defines))
 cg4cpp_release_common_cflags    += $(addprefix -I, $(cg4cpp_release_hpaths))
 cg4cpp_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-cg4cpp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+cg4cpp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 cg4cpp_release_cflags	:= $(cg4cpp_release_common_cflags)
 cg4cpp_release_cppflags	:= $(cg4cpp_release_common_cflags)
 cg4cpp_release_cppflags  += -std="gnu++11"

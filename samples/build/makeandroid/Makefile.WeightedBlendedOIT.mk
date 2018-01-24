@@ -19,7 +19,7 @@ WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/externals/include
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include/NsFoundation
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include/NvFoundation
-WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -66,14 +66,14 @@ WeightedBlendedOIT_debug_common_cflags    += -MMD
 WeightedBlendedOIT_debug_common_cflags    += $(addprefix -D, $(WeightedBlendedOIT_debug_defines))
 WeightedBlendedOIT_debug_common_cflags    += $(addprefix -I, $(WeightedBlendedOIT_debug_hpaths))
 WeightedBlendedOIT_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-WeightedBlendedOIT_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+WeightedBlendedOIT_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 WeightedBlendedOIT_debug_cflags	:= $(WeightedBlendedOIT_debug_common_cflags)
 WeightedBlendedOIT_debug_cppflags	:= $(WeightedBlendedOIT_debug_common_cflags)
 WeightedBlendedOIT_debug_cppflags  += -std="gnu++11"
 WeightedBlendedOIT_debug_lflags    := $(WeightedBlendedOIT_custom_lflags)
 WeightedBlendedOIT_debug_lflags    += $(addprefix -L, $(WeightedBlendedOIT_debug_lpaths))
 WeightedBlendedOIT_debug_lflags    += -Wl,--start-group $(addprefix -l, $(WeightedBlendedOIT_debug_libraries)) -Wl,--end-group
-WeightedBlendedOIT_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+WeightedBlendedOIT_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 WeightedBlendedOIT_debug_objsdir  = $(OBJS_DIR)/WeightedBlendedOIT_debug
 WeightedBlendedOIT_debug_cpp_o    = $(addprefix $(WeightedBlendedOIT_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(WeightedBlendedOIT_cppfiles)))))
 WeightedBlendedOIT_debug_cc_o    = $(addprefix $(WeightedBlendedOIT_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(WeightedBlendedOIT_ccfiles)))))
@@ -137,7 +137,7 @@ WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/externals/include
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include/NsFoundation
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include/NvFoundation
-WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -184,14 +184,14 @@ WeightedBlendedOIT_release_common_cflags    += -MMD
 WeightedBlendedOIT_release_common_cflags    += $(addprefix -D, $(WeightedBlendedOIT_release_defines))
 WeightedBlendedOIT_release_common_cflags    += $(addprefix -I, $(WeightedBlendedOIT_release_hpaths))
 WeightedBlendedOIT_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-WeightedBlendedOIT_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+WeightedBlendedOIT_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 WeightedBlendedOIT_release_cflags	:= $(WeightedBlendedOIT_release_common_cflags)
 WeightedBlendedOIT_release_cppflags	:= $(WeightedBlendedOIT_release_common_cflags)
 WeightedBlendedOIT_release_cppflags  += -std="gnu++11"
 WeightedBlendedOIT_release_lflags    := $(WeightedBlendedOIT_custom_lflags)
 WeightedBlendedOIT_release_lflags    += $(addprefix -L, $(WeightedBlendedOIT_release_lpaths))
 WeightedBlendedOIT_release_lflags    += -Wl,--start-group $(addprefix -l, $(WeightedBlendedOIT_release_libraries)) -Wl,--end-group
-WeightedBlendedOIT_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+WeightedBlendedOIT_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 WeightedBlendedOIT_release_objsdir  = $(OBJS_DIR)/WeightedBlendedOIT_release
 WeightedBlendedOIT_release_cpp_o    = $(addprefix $(WeightedBlendedOIT_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(WeightedBlendedOIT_cppfiles)))))
 WeightedBlendedOIT_release_cc_o    = $(addprefix $(WeightedBlendedOIT_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(WeightedBlendedOIT_ccfiles)))))

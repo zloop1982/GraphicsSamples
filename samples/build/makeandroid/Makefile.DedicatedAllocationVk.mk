@@ -20,7 +20,7 @@ DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/externals/include
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -71,14 +71,14 @@ DedicatedAllocationVk_debug_common_cflags    += -MMD
 DedicatedAllocationVk_debug_common_cflags    += $(addprefix -D, $(DedicatedAllocationVk_debug_defines))
 DedicatedAllocationVk_debug_common_cflags    += $(addprefix -I, $(DedicatedAllocationVk_debug_hpaths))
 DedicatedAllocationVk_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-DedicatedAllocationVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+DedicatedAllocationVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 DedicatedAllocationVk_debug_cflags	:= $(DedicatedAllocationVk_debug_common_cflags)
 DedicatedAllocationVk_debug_cppflags	:= $(DedicatedAllocationVk_debug_common_cflags)
 DedicatedAllocationVk_debug_cppflags  += -std="gnu++11"
 DedicatedAllocationVk_debug_lflags    := $(DedicatedAllocationVk_custom_lflags)
 DedicatedAllocationVk_debug_lflags    += $(addprefix -L, $(DedicatedAllocationVk_debug_lpaths))
 DedicatedAllocationVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(DedicatedAllocationVk_debug_libraries)) -Wl,--end-group
-DedicatedAllocationVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+DedicatedAllocationVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 DedicatedAllocationVk_debug_objsdir  = $(OBJS_DIR)/DedicatedAllocationVk_debug
 DedicatedAllocationVk_debug_cpp_o    = $(addprefix $(DedicatedAllocationVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DedicatedAllocationVk_cppfiles)))))
 DedicatedAllocationVk_debug_cc_o    = $(addprefix $(DedicatedAllocationVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DedicatedAllocationVk_ccfiles)))))
@@ -148,7 +148,7 @@ DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/externals/include
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -199,14 +199,14 @@ DedicatedAllocationVk_release_common_cflags    += -MMD
 DedicatedAllocationVk_release_common_cflags    += $(addprefix -D, $(DedicatedAllocationVk_release_defines))
 DedicatedAllocationVk_release_common_cflags    += $(addprefix -I, $(DedicatedAllocationVk_release_hpaths))
 DedicatedAllocationVk_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-DedicatedAllocationVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+DedicatedAllocationVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 DedicatedAllocationVk_release_cflags	:= $(DedicatedAllocationVk_release_common_cflags)
 DedicatedAllocationVk_release_cppflags	:= $(DedicatedAllocationVk_release_common_cflags)
 DedicatedAllocationVk_release_cppflags  += -std="gnu++11"
 DedicatedAllocationVk_release_lflags    := $(DedicatedAllocationVk_custom_lflags)
 DedicatedAllocationVk_release_lflags    += $(addprefix -L, $(DedicatedAllocationVk_release_lpaths))
 DedicatedAllocationVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(DedicatedAllocationVk_release_libraries)) -Wl,--end-group
-DedicatedAllocationVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+DedicatedAllocationVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 DedicatedAllocationVk_release_objsdir  = $(OBJS_DIR)/DedicatedAllocationVk_release
 DedicatedAllocationVk_release_cpp_o    = $(addprefix $(DedicatedAllocationVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DedicatedAllocationVk_cppfiles)))))
 DedicatedAllocationVk_release_cc_o    = $(addprefix $(DedicatedAllocationVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DedicatedAllocationVk_ccfiles)))))

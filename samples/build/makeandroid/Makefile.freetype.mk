@@ -58,7 +58,7 @@ freetype_debug_hpaths    += ./../../../extensions/extensions/include
 freetype_debug_hpaths    += ./../../../extensions/extensions/externals/include
 freetype_debug_hpaths    += ./../../../extensions/extensions/include/NsFoundation
 freetype_debug_hpaths    += ./../../../extensions/extensions/include/NvFoundation
-freetype_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+freetype_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 freetype_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 freetype_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 freetype_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -81,7 +81,7 @@ freetype_debug_common_cflags    += -MMD
 freetype_debug_common_cflags    += $(addprefix -D, $(freetype_debug_defines))
 freetype_debug_common_cflags    += $(addprefix -I, $(freetype_debug_hpaths))
 freetype_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-freetype_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+freetype_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 freetype_debug_cflags	:= $(freetype_debug_common_cflags)
 freetype_debug_cppflags	:= $(freetype_debug_common_cflags)
 freetype_debug_cppflags  += -std="gnu++11"
@@ -149,7 +149,7 @@ freetype_release_hpaths    += ./../../../extensions/extensions/include
 freetype_release_hpaths    += ./../../../extensions/extensions/externals/include
 freetype_release_hpaths    += ./../../../extensions/extensions/include/NsFoundation
 freetype_release_hpaths    += ./../../../extensions/extensions/include/NvFoundation
-freetype_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+freetype_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 freetype_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 freetype_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 freetype_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -172,7 +172,7 @@ freetype_release_common_cflags    += -MMD
 freetype_release_common_cflags    += $(addprefix -D, $(freetype_release_defines))
 freetype_release_common_cflags    += $(addprefix -I, $(freetype_release_hpaths))
 freetype_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-freetype_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+freetype_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 freetype_release_cflags	:= $(freetype_release_common_cflags)
 freetype_release_cppflags	:= $(freetype_release_common_cflags)
 freetype_release_cppflags  += -std="gnu++11"

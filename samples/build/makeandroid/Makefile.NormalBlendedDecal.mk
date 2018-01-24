@@ -19,7 +19,7 @@ NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/externals/include
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include/NsFoundation
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include/NvFoundation
-NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -66,14 +66,14 @@ NormalBlendedDecal_debug_common_cflags    += -MMD
 NormalBlendedDecal_debug_common_cflags    += $(addprefix -D, $(NormalBlendedDecal_debug_defines))
 NormalBlendedDecal_debug_common_cflags    += $(addprefix -I, $(NormalBlendedDecal_debug_hpaths))
 NormalBlendedDecal_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NormalBlendedDecal_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+NormalBlendedDecal_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 NormalBlendedDecal_debug_cflags	:= $(NormalBlendedDecal_debug_common_cflags)
 NormalBlendedDecal_debug_cppflags	:= $(NormalBlendedDecal_debug_common_cflags)
 NormalBlendedDecal_debug_cppflags  += -std="gnu++11"
 NormalBlendedDecal_debug_lflags    := $(NormalBlendedDecal_custom_lflags)
 NormalBlendedDecal_debug_lflags    += $(addprefix -L, $(NormalBlendedDecal_debug_lpaths))
 NormalBlendedDecal_debug_lflags    += -Wl,--start-group $(addprefix -l, $(NormalBlendedDecal_debug_libraries)) -Wl,--end-group
-NormalBlendedDecal_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+NormalBlendedDecal_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 NormalBlendedDecal_debug_objsdir  = $(OBJS_DIR)/NormalBlendedDecal_debug
 NormalBlendedDecal_debug_cpp_o    = $(addprefix $(NormalBlendedDecal_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(NormalBlendedDecal_cppfiles)))))
 NormalBlendedDecal_debug_cc_o    = $(addprefix $(NormalBlendedDecal_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(NormalBlendedDecal_ccfiles)))))
@@ -137,7 +137,7 @@ NormalBlendedDecal_release_hpaths    += ./../../../extensions/include
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/externals/include
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/include/NsFoundation
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/include/NvFoundation
-NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -184,14 +184,14 @@ NormalBlendedDecal_release_common_cflags    += -MMD
 NormalBlendedDecal_release_common_cflags    += $(addprefix -D, $(NormalBlendedDecal_release_defines))
 NormalBlendedDecal_release_common_cflags    += $(addprefix -I, $(NormalBlendedDecal_release_hpaths))
 NormalBlendedDecal_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NormalBlendedDecal_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+NormalBlendedDecal_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 NormalBlendedDecal_release_cflags	:= $(NormalBlendedDecal_release_common_cflags)
 NormalBlendedDecal_release_cppflags	:= $(NormalBlendedDecal_release_common_cflags)
 NormalBlendedDecal_release_cppflags  += -std="gnu++11"
 NormalBlendedDecal_release_lflags    := $(NormalBlendedDecal_custom_lflags)
 NormalBlendedDecal_release_lflags    += $(addprefix -L, $(NormalBlendedDecal_release_lpaths))
 NormalBlendedDecal_release_lflags    += -Wl,--start-group $(addprefix -l, $(NormalBlendedDecal_release_libraries)) -Wl,--end-group
-NormalBlendedDecal_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+NormalBlendedDecal_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 NormalBlendedDecal_release_objsdir  = $(OBJS_DIR)/NormalBlendedDecal_release
 NormalBlendedDecal_release_cpp_o    = $(addprefix $(NormalBlendedDecal_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(NormalBlendedDecal_cppfiles)))))
 NormalBlendedDecal_release_cc_o    = $(addprefix $(NormalBlendedDecal_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(NormalBlendedDecal_ccfiles)))))

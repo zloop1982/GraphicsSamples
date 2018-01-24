@@ -19,7 +19,7 @@ NvEGLUtil_debug_hpaths    += ./../../include
 NvEGLUtil_debug_hpaths    += ./../../externals/include
 NvEGLUtil_debug_hpaths    += ./../../include/NsFoundation
 NvEGLUtil_debug_hpaths    += ./../../include/NvFoundation
-NvEGLUtil_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvEGLUtil_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvEGLUtil_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvEGLUtil_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvEGLUtil_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -41,7 +41,7 @@ NvEGLUtil_debug_common_cflags    += -MMD
 NvEGLUtil_debug_common_cflags    += $(addprefix -D, $(NvEGLUtil_debug_defines))
 NvEGLUtil_debug_common_cflags    += $(addprefix -I, $(NvEGLUtil_debug_hpaths))
 NvEGLUtil_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvEGLUtil_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+NvEGLUtil_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 NvEGLUtil_debug_cflags	:= $(NvEGLUtil_debug_common_cflags)
 NvEGLUtil_debug_cppflags	:= $(NvEGLUtil_debug_common_cflags)
 NvEGLUtil_debug_cppflags  += -std="gnu++11"
@@ -108,7 +108,7 @@ NvEGLUtil_release_hpaths    += ./../../include
 NvEGLUtil_release_hpaths    += ./../../externals/include
 NvEGLUtil_release_hpaths    += ./../../include/NsFoundation
 NvEGLUtil_release_hpaths    += ./../../include/NvFoundation
-NvEGLUtil_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+NvEGLUtil_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 NvEGLUtil_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NvEGLUtil_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NvEGLUtil_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -130,7 +130,7 @@ NvEGLUtil_release_common_cflags    += -MMD
 NvEGLUtil_release_common_cflags    += $(addprefix -D, $(NvEGLUtil_release_defines))
 NvEGLUtil_release_common_cflags    += $(addprefix -I, $(NvEGLUtil_release_hpaths))
 NvEGLUtil_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-NvEGLUtil_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+NvEGLUtil_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 NvEGLUtil_release_cflags	:= $(NvEGLUtil_release_common_cflags)
 NvEGLUtil_release_cppflags	:= $(NvEGLUtil_release_common_cflags)
 NvEGLUtil_release_cppflags  += -std="gnu++11"

@@ -20,7 +20,7 @@ BindlessApp_debug_hpaths    += ./../../../extensions/include
 BindlessApp_debug_hpaths    += ./../../../extensions/externals/include
 BindlessApp_debug_hpaths    += ./../../../extensions/include/NsFoundation
 BindlessApp_debug_hpaths    += ./../../../extensions/include/NvFoundation
-BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -67,14 +67,14 @@ BindlessApp_debug_common_cflags    += -MMD
 BindlessApp_debug_common_cflags    += $(addprefix -D, $(BindlessApp_debug_defines))
 BindlessApp_debug_common_cflags    += $(addprefix -I, $(BindlessApp_debug_hpaths))
 BindlessApp_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-BindlessApp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+BindlessApp_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 BindlessApp_debug_cflags	:= $(BindlessApp_debug_common_cflags)
 BindlessApp_debug_cppflags	:= $(BindlessApp_debug_common_cflags)
 BindlessApp_debug_cppflags  += -std="gnu++11"
 BindlessApp_debug_lflags    := $(BindlessApp_custom_lflags)
 BindlessApp_debug_lflags    += $(addprefix -L, $(BindlessApp_debug_lpaths))
 BindlessApp_debug_lflags    += -Wl,--start-group $(addprefix -l, $(BindlessApp_debug_libraries)) -Wl,--end-group
-BindlessApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+BindlessApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 BindlessApp_debug_objsdir  = $(OBJS_DIR)/BindlessApp_debug
 BindlessApp_debug_cpp_o    = $(addprefix $(BindlessApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BindlessApp_cppfiles)))))
 BindlessApp_debug_cc_o    = $(addprefix $(BindlessApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BindlessApp_ccfiles)))))
@@ -138,7 +138,7 @@ BindlessApp_release_hpaths    += ./../../../extensions/include
 BindlessApp_release_hpaths    += ./../../../extensions/externals/include
 BindlessApp_release_hpaths    += ./../../../extensions/include/NsFoundation
 BindlessApp_release_hpaths    += ./../../../extensions/include/NvFoundation
-BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -185,14 +185,14 @@ BindlessApp_release_common_cflags    += -MMD
 BindlessApp_release_common_cflags    += $(addprefix -D, $(BindlessApp_release_defines))
 BindlessApp_release_common_cflags    += $(addprefix -I, $(BindlessApp_release_hpaths))
 BindlessApp_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-BindlessApp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+BindlessApp_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 BindlessApp_release_cflags	:= $(BindlessApp_release_common_cflags)
 BindlessApp_release_cppflags	:= $(BindlessApp_release_common_cflags)
 BindlessApp_release_cppflags  += -std="gnu++11"
 BindlessApp_release_lflags    := $(BindlessApp_custom_lflags)
 BindlessApp_release_lflags    += $(addprefix -L, $(BindlessApp_release_lpaths))
 BindlessApp_release_lflags    += -Wl,--start-group $(addprefix -l, $(BindlessApp_release_libraries)) -Wl,--end-group
-BindlessApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+BindlessApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 BindlessApp_release_objsdir  = $(OBJS_DIR)/BindlessApp_release
 BindlessApp_release_cpp_o    = $(addprefix $(BindlessApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BindlessApp_cppfiles)))))
 BindlessApp_release_cc_o    = $(addprefix $(BindlessApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BindlessApp_ccfiles)))))

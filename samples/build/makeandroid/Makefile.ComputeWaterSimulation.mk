@@ -24,7 +24,7 @@ ComputeWaterSimulation_debug_hpaths    += ./../../../extensions/include
 ComputeWaterSimulation_debug_hpaths    += ./../../../extensions/externals/include
 ComputeWaterSimulation_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeWaterSimulation_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeWaterSimulation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeWaterSimulation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ComputeWaterSimulation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeWaterSimulation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeWaterSimulation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -72,14 +72,14 @@ ComputeWaterSimulation_debug_common_cflags    += -MMD
 ComputeWaterSimulation_debug_common_cflags    += $(addprefix -D, $(ComputeWaterSimulation_debug_defines))
 ComputeWaterSimulation_debug_common_cflags    += $(addprefix -I, $(ComputeWaterSimulation_debug_hpaths))
 ComputeWaterSimulation_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeWaterSimulation_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ComputeWaterSimulation_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ComputeWaterSimulation_debug_cflags	:= $(ComputeWaterSimulation_debug_common_cflags)
 ComputeWaterSimulation_debug_cppflags	:= $(ComputeWaterSimulation_debug_common_cflags)
 ComputeWaterSimulation_debug_cppflags  += -std="gnu++11"
 ComputeWaterSimulation_debug_lflags    := $(ComputeWaterSimulation_custom_lflags)
 ComputeWaterSimulation_debug_lflags    += $(addprefix -L, $(ComputeWaterSimulation_debug_lpaths))
 ComputeWaterSimulation_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeWaterSimulation_debug_libraries)) -Wl,--end-group
-ComputeWaterSimulation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeWaterSimulation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ComputeWaterSimulation_debug_objsdir  = $(OBJS_DIR)/ComputeWaterSimulation_debug
 ComputeWaterSimulation_debug_cpp_o    = $(addprefix $(ComputeWaterSimulation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeWaterSimulation_cppfiles)))))
 ComputeWaterSimulation_debug_cc_o    = $(addprefix $(ComputeWaterSimulation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeWaterSimulation_ccfiles)))))
@@ -143,7 +143,7 @@ ComputeWaterSimulation_release_hpaths    += ./../../../extensions/include
 ComputeWaterSimulation_release_hpaths    += ./../../../extensions/externals/include
 ComputeWaterSimulation_release_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeWaterSimulation_release_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeWaterSimulation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeWaterSimulation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ComputeWaterSimulation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeWaterSimulation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeWaterSimulation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -191,14 +191,14 @@ ComputeWaterSimulation_release_common_cflags    += -MMD
 ComputeWaterSimulation_release_common_cflags    += $(addprefix -D, $(ComputeWaterSimulation_release_defines))
 ComputeWaterSimulation_release_common_cflags    += $(addprefix -I, $(ComputeWaterSimulation_release_hpaths))
 ComputeWaterSimulation_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeWaterSimulation_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ComputeWaterSimulation_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ComputeWaterSimulation_release_cflags	:= $(ComputeWaterSimulation_release_common_cflags)
 ComputeWaterSimulation_release_cppflags	:= $(ComputeWaterSimulation_release_common_cflags)
 ComputeWaterSimulation_release_cppflags  += -std="gnu++11"
 ComputeWaterSimulation_release_lflags    := $(ComputeWaterSimulation_custom_lflags)
 ComputeWaterSimulation_release_lflags    += $(addprefix -L, $(ComputeWaterSimulation_release_lpaths))
 ComputeWaterSimulation_release_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeWaterSimulation_release_libraries)) -Wl,--end-group
-ComputeWaterSimulation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeWaterSimulation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ComputeWaterSimulation_release_objsdir  = $(OBJS_DIR)/ComputeWaterSimulation_release
 ComputeWaterSimulation_release_cpp_o    = $(addprefix $(ComputeWaterSimulation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeWaterSimulation_cppfiles)))))
 ComputeWaterSimulation_release_cc_o    = $(addprefix $(ComputeWaterSimulation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeWaterSimulation_ccfiles)))))

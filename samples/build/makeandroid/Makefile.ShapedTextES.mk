@@ -25,7 +25,7 @@ ShapedTextES_debug_hpaths    += ./../../../extensions/include
 ShapedTextES_debug_hpaths    += ./../../../extensions/externals/include
 ShapedTextES_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ShapedTextES_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ShapedTextES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ShapedTextES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ShapedTextES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ShapedTextES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ShapedTextES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -75,14 +75,14 @@ ShapedTextES_debug_common_cflags    += -MMD
 ShapedTextES_debug_common_cflags    += $(addprefix -D, $(ShapedTextES_debug_defines))
 ShapedTextES_debug_common_cflags    += $(addprefix -I, $(ShapedTextES_debug_hpaths))
 ShapedTextES_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ShapedTextES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ShapedTextES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ShapedTextES_debug_cflags	:= $(ShapedTextES_debug_common_cflags)
 ShapedTextES_debug_cppflags	:= $(ShapedTextES_debug_common_cflags)
 ShapedTextES_debug_cppflags  += -std="gnu++11"
 ShapedTextES_debug_lflags    := $(ShapedTextES_custom_lflags)
 ShapedTextES_debug_lflags    += $(addprefix -L, $(ShapedTextES_debug_lpaths))
 ShapedTextES_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ShapedTextES_debug_libraries)) -Wl,--end-group
-ShapedTextES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ShapedTextES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ShapedTextES_debug_objsdir  = $(OBJS_DIR)/ShapedTextES_debug
 ShapedTextES_debug_cpp_o    = $(addprefix $(ShapedTextES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ShapedTextES_cppfiles)))))
 ShapedTextES_debug_cc_o    = $(addprefix $(ShapedTextES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ShapedTextES_ccfiles)))))
@@ -149,7 +149,7 @@ ShapedTextES_release_hpaths    += ./../../../extensions/include
 ShapedTextES_release_hpaths    += ./../../../extensions/externals/include
 ShapedTextES_release_hpaths    += ./../../../extensions/include/NsFoundation
 ShapedTextES_release_hpaths    += ./../../../extensions/include/NvFoundation
-ShapedTextES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ShapedTextES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
 ShapedTextES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ShapedTextES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ShapedTextES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -199,14 +199,14 @@ ShapedTextES_release_common_cflags    += -MMD
 ShapedTextES_release_common_cflags    += $(addprefix -D, $(ShapedTextES_release_defines))
 ShapedTextES_release_common_cflags    += $(addprefix -I, $(ShapedTextES_release_hpaths))
 ShapedTextES_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ShapedTextES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ShapedTextES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ShapedTextES_release_cflags	:= $(ShapedTextES_release_common_cflags)
 ShapedTextES_release_cppflags	:= $(ShapedTextES_release_common_cflags)
 ShapedTextES_release_cppflags  += -std="gnu++11"
 ShapedTextES_release_lflags    := $(ShapedTextES_custom_lflags)
 ShapedTextES_release_lflags    += $(addprefix -L, $(ShapedTextES_release_lpaths))
 ShapedTextES_release_lflags    += -Wl,--start-group $(addprefix -l, $(ShapedTextES_release_libraries)) -Wl,--end-group
-ShapedTextES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ShapedTextES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
 ShapedTextES_release_objsdir  = $(OBJS_DIR)/ShapedTextES_release
 ShapedTextES_release_cpp_o    = $(addprefix $(ShapedTextES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ShapedTextES_cppfiles)))))
 ShapedTextES_release_cc_o    = $(addprefix $(ShapedTextES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ShapedTextES_ccfiles)))))

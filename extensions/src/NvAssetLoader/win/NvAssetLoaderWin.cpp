@@ -192,30 +192,30 @@ int64_t NvAssetFileSeek64(NvAssetFilePtr fp, int64_t offset, NvAssetSeekBase whe
 }
 
 bool NvAssetGetFilePath(const std::string fileName, std::string& path) {
-    FILE *fp = NULL;
-    // loop N times up the hierarchy, testing at each level
-    std::string upPath;
-    std::string fullPath;
-    for (int32_t i = 0; i < 10; i++) {
-        std::vector<std::string>::iterator src = s_searchPath.begin();
-        bool looping = true;
-        while (looping) {
-            fullPath.assign(upPath);  // reset to current upPath.
-            if (src != s_searchPath.end()) {
-                //sprintf_s(fullPath, "%s%s/assets/%s", upPath, *src, filePath);
-                fullPath.append(*src);
-                fullPath.append("/assets/");
-                src++;
-            }
-            else {
-                //sprintf_s(fullPath, "%sassets/%s", upPath, filePath);
-                fullPath.append("assets/");
-                looping = false;
-            }
-            fullPath.append(fileName);
+	FILE *fp = NULL;
+	// loop N times up the hierarchy, testing at each level
+	std::string upPath;
+	std::string fullPath;
+	for (int32_t i = 0; i < 10; i++) {
+		std::vector<std::string>::iterator src = s_searchPath.begin();
+		bool looping = true;
+		while (looping) {
+			fullPath.assign(upPath);  // reset to current upPath.
+			if (src != s_searchPath.end()) {
+				//sprintf_s(fullPath, "%s%s/assets/%s", upPath, *src, filePath);
+				fullPath.append(*src);
+				fullPath.append("/assets/");
+				src++;
+			}
+			else {
+				//sprintf_s(fullPath, "%sassets/%s", upPath, filePath);
+				fullPath.append("assets/");
+				looping = false;
+			}
+			fullPath.append(fileName);
 
 #ifdef DEBUG
-            fprintf(stderr, "Trying to open %s\n", fullPath.c_str());
+			fprintf(stderr, "Trying to open %s\n", fullPath.c_str());
 #endif
             if (fileName.empty()) {
                 if (!_access(fullPath.c_str(), 0)) {
@@ -231,10 +231,10 @@ bool NvAssetGetFilePath(const std::string fileName, std::string& path) {
                     return true;
                 }
             }
-        }
+		}
 
-        upPath.append("../");
-    }
+		upPath.append("../");
+}
 
-    return false;
+	return false;
 }
