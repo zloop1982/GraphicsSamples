@@ -87,7 +87,7 @@
 <a name="l00024"></a>00024                 <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; m_buffers; i++) {
 <a name="l00025"></a>00025                         {
 <a name="l00026"></a>00026                                 VkCommandPoolCreateInfo cmdPoolInfo = { VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO };
-<a name="l00027"></a>00027                 cmdPoolInfo.queueFamilyIndex = vk-&gt;<a class="code" href="class_nv_vk_context.html#a27d2d45de2858d11b079e9834c22427" title="Queue family access.">queueFamilyIndex</a>();
+<a name="l00027"></a>00027                 cmdPoolInfo.<a class="code" href="class_nv_vk_context.html#a27d2d45de2858d11b079e9834c22427" title="Queue family access.">queueFamilyIndex</a> = vk-&gt;<a class="code" href="class_nv_vk_context.html#a27d2d45de2858d11b079e9834c22427" title="Queue family access.">queueFamilyIndex</a>();
 <a name="l00028"></a>00028                                 cmdPoolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT | VK_COMMAND_POOL_CREATE_TRANSIENT_BIT;
 <a name="l00029"></a>00029                                 result = vkCreateCommandPool(vk-&gt;<a class="code" href="class_nv_vk_context.html#6b0a497652e8af6e1c283fbe8d01b3a4" title="Device access.">device</a>(), &amp;cmdPoolInfo, NULL, &amp;m_pools[i]);
 <a name="l00030"></a>00030                                 <span class="keywordflow">if</span> (result != VK_SUCCESS)
@@ -173,7 +173,7 @@
 	<div class="seperator"></div>
 	<div class="seperator"></div>
 	<address style="text-align: right;"><small>
-Generated on Fri Feb 24 10:54:04 2017 for NVIDIA GameWorks Graphics App Framework and Libraries by&nbsp;<a href="http://www.doxygen.org/index.html">Doxygen</a></small></address>
+Generated on Fri Apr 6 12:40:25 2018 for NVIDIA GameWorks Graphics App Framework and Libraries by&nbsp;<a href="http://www.doxygen.org/index.html">Doxygen</a></small></address>
 	<footer>
 		<div class="row">
 			<div class="text-center">&copy;2016 NVIDIA Corporation.</div>

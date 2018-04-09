@@ -22,7 +22,7 @@ Mercury_debug_hpaths    += ./../../../extensions/include
 Mercury_debug_hpaths    += ./../../../extensions/externals/include
 Mercury_debug_hpaths    += ./../../../extensions/include/NsFoundation
 Mercury_debug_hpaths    += ./../../../extensions/include/NvFoundation
-Mercury_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Mercury_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Mercury_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Mercury_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Mercury_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -38,7 +38,6 @@ Mercury_debug_defines   += ANDROID
 Mercury_debug_defines   += _LIB
 Mercury_debug_defines   += NV_ANDROID
 Mercury_debug_defines   += __STDC_LIMIT_MACROS
-Mercury_debug_defines   += VK_NO_PROTOTYPES
 Mercury_debug_defines   += GW_APP_NAME=\"Mercury\"
 Mercury_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 Mercury_debug_defines   += _DEBUG
@@ -74,7 +73,7 @@ Mercury_debug_cppflags  += -std="gnu++11"
 Mercury_debug_lflags    := $(Mercury_custom_lflags)
 Mercury_debug_lflags    += $(addprefix -L, $(Mercury_debug_lpaths))
 Mercury_debug_lflags    += -Wl,--start-group $(addprefix -l, $(Mercury_debug_libraries)) -Wl,--end-group
-Mercury_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Mercury_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Mercury_debug_objsdir  = $(OBJS_DIR)/Mercury_debug
 Mercury_debug_cpp_o    = $(addprefix $(Mercury_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Mercury_cppfiles)))))
 Mercury_debug_cc_o    = $(addprefix $(Mercury_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Mercury_ccfiles)))))
@@ -138,7 +137,7 @@ Mercury_release_hpaths    += ./../../../extensions/include
 Mercury_release_hpaths    += ./../../../extensions/externals/include
 Mercury_release_hpaths    += ./../../../extensions/include/NsFoundation
 Mercury_release_hpaths    += ./../../../extensions/include/NvFoundation
-Mercury_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Mercury_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Mercury_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Mercury_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Mercury_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -154,7 +153,6 @@ Mercury_release_defines   += ANDROID
 Mercury_release_defines   += _LIB
 Mercury_release_defines   += NV_ANDROID
 Mercury_release_defines   += __STDC_LIMIT_MACROS
-Mercury_release_defines   += VK_NO_PROTOTYPES
 Mercury_release_defines   += GW_APP_NAME=\"Mercury\"
 Mercury_release_defines   += GL_API_LEVEL_ES3_1_AEP
 Mercury_release_defines   += NDEBUG
@@ -190,7 +188,7 @@ Mercury_release_cppflags  += -std="gnu++11"
 Mercury_release_lflags    := $(Mercury_custom_lflags)
 Mercury_release_lflags    += $(addprefix -L, $(Mercury_release_lpaths))
 Mercury_release_lflags    += -Wl,--start-group $(addprefix -l, $(Mercury_release_libraries)) -Wl,--end-group
-Mercury_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Mercury_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Mercury_release_objsdir  = $(OBJS_DIR)/Mercury_release
 Mercury_release_cpp_o    = $(addprefix $(Mercury_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Mercury_cppfiles)))))
 Mercury_release_cc_o    = $(addprefix $(Mercury_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Mercury_ccfiles)))))

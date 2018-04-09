@@ -26,7 +26,7 @@ HDR_debug_hpaths    += ./../../../extensions/include
 HDR_debug_hpaths    += ./../../../extensions/externals/include
 HDR_debug_hpaths    += ./../../../extensions/include/NsFoundation
 HDR_debug_hpaths    += ./../../../extensions/include/NvFoundation
-HDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+HDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 HDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 HDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 HDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -42,7 +42,6 @@ HDR_debug_defines   += ANDROID
 HDR_debug_defines   += _LIB
 HDR_debug_defines   += NV_ANDROID
 HDR_debug_defines   += __STDC_LIMIT_MACROS
-HDR_debug_defines   += VK_NO_PROTOTYPES
 HDR_debug_defines   += GW_APP_NAME=\"HDR\"
 HDR_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 HDR_debug_defines   += _DEBUG
@@ -78,7 +77,7 @@ HDR_debug_cppflags  += -std="gnu++11"
 HDR_debug_lflags    := $(HDR_custom_lflags)
 HDR_debug_lflags    += $(addprefix -L, $(HDR_debug_lpaths))
 HDR_debug_lflags    += -Wl,--start-group $(addprefix -l, $(HDR_debug_libraries)) -Wl,--end-group
-HDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+HDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 HDR_debug_objsdir  = $(OBJS_DIR)/HDR_debug
 HDR_debug_cpp_o    = $(addprefix $(HDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(HDR_cppfiles)))))
 HDR_debug_cc_o    = $(addprefix $(HDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(HDR_ccfiles)))))
@@ -142,7 +141,7 @@ HDR_release_hpaths    += ./../../../extensions/include
 HDR_release_hpaths    += ./../../../extensions/externals/include
 HDR_release_hpaths    += ./../../../extensions/include/NsFoundation
 HDR_release_hpaths    += ./../../../extensions/include/NvFoundation
-HDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+HDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 HDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 HDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 HDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -158,7 +157,6 @@ HDR_release_defines   += ANDROID
 HDR_release_defines   += _LIB
 HDR_release_defines   += NV_ANDROID
 HDR_release_defines   += __STDC_LIMIT_MACROS
-HDR_release_defines   += VK_NO_PROTOTYPES
 HDR_release_defines   += GW_APP_NAME=\"HDR\"
 HDR_release_defines   += GL_API_LEVEL_ES3_1_AEP
 HDR_release_defines   += NDEBUG
@@ -194,7 +192,7 @@ HDR_release_cppflags  += -std="gnu++11"
 HDR_release_lflags    := $(HDR_custom_lflags)
 HDR_release_lflags    += $(addprefix -L, $(HDR_release_lpaths))
 HDR_release_lflags    += -Wl,--start-group $(addprefix -l, $(HDR_release_libraries)) -Wl,--end-group
-HDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+HDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 HDR_release_objsdir  = $(OBJS_DIR)/HDR_release
 HDR_release_cpp_o    = $(addprefix $(HDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(HDR_cppfiles)))))
 HDR_release_cc_o    = $(addprefix $(HDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(HDR_ccfiles)))))

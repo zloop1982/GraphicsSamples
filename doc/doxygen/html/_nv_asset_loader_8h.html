@@ -133,6 +133,9 @@ typedef void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_nv_asset_loader_8h.html#0bcb1b4715ddc2077c7f401ebdee5543">NvAssetLoadTextFile</a> (const char *fileName)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load the text in the given file and return it as an STL string.  <a href="#0bcb1b4715ddc2077c7f401ebdee5543"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_nv_asset_loader_8h.html#cceacccbec087ef08a1894c177c1e6ba">NvAssetGetFilePath</a> (const std::string fileName, std::string &amp;path)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a path to the file on the system, relative to the app's current directory, if the platform supports it.  <a href="#cceacccbec087ef08a1894c177c1e6ba"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Cross-platform binary asset loader. 
@@ -405,6 +408,44 @@ Seek the file pointer (64 bit).
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>zero on success, non-zero otherwise </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="cceacccbec087ef08a1894c177c1e6ba"></a><!-- doxytag: member="NvAssetLoader.h::NvAssetGetFilePath" ref="cceacccbec087ef08a1894c177c1e6ba" args="(const std::string fileName, std::string &amp;path)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NvAssetGetFilePath           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&nbsp;</td>
+          <td class="paramname"> <em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>path</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Return a path to the file on the system, relative to the app's current directory, if the platform supports it. 
+<p>
+Returns true if the platform supports returning the filename and the file can be found, false otherwise <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>fileName</em>&nbsp;</td><td>the name of the file to find </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>path</em>&nbsp;</td><td>the path (including the filename) if found </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>true if platform supports the function AND the file is found </dd></dl>
 
 </div>
 </div><p>
@@ -696,7 +737,7 @@ Load the text in the given file and return it as an STL string.
 	<div class="seperator"></div>
 	<div class="seperator"></div>
 	<address style="text-align: right;"><small>
-Generated on Fri Feb 24 10:54:05 2017 for NVIDIA GameWorks Graphics App Framework and Libraries by&nbsp;<a href="http://www.doxygen.org/index.html">Doxygen</a></small></address>
+Generated on Fri Apr 6 12:40:25 2018 for NVIDIA GameWorks Graphics App Framework and Libraries by&nbsp;<a href="http://www.doxygen.org/index.html">Doxygen</a></small></address>
 	<footer>
 		<div class="row">
 			<div class="text-center">&copy;2016 NVIDIA Corporation.</div>

@@ -19,7 +19,7 @@ WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/externals/include
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include/NsFoundation
 WeightedBlendedOIT_debug_hpaths    += ./../../../extensions/include/NvFoundation
-WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 WeightedBlendedOIT_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ WeightedBlendedOIT_debug_defines   += ANDROID
 WeightedBlendedOIT_debug_defines   += _LIB
 WeightedBlendedOIT_debug_defines   += NV_ANDROID
 WeightedBlendedOIT_debug_defines   += __STDC_LIMIT_MACROS
-WeightedBlendedOIT_debug_defines   += VK_NO_PROTOTYPES
 WeightedBlendedOIT_debug_defines   += GW_APP_NAME=\"WeightedBlendedOIT\"
 WeightedBlendedOIT_debug_defines   += GL_API_LEVEL_ES2
 WeightedBlendedOIT_debug_defines   += USE_REGAL=1
@@ -73,7 +72,7 @@ WeightedBlendedOIT_debug_cppflags  += -std="gnu++11"
 WeightedBlendedOIT_debug_lflags    := $(WeightedBlendedOIT_custom_lflags)
 WeightedBlendedOIT_debug_lflags    += $(addprefix -L, $(WeightedBlendedOIT_debug_lpaths))
 WeightedBlendedOIT_debug_lflags    += -Wl,--start-group $(addprefix -l, $(WeightedBlendedOIT_debug_libraries)) -Wl,--end-group
-WeightedBlendedOIT_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+WeightedBlendedOIT_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 WeightedBlendedOIT_debug_objsdir  = $(OBJS_DIR)/WeightedBlendedOIT_debug
 WeightedBlendedOIT_debug_cpp_o    = $(addprefix $(WeightedBlendedOIT_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(WeightedBlendedOIT_cppfiles)))))
 WeightedBlendedOIT_debug_cc_o    = $(addprefix $(WeightedBlendedOIT_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(WeightedBlendedOIT_ccfiles)))))
@@ -137,7 +136,7 @@ WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/externals/include
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include/NsFoundation
 WeightedBlendedOIT_release_hpaths    += ./../../../extensions/include/NvFoundation
-WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 WeightedBlendedOIT_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ WeightedBlendedOIT_release_defines   += ANDROID
 WeightedBlendedOIT_release_defines   += _LIB
 WeightedBlendedOIT_release_defines   += NV_ANDROID
 WeightedBlendedOIT_release_defines   += __STDC_LIMIT_MACROS
-WeightedBlendedOIT_release_defines   += VK_NO_PROTOTYPES
 WeightedBlendedOIT_release_defines   += GW_APP_NAME=\"WeightedBlendedOIT\"
 WeightedBlendedOIT_release_defines   += GL_API_LEVEL_ES2
 WeightedBlendedOIT_release_defines   += USE_REGAL=1
@@ -191,7 +189,7 @@ WeightedBlendedOIT_release_cppflags  += -std="gnu++11"
 WeightedBlendedOIT_release_lflags    := $(WeightedBlendedOIT_custom_lflags)
 WeightedBlendedOIT_release_lflags    += $(addprefix -L, $(WeightedBlendedOIT_release_lpaths))
 WeightedBlendedOIT_release_lflags    += -Wl,--start-group $(addprefix -l, $(WeightedBlendedOIT_release_libraries)) -Wl,--end-group
-WeightedBlendedOIT_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+WeightedBlendedOIT_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 WeightedBlendedOIT_release_objsdir  = $(OBJS_DIR)/WeightedBlendedOIT_release
 WeightedBlendedOIT_release_cpp_o    = $(addprefix $(WeightedBlendedOIT_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(WeightedBlendedOIT_cppfiles)))))
 WeightedBlendedOIT_release_cc_o    = $(addprefix $(WeightedBlendedOIT_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(WeightedBlendedOIT_ccfiles)))))

@@ -19,7 +19,7 @@ InstancingApp_debug_hpaths    += ./../../../extensions/include
 InstancingApp_debug_hpaths    += ./../../../extensions/externals/include
 InstancingApp_debug_hpaths    += ./../../../extensions/include/NsFoundation
 InstancingApp_debug_hpaths    += ./../../../extensions/include/NvFoundation
-InstancingApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+InstancingApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 InstancingApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 InstancingApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 InstancingApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ InstancingApp_debug_defines   += ANDROID
 InstancingApp_debug_defines   += _LIB
 InstancingApp_debug_defines   += NV_ANDROID
 InstancingApp_debug_defines   += __STDC_LIMIT_MACROS
-InstancingApp_debug_defines   += VK_NO_PROTOTYPES
 InstancingApp_debug_defines   += GW_APP_NAME=\"InstancingApp\"
 InstancingApp_debug_defines   += GL_API_LEVEL_ES2
 InstancingApp_debug_defines   += _DEBUG
@@ -71,7 +70,7 @@ InstancingApp_debug_cppflags  += -std="gnu++11"
 InstancingApp_debug_lflags    := $(InstancingApp_custom_lflags)
 InstancingApp_debug_lflags    += $(addprefix -L, $(InstancingApp_debug_lpaths))
 InstancingApp_debug_lflags    += -Wl,--start-group $(addprefix -l, $(InstancingApp_debug_libraries)) -Wl,--end-group
-InstancingApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+InstancingApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 InstancingApp_debug_objsdir  = $(OBJS_DIR)/InstancingApp_debug
 InstancingApp_debug_cpp_o    = $(addprefix $(InstancingApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(InstancingApp_cppfiles)))))
 InstancingApp_debug_cc_o    = $(addprefix $(InstancingApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(InstancingApp_ccfiles)))))
@@ -135,7 +134,7 @@ InstancingApp_release_hpaths    += ./../../../extensions/include
 InstancingApp_release_hpaths    += ./../../../extensions/externals/include
 InstancingApp_release_hpaths    += ./../../../extensions/include/NsFoundation
 InstancingApp_release_hpaths    += ./../../../extensions/include/NvFoundation
-InstancingApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+InstancingApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 InstancingApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 InstancingApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 InstancingApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -151,7 +150,6 @@ InstancingApp_release_defines   += ANDROID
 InstancingApp_release_defines   += _LIB
 InstancingApp_release_defines   += NV_ANDROID
 InstancingApp_release_defines   += __STDC_LIMIT_MACROS
-InstancingApp_release_defines   += VK_NO_PROTOTYPES
 InstancingApp_release_defines   += GW_APP_NAME=\"InstancingApp\"
 InstancingApp_release_defines   += GL_API_LEVEL_ES2
 InstancingApp_release_defines   += NDEBUG
@@ -187,7 +185,7 @@ InstancingApp_release_cppflags  += -std="gnu++11"
 InstancingApp_release_lflags    := $(InstancingApp_custom_lflags)
 InstancingApp_release_lflags    += $(addprefix -L, $(InstancingApp_release_lpaths))
 InstancingApp_release_lflags    += -Wl,--start-group $(addprefix -l, $(InstancingApp_release_libraries)) -Wl,--end-group
-InstancingApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+InstancingApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 InstancingApp_release_objsdir  = $(OBJS_DIR)/InstancingApp_release
 InstancingApp_release_cpp_o    = $(addprefix $(InstancingApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(InstancingApp_cppfiles)))))
 InstancingApp_release_cc_o    = $(addprefix $(InstancingApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(InstancingApp_ccfiles)))))

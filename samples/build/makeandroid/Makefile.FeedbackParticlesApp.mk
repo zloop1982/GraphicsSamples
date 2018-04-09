@@ -23,7 +23,7 @@ FeedbackParticlesApp_debug_hpaths    += ./../../../extensions/include
 FeedbackParticlesApp_debug_hpaths    += ./../../../extensions/externals/include
 FeedbackParticlesApp_debug_hpaths    += ./../../../extensions/include/NsFoundation
 FeedbackParticlesApp_debug_hpaths    += ./../../../extensions/include/NvFoundation
-FeedbackParticlesApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+FeedbackParticlesApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 FeedbackParticlesApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 FeedbackParticlesApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 FeedbackParticlesApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -39,7 +39,6 @@ FeedbackParticlesApp_debug_defines   += ANDROID
 FeedbackParticlesApp_debug_defines   += _LIB
 FeedbackParticlesApp_debug_defines   += NV_ANDROID
 FeedbackParticlesApp_debug_defines   += __STDC_LIMIT_MACROS
-FeedbackParticlesApp_debug_defines   += VK_NO_PROTOTYPES
 FeedbackParticlesApp_debug_defines   += GW_APP_NAME=\"FeedbackParticlesApp\"
 FeedbackParticlesApp_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 FeedbackParticlesApp_debug_defines   += USE_REGAL=1
@@ -77,7 +76,7 @@ FeedbackParticlesApp_debug_cppflags  += -std="gnu++11"
 FeedbackParticlesApp_debug_lflags    := $(FeedbackParticlesApp_custom_lflags)
 FeedbackParticlesApp_debug_lflags    += $(addprefix -L, $(FeedbackParticlesApp_debug_lpaths))
 FeedbackParticlesApp_debug_lflags    += -Wl,--start-group $(addprefix -l, $(FeedbackParticlesApp_debug_libraries)) -Wl,--end-group
-FeedbackParticlesApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+FeedbackParticlesApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 FeedbackParticlesApp_debug_objsdir  = $(OBJS_DIR)/FeedbackParticlesApp_debug
 FeedbackParticlesApp_debug_cpp_o    = $(addprefix $(FeedbackParticlesApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(FeedbackParticlesApp_cppfiles)))))
 FeedbackParticlesApp_debug_cc_o    = $(addprefix $(FeedbackParticlesApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(FeedbackParticlesApp_ccfiles)))))
@@ -141,7 +140,7 @@ FeedbackParticlesApp_release_hpaths    += ./../../../extensions/include
 FeedbackParticlesApp_release_hpaths    += ./../../../extensions/externals/include
 FeedbackParticlesApp_release_hpaths    += ./../../../extensions/include/NsFoundation
 FeedbackParticlesApp_release_hpaths    += ./../../../extensions/include/NvFoundation
-FeedbackParticlesApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+FeedbackParticlesApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 FeedbackParticlesApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 FeedbackParticlesApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 FeedbackParticlesApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -157,7 +156,6 @@ FeedbackParticlesApp_release_defines   += ANDROID
 FeedbackParticlesApp_release_defines   += _LIB
 FeedbackParticlesApp_release_defines   += NV_ANDROID
 FeedbackParticlesApp_release_defines   += __STDC_LIMIT_MACROS
-FeedbackParticlesApp_release_defines   += VK_NO_PROTOTYPES
 FeedbackParticlesApp_release_defines   += GW_APP_NAME=\"FeedbackParticlesApp\"
 FeedbackParticlesApp_release_defines   += GL_API_LEVEL_ES3_1_AEP
 FeedbackParticlesApp_release_defines   += USE_REGAL=1
@@ -195,7 +193,7 @@ FeedbackParticlesApp_release_cppflags  += -std="gnu++11"
 FeedbackParticlesApp_release_lflags    := $(FeedbackParticlesApp_custom_lflags)
 FeedbackParticlesApp_release_lflags    += $(addprefix -L, $(FeedbackParticlesApp_release_lpaths))
 FeedbackParticlesApp_release_lflags    += -Wl,--start-group $(addprefix -l, $(FeedbackParticlesApp_release_libraries)) -Wl,--end-group
-FeedbackParticlesApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+FeedbackParticlesApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 FeedbackParticlesApp_release_objsdir  = $(OBJS_DIR)/FeedbackParticlesApp_release
 FeedbackParticlesApp_release_cpp_o    = $(addprefix $(FeedbackParticlesApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(FeedbackParticlesApp_cppfiles)))))
 FeedbackParticlesApp_release_cc_o    = $(addprefix $(FeedbackParticlesApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(FeedbackParticlesApp_ccfiles)))))

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup Condition="('$(Platform)'=='Tegra-Android')" Label="NsightTegraProject">
-		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">9</NsightTegraProjectRevisionNumber>
+		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">11</NsightTegraProjectRevisionNumber>
 		</PropertyGroup>
 	<ItemGroup Label="ProjectConfigurations">
 		<ProjectConfiguration Include="debug|Tegra-Android">
@@ -40,9 +40,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-19</AndroidMinAPI>
-		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -52,9 +52,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-19</AndroidMinAPI>
-		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -112,7 +112,7 @@
 			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../es3aep-kepler/Mercury;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;GW_APP_NAME="Mercury";GL_API_LEVEL_ES3_1_AEP;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;GW_APP_NAME="Mercury";GL_API_LEVEL_ES3_1_AEP;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
@@ -153,7 +153,7 @@
 			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../es3aep-kepler/Mercury;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;GW_APP_NAME="Mercury";GL_API_LEVEL_ES3_1_AEP;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;GW_APP_NAME="Mercury";GL_API_LEVEL_ES3_1_AEP;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>

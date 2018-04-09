@@ -5,9 +5,6 @@
 		</Filter>
 	</ItemGroup>
 	<ItemGroup>
-		<ClCompile Include="..\..\src\NvVkUtil\vkfnptrinline.c">
-			<Filter>src</Filter>
-		</ClCompile>
 		<ClCompile Include="..\..\src\NvVkUtil\NvAndVkWinUtil.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
@@ -147,15 +144,6 @@
 			<Filter>include</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\include\NvVkUtil\NvVkUtil.h">
-			<Filter>include</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vkfnptrinline.h">
-			<Filter>include</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vk_platform.h">
-			<Filter>include</Filter>
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vulkannv.h">
 			<Filter>include</Filter>
 		</ClInclude>
 	</ItemGroup>

@@ -23,7 +23,7 @@ TextureArrayTerrain_debug_hpaths    += ./../../../extensions/include
 TextureArrayTerrain_debug_hpaths    += ./../../../extensions/externals/include
 TextureArrayTerrain_debug_hpaths    += ./../../../extensions/include/NsFoundation
 TextureArrayTerrain_debug_hpaths    += ./../../../extensions/include/NvFoundation
-TextureArrayTerrain_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+TextureArrayTerrain_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TextureArrayTerrain_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TextureArrayTerrain_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TextureArrayTerrain_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -39,7 +39,6 @@ TextureArrayTerrain_debug_defines   += ANDROID
 TextureArrayTerrain_debug_defines   += _LIB
 TextureArrayTerrain_debug_defines   += NV_ANDROID
 TextureArrayTerrain_debug_defines   += __STDC_LIMIT_MACROS
-TextureArrayTerrain_debug_defines   += VK_NO_PROTOTYPES
 TextureArrayTerrain_debug_defines   += GW_APP_NAME=\"TextureArrayTerrain\"
 TextureArrayTerrain_debug_defines   += GL_API_LEVEL_ES2
 TextureArrayTerrain_debug_defines   += _DEBUG
@@ -75,7 +74,7 @@ TextureArrayTerrain_debug_cppflags  += -std="gnu++11"
 TextureArrayTerrain_debug_lflags    := $(TextureArrayTerrain_custom_lflags)
 TextureArrayTerrain_debug_lflags    += $(addprefix -L, $(TextureArrayTerrain_debug_lpaths))
 TextureArrayTerrain_debug_lflags    += -Wl,--start-group $(addprefix -l, $(TextureArrayTerrain_debug_libraries)) -Wl,--end-group
-TextureArrayTerrain_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+TextureArrayTerrain_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TextureArrayTerrain_debug_objsdir  = $(OBJS_DIR)/TextureArrayTerrain_debug
 TextureArrayTerrain_debug_cpp_o    = $(addprefix $(TextureArrayTerrain_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TextureArrayTerrain_cppfiles)))))
 TextureArrayTerrain_debug_cc_o    = $(addprefix $(TextureArrayTerrain_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TextureArrayTerrain_ccfiles)))))
@@ -139,7 +138,7 @@ TextureArrayTerrain_release_hpaths    += ./../../../extensions/include
 TextureArrayTerrain_release_hpaths    += ./../../../extensions/externals/include
 TextureArrayTerrain_release_hpaths    += ./../../../extensions/include/NsFoundation
 TextureArrayTerrain_release_hpaths    += ./../../../extensions/include/NvFoundation
-TextureArrayTerrain_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+TextureArrayTerrain_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TextureArrayTerrain_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TextureArrayTerrain_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TextureArrayTerrain_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -155,7 +154,6 @@ TextureArrayTerrain_release_defines   += ANDROID
 TextureArrayTerrain_release_defines   += _LIB
 TextureArrayTerrain_release_defines   += NV_ANDROID
 TextureArrayTerrain_release_defines   += __STDC_LIMIT_MACROS
-TextureArrayTerrain_release_defines   += VK_NO_PROTOTYPES
 TextureArrayTerrain_release_defines   += GW_APP_NAME=\"TextureArrayTerrain\"
 TextureArrayTerrain_release_defines   += GL_API_LEVEL_ES2
 TextureArrayTerrain_release_defines   += NDEBUG
@@ -191,7 +189,7 @@ TextureArrayTerrain_release_cppflags  += -std="gnu++11"
 TextureArrayTerrain_release_lflags    := $(TextureArrayTerrain_custom_lflags)
 TextureArrayTerrain_release_lflags    += $(addprefix -L, $(TextureArrayTerrain_release_lpaths))
 TextureArrayTerrain_release_lflags    += -Wl,--start-group $(addprefix -l, $(TextureArrayTerrain_release_libraries)) -Wl,--end-group
-TextureArrayTerrain_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+TextureArrayTerrain_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TextureArrayTerrain_release_objsdir  = $(OBJS_DIR)/TextureArrayTerrain_release
 TextureArrayTerrain_release_cpp_o    = $(addprefix $(TextureArrayTerrain_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TextureArrayTerrain_cppfiles)))))
 TextureArrayTerrain_release_cc_o    = $(addprefix $(TextureArrayTerrain_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TextureArrayTerrain_ccfiles)))))

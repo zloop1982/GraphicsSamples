@@ -25,7 +25,7 @@ Tiger3DES_debug_hpaths    += ./../../../extensions/include
 Tiger3DES_debug_hpaths    += ./../../../extensions/externals/include
 Tiger3DES_debug_hpaths    += ./../../../extensions/include/NsFoundation
 Tiger3DES_debug_hpaths    += ./../../../extensions/include/NvFoundation
-Tiger3DES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Tiger3DES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Tiger3DES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Tiger3DES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Tiger3DES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -41,7 +41,6 @@ Tiger3DES_debug_defines   += ANDROID
 Tiger3DES_debug_defines   += _LIB
 Tiger3DES_debug_defines   += NV_ANDROID
 Tiger3DES_debug_defines   += __STDC_LIMIT_MACROS
-Tiger3DES_debug_defines   += VK_NO_PROTOTYPES
 Tiger3DES_debug_defines   += GW_APP_NAME=\"Tiger3DES\"
 Tiger3DES_debug_defines   += GL_API_LEVEL_ES2
 Tiger3DES_debug_defines   += USE_REGAL=1
@@ -80,7 +79,7 @@ Tiger3DES_debug_cppflags  += -std="gnu++11"
 Tiger3DES_debug_lflags    := $(Tiger3DES_custom_lflags)
 Tiger3DES_debug_lflags    += $(addprefix -L, $(Tiger3DES_debug_lpaths))
 Tiger3DES_debug_lflags    += -Wl,--start-group $(addprefix -l, $(Tiger3DES_debug_libraries)) -Wl,--end-group
-Tiger3DES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Tiger3DES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Tiger3DES_debug_objsdir  = $(OBJS_DIR)/Tiger3DES_debug
 Tiger3DES_debug_cpp_o    = $(addprefix $(Tiger3DES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Tiger3DES_cppfiles)))))
 Tiger3DES_debug_cc_o    = $(addprefix $(Tiger3DES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Tiger3DES_ccfiles)))))
@@ -144,7 +143,7 @@ Tiger3DES_release_hpaths    += ./../../../extensions/include
 Tiger3DES_release_hpaths    += ./../../../extensions/externals/include
 Tiger3DES_release_hpaths    += ./../../../extensions/include/NsFoundation
 Tiger3DES_release_hpaths    += ./../../../extensions/include/NvFoundation
-Tiger3DES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Tiger3DES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Tiger3DES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Tiger3DES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Tiger3DES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -160,7 +159,6 @@ Tiger3DES_release_defines   += ANDROID
 Tiger3DES_release_defines   += _LIB
 Tiger3DES_release_defines   += NV_ANDROID
 Tiger3DES_release_defines   += __STDC_LIMIT_MACROS
-Tiger3DES_release_defines   += VK_NO_PROTOTYPES
 Tiger3DES_release_defines   += GW_APP_NAME=\"Tiger3DES\"
 Tiger3DES_release_defines   += GL_API_LEVEL_ES2
 Tiger3DES_release_defines   += USE_REGAL=1
@@ -199,7 +197,7 @@ Tiger3DES_release_cppflags  += -std="gnu++11"
 Tiger3DES_release_lflags    := $(Tiger3DES_custom_lflags)
 Tiger3DES_release_lflags    += $(addprefix -L, $(Tiger3DES_release_lpaths))
 Tiger3DES_release_lflags    += -Wl,--start-group $(addprefix -l, $(Tiger3DES_release_libraries)) -Wl,--end-group
-Tiger3DES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Tiger3DES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Tiger3DES_release_objsdir  = $(OBJS_DIR)/Tiger3DES_release
 Tiger3DES_release_cpp_o    = $(addprefix $(Tiger3DES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Tiger3DES_cppfiles)))))
 Tiger3DES_release_cc_o    = $(addprefix $(Tiger3DES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Tiger3DES_ccfiles)))))

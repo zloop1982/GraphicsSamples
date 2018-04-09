@@ -21,7 +21,7 @@ CursiveES_debug_hpaths    += ./../../../extensions/include
 CursiveES_debug_hpaths    += ./../../../extensions/externals/include
 CursiveES_debug_hpaths    += ./../../../extensions/include/NsFoundation
 CursiveES_debug_hpaths    += ./../../../extensions/include/NvFoundation
-CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CursiveES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -37,7 +37,6 @@ CursiveES_debug_defines   += ANDROID
 CursiveES_debug_defines   += _LIB
 CursiveES_debug_defines   += NV_ANDROID
 CursiveES_debug_defines   += __STDC_LIMIT_MACROS
-CursiveES_debug_defines   += VK_NO_PROTOTYPES
 CursiveES_debug_defines   += GW_APP_NAME=\"CursiveES\"
 CursiveES_debug_defines   += GL_API_LEVEL_ES2
 CursiveES_debug_defines   += USE_REGAL=1
@@ -76,7 +75,7 @@ CursiveES_debug_cppflags  += -std="gnu++11"
 CursiveES_debug_lflags    := $(CursiveES_custom_lflags)
 CursiveES_debug_lflags    += $(addprefix -L, $(CursiveES_debug_lpaths))
 CursiveES_debug_lflags    += -Wl,--start-group $(addprefix -l, $(CursiveES_debug_libraries)) -Wl,--end-group
-CursiveES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+CursiveES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 CursiveES_debug_objsdir  = $(OBJS_DIR)/CursiveES_debug
 CursiveES_debug_cpp_o    = $(addprefix $(CursiveES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CursiveES_cppfiles)))))
 CursiveES_debug_cc_o    = $(addprefix $(CursiveES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CursiveES_ccfiles)))))
@@ -140,7 +139,7 @@ CursiveES_release_hpaths    += ./../../../extensions/include
 CursiveES_release_hpaths    += ./../../../extensions/externals/include
 CursiveES_release_hpaths    += ./../../../extensions/include/NsFoundation
 CursiveES_release_hpaths    += ./../../../extensions/include/NvFoundation
-CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CursiveES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -156,7 +155,6 @@ CursiveES_release_defines   += ANDROID
 CursiveES_release_defines   += _LIB
 CursiveES_release_defines   += NV_ANDROID
 CursiveES_release_defines   += __STDC_LIMIT_MACROS
-CursiveES_release_defines   += VK_NO_PROTOTYPES
 CursiveES_release_defines   += GW_APP_NAME=\"CursiveES\"
 CursiveES_release_defines   += GL_API_LEVEL_ES2
 CursiveES_release_defines   += USE_REGAL=1
@@ -195,7 +193,7 @@ CursiveES_release_cppflags  += -std="gnu++11"
 CursiveES_release_lflags    := $(CursiveES_custom_lflags)
 CursiveES_release_lflags    += $(addprefix -L, $(CursiveES_release_lpaths))
 CursiveES_release_lflags    += -Wl,--start-group $(addprefix -l, $(CursiveES_release_libraries)) -Wl,--end-group
-CursiveES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+CursiveES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 CursiveES_release_objsdir  = $(OBJS_DIR)/CursiveES_release
 CursiveES_release_cpp_o    = $(addprefix $(CursiveES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CursiveES_cppfiles)))))
 CursiveES_release_cc_o    = $(addprefix $(CursiveES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CursiveES_ccfiles)))))

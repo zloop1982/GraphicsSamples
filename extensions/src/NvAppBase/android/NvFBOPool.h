@@ -43,7 +43,7 @@
 
 class NvFBOPool {
 public:
-    NvFBOPool(NvSimpleFBO::Desc desc, EGLDisplay dpy, int32_t num = 10);
+    NvFBOPool(NvSimpleFBO::Desc desc, EGLDisplay dpy, int32_t num = 4);
     ~NvFBOPool();
     bool initialized();
 

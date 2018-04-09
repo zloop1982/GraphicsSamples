@@ -19,7 +19,7 @@ MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/externals/include
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include/NsFoundation
 MultiDrawIndirect_debug_hpaths    += ./../../../extensions/include/NvFoundation
-MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MultiDrawIndirect_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ MultiDrawIndirect_debug_defines   += ANDROID
 MultiDrawIndirect_debug_defines   += _LIB
 MultiDrawIndirect_debug_defines   += NV_ANDROID
 MultiDrawIndirect_debug_defines   += __STDC_LIMIT_MACROS
-MultiDrawIndirect_debug_defines   += VK_NO_PROTOTYPES
 MultiDrawIndirect_debug_defines   += GW_APP_NAME=\"MultiDrawIndirect\"
 MultiDrawIndirect_debug_defines   += GL_API_LEVEL_ES2
 MultiDrawIndirect_debug_defines   += USE_REGAL=1
@@ -73,7 +72,7 @@ MultiDrawIndirect_debug_cppflags  += -std="gnu++11"
 MultiDrawIndirect_debug_lflags    := $(MultiDrawIndirect_custom_lflags)
 MultiDrawIndirect_debug_lflags    += $(addprefix -L, $(MultiDrawIndirect_debug_lpaths))
 MultiDrawIndirect_debug_lflags    += -Wl,--start-group $(addprefix -l, $(MultiDrawIndirect_debug_libraries)) -Wl,--end-group
-MultiDrawIndirect_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+MultiDrawIndirect_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 MultiDrawIndirect_debug_objsdir  = $(OBJS_DIR)/MultiDrawIndirect_debug
 MultiDrawIndirect_debug_cpp_o    = $(addprefix $(MultiDrawIndirect_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MultiDrawIndirect_cppfiles)))))
 MultiDrawIndirect_debug_cc_o    = $(addprefix $(MultiDrawIndirect_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MultiDrawIndirect_ccfiles)))))
@@ -137,7 +136,7 @@ MultiDrawIndirect_release_hpaths    += ./../../../extensions/include
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/externals/include
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/include/NsFoundation
 MultiDrawIndirect_release_hpaths    += ./../../../extensions/include/NvFoundation
-MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MultiDrawIndirect_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ MultiDrawIndirect_release_defines   += ANDROID
 MultiDrawIndirect_release_defines   += _LIB
 MultiDrawIndirect_release_defines   += NV_ANDROID
 MultiDrawIndirect_release_defines   += __STDC_LIMIT_MACROS
-MultiDrawIndirect_release_defines   += VK_NO_PROTOTYPES
 MultiDrawIndirect_release_defines   += GW_APP_NAME=\"MultiDrawIndirect\"
 MultiDrawIndirect_release_defines   += GL_API_LEVEL_ES2
 MultiDrawIndirect_release_defines   += USE_REGAL=1
@@ -191,7 +189,7 @@ MultiDrawIndirect_release_cppflags  += -std="gnu++11"
 MultiDrawIndirect_release_lflags    := $(MultiDrawIndirect_custom_lflags)
 MultiDrawIndirect_release_lflags    += $(addprefix -L, $(MultiDrawIndirect_release_lpaths))
 MultiDrawIndirect_release_lflags    += -Wl,--start-group $(addprefix -l, $(MultiDrawIndirect_release_libraries)) -Wl,--end-group
-MultiDrawIndirect_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+MultiDrawIndirect_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 MultiDrawIndirect_release_objsdir  = $(OBJS_DIR)/MultiDrawIndirect_release
 MultiDrawIndirect_release_cpp_o    = $(addprefix $(MultiDrawIndirect_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MultiDrawIndirect_cppfiles)))))
 MultiDrawIndirect_release_cc_o    = $(addprefix $(MultiDrawIndirect_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MultiDrawIndirect_ccfiles)))))

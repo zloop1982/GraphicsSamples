@@ -20,11 +20,11 @@ ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/include
 ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/externals/include
 ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ShuffleIntrinsicsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+ShuffleIntrinsicsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ShuffleIntrinsicsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ShuffleIntrinsicsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ShuffleIntrinsicsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ShuffleIntrinsicsVk_debug_hpaths    += $(VK_SDK_PATH)/include
 ShuffleIntrinsicsVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil
 ShuffleIntrinsicsVk_debug_lpaths    := 
 ShuffleIntrinsicsVk_debug_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -39,7 +39,6 @@ ShuffleIntrinsicsVk_debug_defines   += ANDROID
 ShuffleIntrinsicsVk_debug_defines   += _LIB
 ShuffleIntrinsicsVk_debug_defines   += NV_ANDROID
 ShuffleIntrinsicsVk_debug_defines   += __STDC_LIMIT_MACROS
-ShuffleIntrinsicsVk_debug_defines   += VK_NO_PROTOTYPES
 ShuffleIntrinsicsVk_debug_defines   += GW_APP_NAME=\"ShuffleIntrinsicsVk\"
 ShuffleIntrinsicsVk_debug_defines   += GL_API_LEVEL_ES2
 ShuffleIntrinsicsVk_debug_defines   += USE_REGAL=1
@@ -65,6 +64,7 @@ ShuffleIntrinsicsVk_debug_libraries += supc++
 ShuffleIntrinsicsVk_debug_libraries += log
 ShuffleIntrinsicsVk_debug_libraries += gcc
 ShuffleIntrinsicsVk_debug_libraries += GLESv2
+ShuffleIntrinsicsVk_debug_libraries += vulkan
 ShuffleIntrinsicsVk_debug_libraries += RegalW_static
 ShuffleIntrinsicsVk_debug_common_cflags	:= $(ShuffleIntrinsicsVk_custom_cflags)
 ShuffleIntrinsicsVk_debug_common_cflags    += -MMD
@@ -78,7 +78,7 @@ ShuffleIntrinsicsVk_debug_cppflags  += -std="gnu++11"
 ShuffleIntrinsicsVk_debug_lflags    := $(ShuffleIntrinsicsVk_custom_lflags)
 ShuffleIntrinsicsVk_debug_lflags    += $(addprefix -L, $(ShuffleIntrinsicsVk_debug_lpaths))
 ShuffleIntrinsicsVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ShuffleIntrinsicsVk_debug_libraries)) -Wl,--end-group
-ShuffleIntrinsicsVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+ShuffleIntrinsicsVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ShuffleIntrinsicsVk_debug_objsdir  = $(OBJS_DIR)/ShuffleIntrinsicsVk_debug
 ShuffleIntrinsicsVk_debug_cpp_o    = $(addprefix $(ShuffleIntrinsicsVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ShuffleIntrinsicsVk_cppfiles)))))
 ShuffleIntrinsicsVk_debug_cc_o    = $(addprefix $(ShuffleIntrinsicsVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ShuffleIntrinsicsVk_ccfiles)))))
@@ -148,11 +148,11 @@ ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/include
 ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/externals/include
 ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-ShuffleIntrinsicsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+ShuffleIntrinsicsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ShuffleIntrinsicsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ShuffleIntrinsicsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ShuffleIntrinsicsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ShuffleIntrinsicsVk_release_hpaths    += $(VK_SDK_PATH)/include
 ShuffleIntrinsicsVk_release_hpaths    += ./../../../extensions/include/NvVkUtil
 ShuffleIntrinsicsVk_release_lpaths    := 
 ShuffleIntrinsicsVk_release_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -167,7 +167,6 @@ ShuffleIntrinsicsVk_release_defines   += ANDROID
 ShuffleIntrinsicsVk_release_defines   += _LIB
 ShuffleIntrinsicsVk_release_defines   += NV_ANDROID
 ShuffleIntrinsicsVk_release_defines   += __STDC_LIMIT_MACROS
-ShuffleIntrinsicsVk_release_defines   += VK_NO_PROTOTYPES
 ShuffleIntrinsicsVk_release_defines   += GW_APP_NAME=\"ShuffleIntrinsicsVk\"
 ShuffleIntrinsicsVk_release_defines   += GL_API_LEVEL_ES2
 ShuffleIntrinsicsVk_release_defines   += USE_REGAL=1
@@ -193,6 +192,7 @@ ShuffleIntrinsicsVk_release_libraries += supc++
 ShuffleIntrinsicsVk_release_libraries += log
 ShuffleIntrinsicsVk_release_libraries += gcc
 ShuffleIntrinsicsVk_release_libraries += GLESv2
+ShuffleIntrinsicsVk_release_libraries += vulkan
 ShuffleIntrinsicsVk_release_libraries += RegalW_static
 ShuffleIntrinsicsVk_release_common_cflags	:= $(ShuffleIntrinsicsVk_custom_cflags)
 ShuffleIntrinsicsVk_release_common_cflags    += -MMD
@@ -206,7 +206,7 @@ ShuffleIntrinsicsVk_release_cppflags  += -std="gnu++11"
 ShuffleIntrinsicsVk_release_lflags    := $(ShuffleIntrinsicsVk_custom_lflags)
 ShuffleIntrinsicsVk_release_lflags    += $(addprefix -L, $(ShuffleIntrinsicsVk_release_lpaths))
 ShuffleIntrinsicsVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(ShuffleIntrinsicsVk_release_libraries)) -Wl,--end-group
-ShuffleIntrinsicsVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+ShuffleIntrinsicsVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ShuffleIntrinsicsVk_release_objsdir  = $(OBJS_DIR)/ShuffleIntrinsicsVk_release
 ShuffleIntrinsicsVk_release_cpp_o    = $(addprefix $(ShuffleIntrinsicsVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ShuffleIntrinsicsVk_cppfiles)))))
 ShuffleIntrinsicsVk_release_cc_o    = $(addprefix $(ShuffleIntrinsicsVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ShuffleIntrinsicsVk_ccfiles)))))

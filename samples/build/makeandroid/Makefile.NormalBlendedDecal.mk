@@ -19,7 +19,7 @@ NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/externals/include
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include/NsFoundation
 NormalBlendedDecal_debug_hpaths    += ./../../../extensions/include/NvFoundation
-NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NormalBlendedDecal_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ NormalBlendedDecal_debug_defines   += ANDROID
 NormalBlendedDecal_debug_defines   += _LIB
 NormalBlendedDecal_debug_defines   += NV_ANDROID
 NormalBlendedDecal_debug_defines   += __STDC_LIMIT_MACROS
-NormalBlendedDecal_debug_defines   += VK_NO_PROTOTYPES
 NormalBlendedDecal_debug_defines   += GW_APP_NAME=\"NormalBlendedDecal\"
 NormalBlendedDecal_debug_defines   += GL_API_LEVEL_ES2
 NormalBlendedDecal_debug_defines   += USE_REGAL=1
@@ -73,7 +72,7 @@ NormalBlendedDecal_debug_cppflags  += -std="gnu++11"
 NormalBlendedDecal_debug_lflags    := $(NormalBlendedDecal_custom_lflags)
 NormalBlendedDecal_debug_lflags    += $(addprefix -L, $(NormalBlendedDecal_debug_lpaths))
 NormalBlendedDecal_debug_lflags    += -Wl,--start-group $(addprefix -l, $(NormalBlendedDecal_debug_libraries)) -Wl,--end-group
-NormalBlendedDecal_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+NormalBlendedDecal_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 NormalBlendedDecal_debug_objsdir  = $(OBJS_DIR)/NormalBlendedDecal_debug
 NormalBlendedDecal_debug_cpp_o    = $(addprefix $(NormalBlendedDecal_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(NormalBlendedDecal_cppfiles)))))
 NormalBlendedDecal_debug_cc_o    = $(addprefix $(NormalBlendedDecal_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(NormalBlendedDecal_ccfiles)))))
@@ -137,7 +136,7 @@ NormalBlendedDecal_release_hpaths    += ./../../../extensions/include
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/externals/include
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/include/NsFoundation
 NormalBlendedDecal_release_hpaths    += ./../../../extensions/include/NvFoundation
-NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 NormalBlendedDecal_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ NormalBlendedDecal_release_defines   += ANDROID
 NormalBlendedDecal_release_defines   += _LIB
 NormalBlendedDecal_release_defines   += NV_ANDROID
 NormalBlendedDecal_release_defines   += __STDC_LIMIT_MACROS
-NormalBlendedDecal_release_defines   += VK_NO_PROTOTYPES
 NormalBlendedDecal_release_defines   += GW_APP_NAME=\"NormalBlendedDecal\"
 NormalBlendedDecal_release_defines   += GL_API_LEVEL_ES2
 NormalBlendedDecal_release_defines   += USE_REGAL=1
@@ -191,7 +189,7 @@ NormalBlendedDecal_release_cppflags  += -std="gnu++11"
 NormalBlendedDecal_release_lflags    := $(NormalBlendedDecal_custom_lflags)
 NormalBlendedDecal_release_lflags    += $(addprefix -L, $(NormalBlendedDecal_release_lpaths))
 NormalBlendedDecal_release_lflags    += -Wl,--start-group $(addprefix -l, $(NormalBlendedDecal_release_libraries)) -Wl,--end-group
-NormalBlendedDecal_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+NormalBlendedDecal_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 NormalBlendedDecal_release_objsdir  = $(OBJS_DIR)/NormalBlendedDecal_release
 NormalBlendedDecal_release_cpp_o    = $(addprefix $(NormalBlendedDecal_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(NormalBlendedDecal_cppfiles)))))
 NormalBlendedDecal_release_cc_o    = $(addprefix $(NormalBlendedDecal_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(NormalBlendedDecal_ccfiles)))))

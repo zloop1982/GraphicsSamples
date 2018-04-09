@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup Condition="('$(Platform)'=='Tegra-Android')" Label="NsightTegraProject">
-		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">9</NsightTegraProjectRevisionNumber>
+		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">11</NsightTegraProjectRevisionNumber>
 		</PropertyGroup>
 	<ItemGroup Label="ProjectConfigurations">
 		<ProjectConfiguration Include="debug|Tegra-Android">
@@ -40,9 +40,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-19</AndroidMinAPI>
-		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -52,9 +52,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-18</AndroidMinAPI>
-		<AndroidNativeAPI>android-18</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -111,8 +111,8 @@
 			<FloatingPointModel>Precise</FloatingPointModel>
 			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
-			<AdditionalIncludeDirectories>./../../include/NvVkUtil/nosdk;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
@@ -144,8 +144,8 @@
 			<FloatingPointModel>Precise</FloatingPointModel>
 			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
-			<AdditionalIncludeDirectories>./../../include/NvVkUtil/nosdk;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<PreprocessorDefinitions>android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
@@ -181,7 +181,7 @@
 			<FloatingPointModel>Fast</FloatingPointModel>
 			<AdditionalOptions>/Oy- /EHsc /wd4100 /wd4201 /wd4390 /wd4748 /wd4995 /wd4996 /wd4244 /wd4267 /wd4334</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
-			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/Include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>NV_FOUNDATION_DLL=0;_LIB;_DEBUG;PROFILE;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -190,7 +190,7 @@
 			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 		</ClCompile>
 		<Lib>
-			<AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
 			<OutputFile>$(OutDir)NvVkUtilD.lib</OutputFile>
 			<AdditionalLibraryDirectories>./../../externals/linux-aarch64;$(VK_SDK_PATH)/Bin32;$(VK_SDK_PATH)/Lib32;./../../externals/lib/vs2015x86;./../../lib/vs2015x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
 			<ProgramDatabaseFile>$(OutDir)/NvVkUtilD.lib.pdb</ProgramDatabaseFile>
@@ -220,7 +220,7 @@
 			<FloatingPointModel>Fast</FloatingPointModel>
 			<AdditionalOptions>/Oy- /EHsc /wd4100 /wd4201 /wd4390 /wd4748 /wd4995 /wd4996 /wd4244 /wd4267 /wd4334</AdditionalOptions>
 			<Optimization>Full</Optimization>
-			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/Include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>NV_FOUNDATION_DLL=0;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -228,7 +228,7 @@
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
 		</ClCompile>
 		<Lib>
-			<AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
 			<OutputFile>$(OutDir)NvVkUtil.lib</OutputFile>
 			<AdditionalLibraryDirectories>./../../externals/linux-aarch64;$(VK_SDK_PATH)/Bin32;$(VK_SDK_PATH)/Lib32;./../../externals/lib/vs2015x86;./../../lib/vs2015x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
 			<ProgramDatabaseFile>$(OutDir)/NvVkUtil.lib.pdb</ProgramDatabaseFile>
@@ -257,7 +257,7 @@
 			<FloatingPointModel>Fast</FloatingPointModel>
 			<AdditionalOptions>/Oy- /EHsc /wd4100 /wd4201 /wd4390 /wd4748 /wd4995 /wd4996 /wd4244 /wd4267 /wd4334</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
-			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/Include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>NV_FOUNDATION_DLL=0;_LIB;_DEBUG;PROFILE;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -266,7 +266,7 @@
 			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
 		</ClCompile>
 		<Lib>
-			<AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
 			<OutputFile>$(OutDir)NvVkUtilD.lib</OutputFile>
 			<AdditionalLibraryDirectories>./../../externals/linux-aarch64;$(VK_SDK_PATH)/Bin;$(VK_SDK_PATH)/Lib;./../../externals/lib/vs2015x64;./../../lib/vs2015x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
 			<ProgramDatabaseFile>$(OutDir)/NvVkUtilD.lib.pdb</ProgramDatabaseFile>
@@ -295,7 +295,7 @@
 			<FloatingPointModel>Fast</FloatingPointModel>
 			<AdditionalOptions>/Oy- /EHsc /wd4100 /wd4201 /wd4390 /wd4748 /wd4995 /wd4996 /wd4244 /wd4267 /wd4334</AdditionalOptions>
 			<Optimization>Full</Optimization>
-			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/Include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<AdditionalIncludeDirectories>$(VK_SDK_PATH)/include;./../../src/NvVkUtil;./../../include;./../../externals/include;./../../include/NsFoundation;./../../include/NvFoundation;./../../externals/include/GLFW;./../../include/NvVkUtil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
 			<PreprocessorDefinitions>NV_FOUNDATION_DLL=0;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -303,7 +303,7 @@
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
 		</ClCompile>
 		<Lib>
-			<AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
 			<OutputFile>$(OutDir)NvVkUtil.lib</OutputFile>
 			<AdditionalLibraryDirectories>./../../externals/linux-aarch64;$(VK_SDK_PATH)/Bin;$(VK_SDK_PATH)/Lib;./../../externals/lib/vs2015x64;./../../lib/vs2015x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
 			<ProgramDatabaseFile>$(OutDir)/NvVkUtil.lib.pdb</ProgramDatabaseFile>
@@ -320,14 +320,6 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'">
 	</PropertyGroup>
 	<ItemGroup>
-		<ClCompile Include="..\..\src\NvVkUtil\vkfnptrinline.c">
-			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='debug|Tegra-Android'"> %(AdditionalOptions)</AdditionalOptions>
-			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'"> %(AdditionalOptions)</AdditionalOptions>
-			<ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-			<ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-			<ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-			<ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-		</ClCompile>
 		<ClCompile Include="..\..\src\NvVkUtil\NvAndVkWinUtil.cpp">
 			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='debug|Tegra-Android'">-std="gnu++11" %(AdditionalOptions)</AdditionalOptions>
 			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='release|Tegra-Android'">-std="gnu++11" %(AdditionalOptions)</AdditionalOptions>
@@ -463,12 +455,6 @@
 		<ClInclude Include="..\..\include\NvVkUtil\NvVkContext.h">
 		</ClInclude>
 		<ClInclude Include="..\..\include\NvVkUtil\NvVkUtil.h">
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vkfnptrinline.h">
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vk_platform.h">
-		</ClInclude>
-		<ClInclude Include="..\..\include\NvVkUtil\vulkannv.h">
 		</ClInclude>
 	</ItemGroup>
 	<ItemGroup>

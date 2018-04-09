@@ -19,7 +19,7 @@ InstancedTessellation_debug_hpaths    += ./../../../extensions/include
 InstancedTessellation_debug_hpaths    += ./../../../extensions/externals/include
 InstancedTessellation_debug_hpaths    += ./../../../extensions/include/NsFoundation
 InstancedTessellation_debug_hpaths    += ./../../../extensions/include/NvFoundation
-InstancedTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+InstancedTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 InstancedTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 InstancedTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 InstancedTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ InstancedTessellation_debug_defines   += ANDROID
 InstancedTessellation_debug_defines   += _LIB
 InstancedTessellation_debug_defines   += NV_ANDROID
 InstancedTessellation_debug_defines   += __STDC_LIMIT_MACROS
-InstancedTessellation_debug_defines   += VK_NO_PROTOTYPES
 InstancedTessellation_debug_defines   += GW_APP_NAME=\"InstancedTessellation\"
 InstancedTessellation_debug_defines   += GL_API_LEVEL_ES2
 InstancedTessellation_debug_defines   += _DEBUG
@@ -71,7 +70,7 @@ InstancedTessellation_debug_cppflags  += -std="gnu++11"
 InstancedTessellation_debug_lflags    := $(InstancedTessellation_custom_lflags)
 InstancedTessellation_debug_lflags    += $(addprefix -L, $(InstancedTessellation_debug_lpaths))
 InstancedTessellation_debug_lflags    += -Wl,--start-group $(addprefix -l, $(InstancedTessellation_debug_libraries)) -Wl,--end-group
-InstancedTessellation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+InstancedTessellation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 InstancedTessellation_debug_objsdir  = $(OBJS_DIR)/InstancedTessellation_debug
 InstancedTessellation_debug_cpp_o    = $(addprefix $(InstancedTessellation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(InstancedTessellation_cppfiles)))))
 InstancedTessellation_debug_cc_o    = $(addprefix $(InstancedTessellation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(InstancedTessellation_ccfiles)))))
@@ -135,7 +134,7 @@ InstancedTessellation_release_hpaths    += ./../../../extensions/include
 InstancedTessellation_release_hpaths    += ./../../../extensions/externals/include
 InstancedTessellation_release_hpaths    += ./../../../extensions/include/NsFoundation
 InstancedTessellation_release_hpaths    += ./../../../extensions/include/NvFoundation
-InstancedTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+InstancedTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 InstancedTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 InstancedTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 InstancedTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -151,7 +150,6 @@ InstancedTessellation_release_defines   += ANDROID
 InstancedTessellation_release_defines   += _LIB
 InstancedTessellation_release_defines   += NV_ANDROID
 InstancedTessellation_release_defines   += __STDC_LIMIT_MACROS
-InstancedTessellation_release_defines   += VK_NO_PROTOTYPES
 InstancedTessellation_release_defines   += GW_APP_NAME=\"InstancedTessellation\"
 InstancedTessellation_release_defines   += GL_API_LEVEL_ES2
 InstancedTessellation_release_defines   += NDEBUG
@@ -187,7 +185,7 @@ InstancedTessellation_release_cppflags  += -std="gnu++11"
 InstancedTessellation_release_lflags    := $(InstancedTessellation_custom_lflags)
 InstancedTessellation_release_lflags    += $(addprefix -L, $(InstancedTessellation_release_lpaths))
 InstancedTessellation_release_lflags    += -Wl,--start-group $(addprefix -l, $(InstancedTessellation_release_libraries)) -Wl,--end-group
-InstancedTessellation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+InstancedTessellation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 InstancedTessellation_release_objsdir  = $(OBJS_DIR)/InstancedTessellation_release
 InstancedTessellation_release_cpp_o    = $(addprefix $(InstancedTessellation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(InstancedTessellation_cppfiles)))))
 InstancedTessellation_release_cc_o    = $(addprefix $(InstancedTessellation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(InstancedTessellation_ccfiles)))))

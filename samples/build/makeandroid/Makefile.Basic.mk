@@ -19,7 +19,7 @@ Basic_debug_hpaths    += ./../../../extensions/include
 Basic_debug_hpaths    += ./../../../extensions/externals/include
 Basic_debug_hpaths    += ./../../../extensions/include/NsFoundation
 Basic_debug_hpaths    += ./../../../extensions/include/NvFoundation
-Basic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Basic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Basic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Basic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Basic_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ Basic_debug_defines   += ANDROID
 Basic_debug_defines   += _LIB
 Basic_debug_defines   += NV_ANDROID
 Basic_debug_defines   += __STDC_LIMIT_MACROS
-Basic_debug_defines   += VK_NO_PROTOTYPES
 Basic_debug_defines   += GW_APP_NAME=\"Basic\"
 Basic_debug_defines   += GL_API_LEVEL_ES2
 Basic_debug_defines   += _DEBUG
@@ -71,7 +70,7 @@ Basic_debug_cppflags  += -std="gnu++11"
 Basic_debug_lflags    := $(Basic_custom_lflags)
 Basic_debug_lflags    += $(addprefix -L, $(Basic_debug_lpaths))
 Basic_debug_lflags    += -Wl,--start-group $(addprefix -l, $(Basic_debug_libraries)) -Wl,--end-group
-Basic_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Basic_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Basic_debug_objsdir  = $(OBJS_DIR)/Basic_debug
 Basic_debug_cpp_o    = $(addprefix $(Basic_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Basic_cppfiles)))))
 Basic_debug_cc_o    = $(addprefix $(Basic_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Basic_ccfiles)))))
@@ -135,7 +134,7 @@ Basic_release_hpaths    += ./../../../extensions/include
 Basic_release_hpaths    += ./../../../extensions/externals/include
 Basic_release_hpaths    += ./../../../extensions/include/NsFoundation
 Basic_release_hpaths    += ./../../../extensions/include/NvFoundation
-Basic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+Basic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 Basic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 Basic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 Basic_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -151,7 +150,6 @@ Basic_release_defines   += ANDROID
 Basic_release_defines   += _LIB
 Basic_release_defines   += NV_ANDROID
 Basic_release_defines   += __STDC_LIMIT_MACROS
-Basic_release_defines   += VK_NO_PROTOTYPES
 Basic_release_defines   += GW_APP_NAME=\"Basic\"
 Basic_release_defines   += GL_API_LEVEL_ES2
 Basic_release_defines   += NDEBUG
@@ -187,7 +185,7 @@ Basic_release_cppflags  += -std="gnu++11"
 Basic_release_lflags    := $(Basic_custom_lflags)
 Basic_release_lflags    += $(addprefix -L, $(Basic_release_lpaths))
 Basic_release_lflags    += -Wl,--start-group $(addprefix -l, $(Basic_release_libraries)) -Wl,--end-group
-Basic_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+Basic_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 Basic_release_objsdir  = $(OBJS_DIR)/Basic_release
 Basic_release_cpp_o    = $(addprefix $(Basic_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(Basic_cppfiles)))))
 Basic_release_cc_o    = $(addprefix $(Basic_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(Basic_ccfiles)))))

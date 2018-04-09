@@ -23,7 +23,7 @@ SoftShadows_debug_hpaths    += ./../../../extensions/include
 SoftShadows_debug_hpaths    += ./../../../extensions/externals/include
 SoftShadows_debug_hpaths    += ./../../../extensions/include/NsFoundation
 SoftShadows_debug_hpaths    += ./../../../extensions/include/NvFoundation
-SoftShadows_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+SoftShadows_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 SoftShadows_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 SoftShadows_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 SoftShadows_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -39,7 +39,6 @@ SoftShadows_debug_defines   += ANDROID
 SoftShadows_debug_defines   += _LIB
 SoftShadows_debug_defines   += NV_ANDROID
 SoftShadows_debug_defines   += __STDC_LIMIT_MACROS
-SoftShadows_debug_defines   += VK_NO_PROTOTYPES
 SoftShadows_debug_defines   += GW_APP_NAME=\"SoftShadows\"
 SoftShadows_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 SoftShadows_debug_defines   += _DEBUG
@@ -75,7 +74,7 @@ SoftShadows_debug_cppflags  += -std="gnu++11"
 SoftShadows_debug_lflags    := $(SoftShadows_custom_lflags)
 SoftShadows_debug_lflags    += $(addprefix -L, $(SoftShadows_debug_lpaths))
 SoftShadows_debug_lflags    += -Wl,--start-group $(addprefix -l, $(SoftShadows_debug_libraries)) -Wl,--end-group
-SoftShadows_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+SoftShadows_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 SoftShadows_debug_objsdir  = $(OBJS_DIR)/SoftShadows_debug
 SoftShadows_debug_cpp_o    = $(addprefix $(SoftShadows_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(SoftShadows_cppfiles)))))
 SoftShadows_debug_cc_o    = $(addprefix $(SoftShadows_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(SoftShadows_ccfiles)))))
@@ -139,7 +138,7 @@ SoftShadows_release_hpaths    += ./../../../extensions/include
 SoftShadows_release_hpaths    += ./../../../extensions/externals/include
 SoftShadows_release_hpaths    += ./../../../extensions/include/NsFoundation
 SoftShadows_release_hpaths    += ./../../../extensions/include/NvFoundation
-SoftShadows_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+SoftShadows_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 SoftShadows_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 SoftShadows_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 SoftShadows_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -155,7 +154,6 @@ SoftShadows_release_defines   += ANDROID
 SoftShadows_release_defines   += _LIB
 SoftShadows_release_defines   += NV_ANDROID
 SoftShadows_release_defines   += __STDC_LIMIT_MACROS
-SoftShadows_release_defines   += VK_NO_PROTOTYPES
 SoftShadows_release_defines   += GW_APP_NAME=\"SoftShadows\"
 SoftShadows_release_defines   += GL_API_LEVEL_ES3_1_AEP
 SoftShadows_release_defines   += NDEBUG
@@ -191,7 +189,7 @@ SoftShadows_release_cppflags  += -std="gnu++11"
 SoftShadows_release_lflags    := $(SoftShadows_custom_lflags)
 SoftShadows_release_lflags    += $(addprefix -L, $(SoftShadows_release_lpaths))
 SoftShadows_release_lflags    += -Wl,--start-group $(addprefix -l, $(SoftShadows_release_libraries)) -Wl,--end-group
-SoftShadows_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+SoftShadows_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 SoftShadows_release_objsdir  = $(OBJS_DIR)/SoftShadows_release
 SoftShadows_release_cpp_o    = $(addprefix $(SoftShadows_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(SoftShadows_cppfiles)))))
 SoftShadows_release_cc_o    = $(addprefix $(SoftShadows_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(SoftShadows_ccfiles)))))

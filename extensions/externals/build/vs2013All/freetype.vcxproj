@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup Condition="('$(Platform)'=='Tegra-Android')" Label="NsightTegraProject">
-		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">9</NsightTegraProjectRevisionNumber>
+		<NsightTegraProjectRevisionNumber Label="NsightTegraProject">11</NsightTegraProjectRevisionNumber>
 		</PropertyGroup>
 	<ItemGroup Label="ProjectConfigurations">
 		<ProjectConfiguration Include="debug|Tegra-Android">
@@ -40,9 +40,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-19</AndroidMinAPI>
-		<AndroidNativeAPI>android-19</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -52,9 +52,9 @@
 		<FastDeploy>false</FastDeploy>
 		<AndroidArch>armv7-a</AndroidArch>
 		<AndroidStlType>gnustl_static</AndroidStlType>
-		<AndroidTargetAPI>android-21</AndroidTargetAPI>
-		<AndroidMinAPI>android-18</AndroidMinAPI>
-		<AndroidNativeAPI>android-18</AndroidNativeAPI>
+		<AndroidTargetAPI>android-24</AndroidTargetAPI>
+		<AndroidMinAPI>android-24</AndroidMinAPI>
+		<AndroidNativeAPI>android-24</AndroidNativeAPI>
 		<NdkToolchainVersion>DefaultGcc</NdkToolchainVersion>
 		<AndroidBuildSystem>AntBuild</AndroidBuildSystem>
 	</PropertyGroup>
@@ -112,7 +112,7 @@
 			<AdditionalOptions>-funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../src/freetype-2.4.9/include;./../../src/freetype-2.4.9/src;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>FT2_BUILD_LIBRARY;android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<PreprocessorDefinitions>FT2_BUILD_LIBRARY;android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>
@@ -145,7 +145,7 @@
 			<AdditionalOptions>-funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes</AdditionalOptions>
 			<Optimization>Disabled</Optimization>
 			<AdditionalIncludeDirectories>./../../src/freetype-2.4.9/include;./../../src/freetype-2.4.9/src;./../../../extensions/include;./../../../extensions/externals/include;./../../../extensions/include/NsFoundation;./../../../extensions/include/NvFoundation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-			<PreprocessorDefinitions>FT2_BUILD_LIBRARY;android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;VK_NO_PROTOTYPES;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<PreprocessorDefinitions>FT2_BUILD_LIBRARY;android;ANDROID;_LIB;NV_ANDROID;__STDC_LIMIT_MACROS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 			<WarningLevel>Level3</WarningLevel>
 			<PrecompiledHeader>NotUsing</PrecompiledHeader>
 			<PrecompiledHeaderFile></PrecompiledHeaderFile>

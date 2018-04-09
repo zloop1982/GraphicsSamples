@@ -24,7 +24,7 @@ ParticleUpsampling_debug_hpaths    += ./../../../extensions/include
 ParticleUpsampling_debug_hpaths    += ./../../../extensions/externals/include
 ParticleUpsampling_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ParticleUpsampling_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ParticleUpsampling_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+ParticleUpsampling_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ParticleUpsampling_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ParticleUpsampling_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ParticleUpsampling_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -40,7 +40,6 @@ ParticleUpsampling_debug_defines   += ANDROID
 ParticleUpsampling_debug_defines   += _LIB
 ParticleUpsampling_debug_defines   += NV_ANDROID
 ParticleUpsampling_debug_defines   += __STDC_LIMIT_MACROS
-ParticleUpsampling_debug_defines   += VK_NO_PROTOTYPES
 ParticleUpsampling_debug_defines   += GW_APP_NAME=\"ParticleUpsampling\"
 ParticleUpsampling_debug_defines   += GL_API_LEVEL_ES2
 ParticleUpsampling_debug_defines   += USE_REGAL=1
@@ -78,7 +77,7 @@ ParticleUpsampling_debug_cppflags  += -std="gnu++11"
 ParticleUpsampling_debug_lflags    := $(ParticleUpsampling_custom_lflags)
 ParticleUpsampling_debug_lflags    += $(addprefix -L, $(ParticleUpsampling_debug_lpaths))
 ParticleUpsampling_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ParticleUpsampling_debug_libraries)) -Wl,--end-group
-ParticleUpsampling_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+ParticleUpsampling_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ParticleUpsampling_debug_objsdir  = $(OBJS_DIR)/ParticleUpsampling_debug
 ParticleUpsampling_debug_cpp_o    = $(addprefix $(ParticleUpsampling_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ParticleUpsampling_cppfiles)))))
 ParticleUpsampling_debug_cc_o    = $(addprefix $(ParticleUpsampling_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ParticleUpsampling_ccfiles)))))
@@ -142,7 +141,7 @@ ParticleUpsampling_release_hpaths    += ./../../../extensions/include
 ParticleUpsampling_release_hpaths    += ./../../../extensions/externals/include
 ParticleUpsampling_release_hpaths    += ./../../../extensions/include/NsFoundation
 ParticleUpsampling_release_hpaths    += ./../../../extensions/include/NvFoundation
-ParticleUpsampling_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+ParticleUpsampling_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ParticleUpsampling_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ParticleUpsampling_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ParticleUpsampling_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -158,7 +157,6 @@ ParticleUpsampling_release_defines   += ANDROID
 ParticleUpsampling_release_defines   += _LIB
 ParticleUpsampling_release_defines   += NV_ANDROID
 ParticleUpsampling_release_defines   += __STDC_LIMIT_MACROS
-ParticleUpsampling_release_defines   += VK_NO_PROTOTYPES
 ParticleUpsampling_release_defines   += GW_APP_NAME=\"ParticleUpsampling\"
 ParticleUpsampling_release_defines   += GL_API_LEVEL_ES2
 ParticleUpsampling_release_defines   += USE_REGAL=1
@@ -196,7 +194,7 @@ ParticleUpsampling_release_cppflags  += -std="gnu++11"
 ParticleUpsampling_release_lflags    := $(ParticleUpsampling_custom_lflags)
 ParticleUpsampling_release_lflags    += $(addprefix -L, $(ParticleUpsampling_release_lpaths))
 ParticleUpsampling_release_lflags    += -Wl,--start-group $(addprefix -l, $(ParticleUpsampling_release_libraries)) -Wl,--end-group
-ParticleUpsampling_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+ParticleUpsampling_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ParticleUpsampling_release_objsdir  = $(OBJS_DIR)/ParticleUpsampling_release
 ParticleUpsampling_release_cpp_o    = $(addprefix $(ParticleUpsampling_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ParticleUpsampling_cppfiles)))))
 ParticleUpsampling_release_cc_o    = $(addprefix $(ParticleUpsampling_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ParticleUpsampling_ccfiles)))))

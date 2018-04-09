@@ -19,7 +19,7 @@ MotionBlur_debug_hpaths    += ./../../../extensions/include
 MotionBlur_debug_hpaths    += ./../../../extensions/externals/include
 MotionBlur_debug_hpaths    += ./../../../extensions/include/NsFoundation
 MotionBlur_debug_hpaths    += ./../../../extensions/include/NvFoundation
-MotionBlur_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+MotionBlur_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 MotionBlur_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MotionBlur_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MotionBlur_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ MotionBlur_debug_defines   += ANDROID
 MotionBlur_debug_defines   += _LIB
 MotionBlur_debug_defines   += NV_ANDROID
 MotionBlur_debug_defines   += __STDC_LIMIT_MACROS
-MotionBlur_debug_defines   += VK_NO_PROTOTYPES
 MotionBlur_debug_defines   += GW_APP_NAME=\"MotionBlur\"
 MotionBlur_debug_defines   += GL_API_LEVEL_ES2
 MotionBlur_debug_defines   += _DEBUG
@@ -71,7 +70,7 @@ MotionBlur_debug_cppflags  += -std="gnu++11"
 MotionBlur_debug_lflags    := $(MotionBlur_custom_lflags)
 MotionBlur_debug_lflags    += $(addprefix -L, $(MotionBlur_debug_lpaths))
 MotionBlur_debug_lflags    += -Wl,--start-group $(addprefix -l, $(MotionBlur_debug_libraries)) -Wl,--end-group
-MotionBlur_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+MotionBlur_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 MotionBlur_debug_objsdir  = $(OBJS_DIR)/MotionBlur_debug
 MotionBlur_debug_cpp_o    = $(addprefix $(MotionBlur_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MotionBlur_cppfiles)))))
 MotionBlur_debug_cc_o    = $(addprefix $(MotionBlur_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MotionBlur_ccfiles)))))
@@ -135,7 +134,7 @@ MotionBlur_release_hpaths    += ./../../../extensions/include
 MotionBlur_release_hpaths    += ./../../../extensions/externals/include
 MotionBlur_release_hpaths    += ./../../../extensions/include/NsFoundation
 MotionBlur_release_hpaths    += ./../../../extensions/include/NvFoundation
-MotionBlur_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+MotionBlur_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 MotionBlur_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 MotionBlur_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 MotionBlur_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -151,7 +150,6 @@ MotionBlur_release_defines   += ANDROID
 MotionBlur_release_defines   += _LIB
 MotionBlur_release_defines   += NV_ANDROID
 MotionBlur_release_defines   += __STDC_LIMIT_MACROS
-MotionBlur_release_defines   += VK_NO_PROTOTYPES
 MotionBlur_release_defines   += GW_APP_NAME=\"MotionBlur\"
 MotionBlur_release_defines   += GL_API_LEVEL_ES2
 MotionBlur_release_defines   += NDEBUG
@@ -187,7 +185,7 @@ MotionBlur_release_cppflags  += -std="gnu++11"
 MotionBlur_release_lflags    := $(MotionBlur_custom_lflags)
 MotionBlur_release_lflags    += $(addprefix -L, $(MotionBlur_release_lpaths))
 MotionBlur_release_lflags    += -Wl,--start-group $(addprefix -l, $(MotionBlur_release_libraries)) -Wl,--end-group
-MotionBlur_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+MotionBlur_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 MotionBlur_release_objsdir  = $(OBJS_DIR)/MotionBlur_release
 MotionBlur_release_cpp_o    = $(addprefix $(MotionBlur_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(MotionBlur_cppfiles)))))
 MotionBlur_release_cc_o    = $(addprefix $(MotionBlur_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(MotionBlur_ccfiles)))))

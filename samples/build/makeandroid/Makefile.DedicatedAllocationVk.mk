@@ -20,11 +20,11 @@ DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/externals/include
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DedicatedAllocationVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+DedicatedAllocationVk_debug_hpaths    += $(VK_SDK_PATH)/include
 DedicatedAllocationVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil
 DedicatedAllocationVk_debug_lpaths    := 
 DedicatedAllocationVk_debug_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -39,7 +39,6 @@ DedicatedAllocationVk_debug_defines   += ANDROID
 DedicatedAllocationVk_debug_defines   += _LIB
 DedicatedAllocationVk_debug_defines   += NV_ANDROID
 DedicatedAllocationVk_debug_defines   += __STDC_LIMIT_MACROS
-DedicatedAllocationVk_debug_defines   += VK_NO_PROTOTYPES
 DedicatedAllocationVk_debug_defines   += GW_APP_NAME=\"DedicatedAllocationVk\"
 DedicatedAllocationVk_debug_defines   += GL_API_LEVEL_ES2
 DedicatedAllocationVk_debug_defines   += USE_REGAL=1
@@ -65,6 +64,7 @@ DedicatedAllocationVk_debug_libraries += supc++
 DedicatedAllocationVk_debug_libraries += log
 DedicatedAllocationVk_debug_libraries += gcc
 DedicatedAllocationVk_debug_libraries += GLESv2
+DedicatedAllocationVk_debug_libraries += vulkan
 DedicatedAllocationVk_debug_libraries += RegalW_static
 DedicatedAllocationVk_debug_common_cflags	:= $(DedicatedAllocationVk_custom_cflags)
 DedicatedAllocationVk_debug_common_cflags    += -MMD
@@ -78,7 +78,7 @@ DedicatedAllocationVk_debug_cppflags  += -std="gnu++11"
 DedicatedAllocationVk_debug_lflags    := $(DedicatedAllocationVk_custom_lflags)
 DedicatedAllocationVk_debug_lflags    += $(addprefix -L, $(DedicatedAllocationVk_debug_lpaths))
 DedicatedAllocationVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(DedicatedAllocationVk_debug_libraries)) -Wl,--end-group
-DedicatedAllocationVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+DedicatedAllocationVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 DedicatedAllocationVk_debug_objsdir  = $(OBJS_DIR)/DedicatedAllocationVk_debug
 DedicatedAllocationVk_debug_cpp_o    = $(addprefix $(DedicatedAllocationVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DedicatedAllocationVk_cppfiles)))))
 DedicatedAllocationVk_debug_cc_o    = $(addprefix $(DedicatedAllocationVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DedicatedAllocationVk_ccfiles)))))
@@ -148,11 +148,11 @@ DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/externals/include
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DedicatedAllocationVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+DedicatedAllocationVk_release_hpaths    += $(VK_SDK_PATH)/include
 DedicatedAllocationVk_release_hpaths    += ./../../../extensions/include/NvVkUtil
 DedicatedAllocationVk_release_lpaths    := 
 DedicatedAllocationVk_release_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -167,7 +167,6 @@ DedicatedAllocationVk_release_defines   += ANDROID
 DedicatedAllocationVk_release_defines   += _LIB
 DedicatedAllocationVk_release_defines   += NV_ANDROID
 DedicatedAllocationVk_release_defines   += __STDC_LIMIT_MACROS
-DedicatedAllocationVk_release_defines   += VK_NO_PROTOTYPES
 DedicatedAllocationVk_release_defines   += GW_APP_NAME=\"DedicatedAllocationVk\"
 DedicatedAllocationVk_release_defines   += GL_API_LEVEL_ES2
 DedicatedAllocationVk_release_defines   += USE_REGAL=1
@@ -193,6 +192,7 @@ DedicatedAllocationVk_release_libraries += supc++
 DedicatedAllocationVk_release_libraries += log
 DedicatedAllocationVk_release_libraries += gcc
 DedicatedAllocationVk_release_libraries += GLESv2
+DedicatedAllocationVk_release_libraries += vulkan
 DedicatedAllocationVk_release_libraries += RegalW_static
 DedicatedAllocationVk_release_common_cflags	:= $(DedicatedAllocationVk_custom_cflags)
 DedicatedAllocationVk_release_common_cflags    += -MMD
@@ -206,7 +206,7 @@ DedicatedAllocationVk_release_cppflags  += -std="gnu++11"
 DedicatedAllocationVk_release_lflags    := $(DedicatedAllocationVk_custom_lflags)
 DedicatedAllocationVk_release_lflags    += $(addprefix -L, $(DedicatedAllocationVk_release_lpaths))
 DedicatedAllocationVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(DedicatedAllocationVk_release_libraries)) -Wl,--end-group
-DedicatedAllocationVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+DedicatedAllocationVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 DedicatedAllocationVk_release_objsdir  = $(OBJS_DIR)/DedicatedAllocationVk_release
 DedicatedAllocationVk_release_cpp_o    = $(addprefix $(DedicatedAllocationVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DedicatedAllocationVk_cppfiles)))))
 DedicatedAllocationVk_release_cc_o    = $(addprefix $(DedicatedAllocationVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DedicatedAllocationVk_ccfiles)))))

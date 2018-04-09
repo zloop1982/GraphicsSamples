@@ -20,7 +20,7 @@ BindlessApp_debug_hpaths    += ./../../../extensions/include
 BindlessApp_debug_hpaths    += ./../../../extensions/externals/include
 BindlessApp_debug_hpaths    += ./../../../extensions/include/NsFoundation
 BindlessApp_debug_hpaths    += ./../../../extensions/include/NvFoundation
-BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BindlessApp_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -36,7 +36,6 @@ BindlessApp_debug_defines   += ANDROID
 BindlessApp_debug_defines   += _LIB
 BindlessApp_debug_defines   += NV_ANDROID
 BindlessApp_debug_defines   += __STDC_LIMIT_MACROS
-BindlessApp_debug_defines   += VK_NO_PROTOTYPES
 BindlessApp_debug_defines   += GW_APP_NAME=\"BindlessApp\"
 BindlessApp_debug_defines   += GL_API_LEVEL_ES2
 BindlessApp_debug_defines   += USE_REGAL=1
@@ -74,7 +73,7 @@ BindlessApp_debug_cppflags  += -std="gnu++11"
 BindlessApp_debug_lflags    := $(BindlessApp_custom_lflags)
 BindlessApp_debug_lflags    += $(addprefix -L, $(BindlessApp_debug_lpaths))
 BindlessApp_debug_lflags    += -Wl,--start-group $(addprefix -l, $(BindlessApp_debug_libraries)) -Wl,--end-group
-BindlessApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+BindlessApp_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 BindlessApp_debug_objsdir  = $(OBJS_DIR)/BindlessApp_debug
 BindlessApp_debug_cpp_o    = $(addprefix $(BindlessApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BindlessApp_cppfiles)))))
 BindlessApp_debug_cc_o    = $(addprefix $(BindlessApp_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BindlessApp_ccfiles)))))
@@ -138,7 +137,7 @@ BindlessApp_release_hpaths    += ./../../../extensions/include
 BindlessApp_release_hpaths    += ./../../../extensions/externals/include
 BindlessApp_release_hpaths    += ./../../../extensions/include/NsFoundation
 BindlessApp_release_hpaths    += ./../../../extensions/include/NvFoundation
-BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BindlessApp_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -154,7 +153,6 @@ BindlessApp_release_defines   += ANDROID
 BindlessApp_release_defines   += _LIB
 BindlessApp_release_defines   += NV_ANDROID
 BindlessApp_release_defines   += __STDC_LIMIT_MACROS
-BindlessApp_release_defines   += VK_NO_PROTOTYPES
 BindlessApp_release_defines   += GW_APP_NAME=\"BindlessApp\"
 BindlessApp_release_defines   += GL_API_LEVEL_ES2
 BindlessApp_release_defines   += USE_REGAL=1
@@ -192,7 +190,7 @@ BindlessApp_release_cppflags  += -std="gnu++11"
 BindlessApp_release_lflags    := $(BindlessApp_custom_lflags)
 BindlessApp_release_lflags    += $(addprefix -L, $(BindlessApp_release_lpaths))
 BindlessApp_release_lflags    += -Wl,--start-group $(addprefix -l, $(BindlessApp_release_libraries)) -Wl,--end-group
-BindlessApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+BindlessApp_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 BindlessApp_release_objsdir  = $(OBJS_DIR)/BindlessApp_release
 BindlessApp_release_cpp_o    = $(addprefix $(BindlessApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BindlessApp_cppfiles)))))
 BindlessApp_release_cc_o    = $(addprefix $(BindlessApp_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BindlessApp_ccfiles)))))

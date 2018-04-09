@@ -24,7 +24,7 @@ VisualizeHDR_debug_hpaths    += ./../../../extensions/include
 VisualizeHDR_debug_hpaths    += ./../../../extensions/externals/include
 VisualizeHDR_debug_hpaths    += ./../../../extensions/include/NsFoundation
 VisualizeHDR_debug_hpaths    += ./../../../extensions/include/NvFoundation
-VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 VisualizeHDR_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -40,7 +40,6 @@ VisualizeHDR_debug_defines   += ANDROID
 VisualizeHDR_debug_defines   += _LIB
 VisualizeHDR_debug_defines   += NV_ANDROID
 VisualizeHDR_debug_defines   += __STDC_LIMIT_MACROS
-VisualizeHDR_debug_defines   += VK_NO_PROTOTYPES
 VisualizeHDR_debug_defines   += GW_APP_NAME=\"VisualizeHDR\"
 VisualizeHDR_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 VisualizeHDR_debug_defines   += _DEBUG
@@ -76,7 +75,7 @@ VisualizeHDR_debug_cppflags  += -std="gnu++11"
 VisualizeHDR_debug_lflags    := $(VisualizeHDR_custom_lflags)
 VisualizeHDR_debug_lflags    += $(addprefix -L, $(VisualizeHDR_debug_lpaths))
 VisualizeHDR_debug_lflags    += -Wl,--start-group $(addprefix -l, $(VisualizeHDR_debug_libraries)) -Wl,--end-group
-VisualizeHDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+VisualizeHDR_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 VisualizeHDR_debug_objsdir  = $(OBJS_DIR)/VisualizeHDR_debug
 VisualizeHDR_debug_cpp_o    = $(addprefix $(VisualizeHDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(VisualizeHDR_cppfiles)))))
 VisualizeHDR_debug_cc_o    = $(addprefix $(VisualizeHDR_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(VisualizeHDR_ccfiles)))))
@@ -140,7 +139,7 @@ VisualizeHDR_release_hpaths    += ./../../../extensions/include
 VisualizeHDR_release_hpaths    += ./../../../extensions/externals/include
 VisualizeHDR_release_hpaths    += ./../../../extensions/include/NsFoundation
 VisualizeHDR_release_hpaths    += ./../../../extensions/include/NvFoundation
-VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-19/arch-arm/usr/include
+VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 VisualizeHDR_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -156,7 +155,6 @@ VisualizeHDR_release_defines   += ANDROID
 VisualizeHDR_release_defines   += _LIB
 VisualizeHDR_release_defines   += NV_ANDROID
 VisualizeHDR_release_defines   += __STDC_LIMIT_MACROS
-VisualizeHDR_release_defines   += VK_NO_PROTOTYPES
 VisualizeHDR_release_defines   += GW_APP_NAME=\"VisualizeHDR\"
 VisualizeHDR_release_defines   += GL_API_LEVEL_ES3_1_AEP
 VisualizeHDR_release_defines   += NDEBUG
@@ -192,7 +190,7 @@ VisualizeHDR_release_cppflags  += -std="gnu++11"
 VisualizeHDR_release_lflags    := $(VisualizeHDR_custom_lflags)
 VisualizeHDR_release_lflags    += $(addprefix -L, $(VisualizeHDR_release_lpaths))
 VisualizeHDR_release_lflags    += -Wl,--start-group $(addprefix -l, $(VisualizeHDR_release_libraries)) -Wl,--end-group
-VisualizeHDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-19/arch-arm -shared -Wl,--no-undefined
+VisualizeHDR_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 VisualizeHDR_release_objsdir  = $(OBJS_DIR)/VisualizeHDR_release
 VisualizeHDR_release_cpp_o    = $(addprefix $(VisualizeHDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(VisualizeHDR_cppfiles)))))
 VisualizeHDR_release_cc_o    = $(addprefix $(VisualizeHDR_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(VisualizeHDR_ccfiles)))))
