@@ -40,6 +40,7 @@ NvVkUtil_release_dep      = $(NvVkUtil_cpp_release_dep) $(NvVkUtil_cc_release_de
 -include $(NvVkUtil_release_dep)
 NvVkUtil_debug_hpaths    := 
 NvVkUtil_debug_hpaths    += $(VK_SDK_PATH)/include
+NvVkUtil_debug_hpaths    += ./../../externals/include/linux-aarch64
 NvVkUtil_debug_hpaths    += ./../../src/NvVkUtil
 NvVkUtil_debug_hpaths    += ./../../include
 NvVkUtil_debug_hpaths    += ./../../include/NsFoundation
@@ -149,6 +150,7 @@ $(NvVkUtil_debug_c_o): $(NvVkUtil_debug_objsdir)/%.o:
 
 NvVkUtil_release_hpaths    := 
 NvVkUtil_release_hpaths    += $(VK_SDK_PATH)/include
+NvVkUtil_release_hpaths    += ./../../externals/include/linux-aarch64
 NvVkUtil_release_hpaths    += ./../../src/NvVkUtil
 NvVkUtil_release_hpaths    += ./../../include
 NvVkUtil_release_hpaths    += ./../../include/NsFoundation
