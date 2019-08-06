@@ -468,29 +468,16 @@ VkBool32 VKAPI_CALL vulkanDebugReportCallback(
 }
 #endif
 
-bool NvAppContextVK::initializeInstance(PFN_vkGetProcAddressNV getProc, const std::string& appTitle) {
+bool NvAppContextVK::initializeInstance(const std::string& appTitle) {
 	VkResult result;
 
 	PFN_vkEnumerateInstanceExtensionProperties _vkEnumerateInstanceExtensionProperties = NULL;
 	PFN_vkEnumerateInstanceLayerProperties _vkEnumerateInstanceLayerProperties = NULL;
 	PFN_vkCreateInstance _vkCreateInstance = NULL;
 
-#ifdef ANDROID
-	if (!getProc)
-		return false;
-	// These functions must be queried manually, as on some platforms they are the only
-	// ones that exist prior to creating the instance
-	_vkEnumerateInstanceExtensionProperties =
-		(PFN_vkEnumerateInstanceExtensionProperties)getProc("vkEnumerateInstanceExtensionProperties");
-	_vkEnumerateInstanceLayerProperties =
-		(PFN_vkEnumerateInstanceLayerProperties)getProc("vkEnumerateInstanceLayerProperties");
-	_vkCreateInstance =
-		(PFN_vkCreateInstance)getProc("vkCreateInstance");
-#else
-	_vkEnumerateInstanceExtensionProperties = vkEnumerateInstanceExtensionProperties;
-	_vkEnumerateInstanceLayerProperties = vkEnumerateInstanceLayerProperties;
-	_vkCreateInstance = vkCreateInstance;
-#endif
+    _vkEnumerateInstanceExtensionProperties = vkEnumerateInstanceExtensionProperties;
+    _vkEnumerateInstanceLayerProperties = vkEnumerateInstanceLayerProperties;
+    _vkCreateInstance = vkCreateInstance;
 
 	VkApplicationInfo applicationInfo = { VK_STRUCTURE_TYPE_APPLICATION_INFO };
 	applicationInfo.pApplicationName = appTitle.c_str();
@@ -584,12 +571,9 @@ bool NvAppContextVK::initializeInstance(PFN_vkGetProcAddressNV getProc, const st
 	return true;
 }
 
-bool NvAppContextVK::initializeDevice(PFN_vkGetProcAddressNV getProc)
+bool NvAppContextVK::initializeDevice()
 {
 	VkResult result;
-
-	if (!NvVkUtilInit(getProc))
-		return false;
 
 	uint32_t gpuCount = 1;
 

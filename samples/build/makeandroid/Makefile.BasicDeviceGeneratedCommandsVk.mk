@@ -22,11 +22,11 @@ BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/externals/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+BasicDeviceGeneratedCommandsVk_debug_hpaths    += $(VK_SDK_PATH)/include
 BasicDeviceGeneratedCommandsVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil
 BasicDeviceGeneratedCommandsVk_debug_lpaths    := 
 BasicDeviceGeneratedCommandsVk_debug_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -41,7 +41,6 @@ BasicDeviceGeneratedCommandsVk_debug_defines   += ANDROID
 BasicDeviceGeneratedCommandsVk_debug_defines   += _LIB
 BasicDeviceGeneratedCommandsVk_debug_defines   += NV_ANDROID
 BasicDeviceGeneratedCommandsVk_debug_defines   += __STDC_LIMIT_MACROS
-BasicDeviceGeneratedCommandsVk_debug_defines   += VK_NO_PROTOTYPES
 BasicDeviceGeneratedCommandsVk_debug_defines   += GW_APP_NAME=\"BasicDeviceGeneratedCommandsVk\"
 BasicDeviceGeneratedCommandsVk_debug_defines   += GL_API_LEVEL_ES2
 BasicDeviceGeneratedCommandsVk_debug_defines   += USE_REGAL=1
@@ -67,20 +66,21 @@ BasicDeviceGeneratedCommandsVk_debug_libraries += supc++
 BasicDeviceGeneratedCommandsVk_debug_libraries += log
 BasicDeviceGeneratedCommandsVk_debug_libraries += gcc
 BasicDeviceGeneratedCommandsVk_debug_libraries += GLESv2
+BasicDeviceGeneratedCommandsVk_debug_libraries += vulkan
 BasicDeviceGeneratedCommandsVk_debug_libraries += RegalW_static
 BasicDeviceGeneratedCommandsVk_debug_common_cflags	:= $(BasicDeviceGeneratedCommandsVk_custom_cflags)
 BasicDeviceGeneratedCommandsVk_debug_common_cflags    += -MMD
 BasicDeviceGeneratedCommandsVk_debug_common_cflags    += $(addprefix -D, $(BasicDeviceGeneratedCommandsVk_debug_defines))
 BasicDeviceGeneratedCommandsVk_debug_common_cflags    += $(addprefix -I, $(BasicDeviceGeneratedCommandsVk_debug_hpaths))
 BasicDeviceGeneratedCommandsVk_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-BasicDeviceGeneratedCommandsVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+BasicDeviceGeneratedCommandsVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 BasicDeviceGeneratedCommandsVk_debug_cflags	:= $(BasicDeviceGeneratedCommandsVk_debug_common_cflags)
 BasicDeviceGeneratedCommandsVk_debug_cppflags	:= $(BasicDeviceGeneratedCommandsVk_debug_common_cflags)
 BasicDeviceGeneratedCommandsVk_debug_cppflags  += -std="gnu++11"
 BasicDeviceGeneratedCommandsVk_debug_lflags    := $(BasicDeviceGeneratedCommandsVk_custom_lflags)
 BasicDeviceGeneratedCommandsVk_debug_lflags    += $(addprefix -L, $(BasicDeviceGeneratedCommandsVk_debug_lpaths))
 BasicDeviceGeneratedCommandsVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(BasicDeviceGeneratedCommandsVk_debug_libraries)) -Wl,--end-group
-BasicDeviceGeneratedCommandsVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+BasicDeviceGeneratedCommandsVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 BasicDeviceGeneratedCommandsVk_debug_objsdir  = $(OBJS_DIR)/BasicDeviceGeneratedCommandsVk_debug
 BasicDeviceGeneratedCommandsVk_debug_cpp_o    = $(addprefix $(BasicDeviceGeneratedCommandsVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BasicDeviceGeneratedCommandsVk_cppfiles)))))
 BasicDeviceGeneratedCommandsVk_debug_cc_o    = $(addprefix $(BasicDeviceGeneratedCommandsVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BasicDeviceGeneratedCommandsVk_ccfiles)))))
@@ -156,11 +156,11 @@ BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/includ
 BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/externals/include
 BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-BasicDeviceGeneratedCommandsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+BasicDeviceGeneratedCommandsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 BasicDeviceGeneratedCommandsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 BasicDeviceGeneratedCommandsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 BasicDeviceGeneratedCommandsVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+BasicDeviceGeneratedCommandsVk_release_hpaths    += $(VK_SDK_PATH)/include
 BasicDeviceGeneratedCommandsVk_release_hpaths    += ./../../../extensions/include/NvVkUtil
 BasicDeviceGeneratedCommandsVk_release_lpaths    := 
 BasicDeviceGeneratedCommandsVk_release_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -175,7 +175,6 @@ BasicDeviceGeneratedCommandsVk_release_defines   += ANDROID
 BasicDeviceGeneratedCommandsVk_release_defines   += _LIB
 BasicDeviceGeneratedCommandsVk_release_defines   += NV_ANDROID
 BasicDeviceGeneratedCommandsVk_release_defines   += __STDC_LIMIT_MACROS
-BasicDeviceGeneratedCommandsVk_release_defines   += VK_NO_PROTOTYPES
 BasicDeviceGeneratedCommandsVk_release_defines   += GW_APP_NAME=\"BasicDeviceGeneratedCommandsVk\"
 BasicDeviceGeneratedCommandsVk_release_defines   += GL_API_LEVEL_ES2
 BasicDeviceGeneratedCommandsVk_release_defines   += USE_REGAL=1
@@ -201,20 +200,21 @@ BasicDeviceGeneratedCommandsVk_release_libraries += supc++
 BasicDeviceGeneratedCommandsVk_release_libraries += log
 BasicDeviceGeneratedCommandsVk_release_libraries += gcc
 BasicDeviceGeneratedCommandsVk_release_libraries += GLESv2
+BasicDeviceGeneratedCommandsVk_release_libraries += vulkan
 BasicDeviceGeneratedCommandsVk_release_libraries += RegalW_static
 BasicDeviceGeneratedCommandsVk_release_common_cflags	:= $(BasicDeviceGeneratedCommandsVk_custom_cflags)
 BasicDeviceGeneratedCommandsVk_release_common_cflags    += -MMD
 BasicDeviceGeneratedCommandsVk_release_common_cflags    += $(addprefix -D, $(BasicDeviceGeneratedCommandsVk_release_defines))
 BasicDeviceGeneratedCommandsVk_release_common_cflags    += $(addprefix -I, $(BasicDeviceGeneratedCommandsVk_release_hpaths))
 BasicDeviceGeneratedCommandsVk_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-BasicDeviceGeneratedCommandsVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+BasicDeviceGeneratedCommandsVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 BasicDeviceGeneratedCommandsVk_release_cflags	:= $(BasicDeviceGeneratedCommandsVk_release_common_cflags)
 BasicDeviceGeneratedCommandsVk_release_cppflags	:= $(BasicDeviceGeneratedCommandsVk_release_common_cflags)
 BasicDeviceGeneratedCommandsVk_release_cppflags  += -std="gnu++11"
 BasicDeviceGeneratedCommandsVk_release_lflags    := $(BasicDeviceGeneratedCommandsVk_custom_lflags)
 BasicDeviceGeneratedCommandsVk_release_lflags    += $(addprefix -L, $(BasicDeviceGeneratedCommandsVk_release_lpaths))
 BasicDeviceGeneratedCommandsVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(BasicDeviceGeneratedCommandsVk_release_libraries)) -Wl,--end-group
-BasicDeviceGeneratedCommandsVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+BasicDeviceGeneratedCommandsVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 BasicDeviceGeneratedCommandsVk_release_objsdir  = $(OBJS_DIR)/BasicDeviceGeneratedCommandsVk_release
 BasicDeviceGeneratedCommandsVk_release_cpp_o    = $(addprefix $(BasicDeviceGeneratedCommandsVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(BasicDeviceGeneratedCommandsVk_cppfiles)))))
 BasicDeviceGeneratedCommandsVk_release_cc_o    = $(addprefix $(BasicDeviceGeneratedCommandsVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(BasicDeviceGeneratedCommandsVk_ccfiles)))))

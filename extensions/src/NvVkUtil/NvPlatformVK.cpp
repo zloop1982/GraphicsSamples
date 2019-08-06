@@ -32,19 +32,3 @@
 //
 //----------------------------------------------------------------------------------
 #include "NvVkUtil/NvPlatformVK.h"
-
-
-
-
-bool NvVkUtilInit(PFN_vkGetProcAddressNV getProc) {
-
-#ifdef ANDROID 
-    if (!getProc)
-        return false;
-
-    vkLoadProcs(getProc);
-#endif
-
-    return true;
-}
-

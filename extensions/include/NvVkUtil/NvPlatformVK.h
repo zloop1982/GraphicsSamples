@@ -42,11 +42,7 @@
 
 #include <vulkan/vulkan.h>
 
-#ifdef ANDROID
-	#include "vkfnptrinline.h"
-#else
-	#include <NvVkUtil/vulkannv.h>
-#endif
+//#include <NvVkUtil/vulkannv.h>
 
 
 

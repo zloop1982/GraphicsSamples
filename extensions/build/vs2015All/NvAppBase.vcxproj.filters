@@ -44,6 +44,9 @@
 		<ClCompile Include="..\..\src\NvAppBase\android\NvAndroidWinUtil.cpp">
 			<Filter>src-android</Filter>
 		</ClCompile>
+		<ClCompile Include="..\..\src\NvAppBase\android\NvFBOPool.cpp">
+			<Filter>src-android</Filter>
+		</ClCompile>
 		<ClCompile Include="..\..\src\NvAppBase\android\NvThreadAnd.cpp">
 			<Filter>src-android</Filter>
 		</ClCompile>
@@ -57,6 +60,9 @@
 			<Filter>src-android</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\src\NvAppBase\android\NvEGLAppContext.h">
+			<Filter>src-android</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\NvAppBase\android\NvFBOPool.h">
 			<Filter>src-android</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\src\NvAppBase\android\NvThreadAnd.h">

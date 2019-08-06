@@ -44,9 +44,9 @@ class NvSimpleFBO;
 
 /// GL config representation.
 struct NvGLConfiguration : public NvGfxConfiguration {
-	NvGLConfiguration(const NvGfxConfiguration& gfx,
-		const NvGLAPIVersion& _apiVer = NvGLAPIVersionES2()) :
-		NvGfxConfiguration(gfx), apiVer(_apiVer) {}
+    NvGLConfiguration(const NvGfxConfiguration& gfx,
+        const NvGLAPIVersion& _apiVer = NvGLAPIVersionES2()) :
+        NvGfxConfiguration(gfx), apiVer(_apiVer) {}
 
     /// Inline all-elements constructor.
     /// \param[in] _apiVer the API and version information
@@ -55,14 +55,14 @@ struct NvGLConfiguration : public NvGfxConfiguration {
     /// \param[in] b the blue color depth in bits
     /// \param[in] a the alpha color depth in bits
     /// \param[in] d the depth buffer depth in bits
-	/// \param[in] s the stencil buffer depth in bits
-	/// \param[in] msaa the MSAA buffer sample count
-	NvGLConfiguration(const NvGLAPIVersion& _apiVer = NvGLAPIVersionES2(),
+    /// \param[in] s the stencil buffer depth in bits
+    /// \param[in] msaa the MSAA buffer sample count
+    NvGLConfiguration(const NvGLAPIVersion& _apiVer = NvGLAPIVersionES2(),
         uint32_t r = 8, uint32_t g = 8,
         uint32_t b = 8, uint32_t a = 8,
-        uint32_t d = 24, uint32_t s = 0, uint32_t msaa = 0) : 
-		NvGfxConfiguration(r, g, b, a, d, s, msaa),
-		apiVer(_apiVer) {}
+        uint32_t d = 24, uint32_t s = 0, uint32_t msaa = 0) :
+        NvGfxConfiguration(r, g, b, a, d, s, msaa),
+        apiVer(_apiVer) {}
 
     NvGLAPIVersion apiVer; ///< API and version
 };
@@ -72,17 +72,17 @@ class NvAppContextGL : public NvAppContext, public NvGLExtensionsAPI {
 public:
     virtual ~NvAppContextGL();
 
-	/// Read back the current framebuffer into app-supplied RGBX (32-bit-per-pixel) memory
-	/// \param[in,out] dest The destination memory.  Must be NULL (in which case on the width and height
-	/// are returned) or else must point to width*height*4 bytes of memory.  In the latter case, on success,
-	/// the screenshot will have been written to the buffer
-	/// \param[out] w the returned width of the image
-	/// \param[out] h the returned height of the image
-	/// \return true on success and false if the implementation does not support screenshots
-	virtual bool readFramebufferRGBX32(uint8_t *dest, int32_t& w, int32_t& h);
+    /// Read back the current framebuffer into app-supplied RGBX (32-bit-per-pixel) memory
+    /// \param[in,out] dest The destination memory.  Must be NULL (in which case on the width and height
+    /// are returned) or else must point to width*height*4 bytes of memory.  In the latter case, on success,
+    /// the screenshot will have been written to the buffer
+    /// \param[out] w the returned width of the image
+    /// \param[out] h the returned height of the image
+    /// \return true on success and false if the implementation does not support screenshots
+    virtual bool readFramebufferRGBX32(uint8_t *dest, int32_t& w, int32_t& h);
 
-	/// Return the FBO ID of the main screen render target
-	/// \return the GL ID of the main screen FBO
+    /// Return the FBO ID of the main screen render target
+    /// \return the GL ID of the main screen FBO
     GLuint getMainFBO() { return mMainFBO; }
 
     /// The selected [E]GL configuration.
@@ -101,7 +101,7 @@ public:
     /// context, false if not.  Should only be called with a bound context for
     /// safety across all platforms
     virtual bool isExtensionSupported(const char* ext) { return false; }
-    
+
     /// Force context reset.
     /// Optional per-platform function to request that the GL context be
     /// shut down and restarted on demand.  Used to test an app's implementation
@@ -122,26 +122,29 @@ public:
     /// \return the platform-specific display handle, cast to void* or NULL if not supported
     virtual void* getCurrentPlatformDisplay() { return NULL; }
 
-	/// \privatesection
-	virtual bool useOffscreenRendering(int32_t w, int32_t h);
+    //// End of frame implementation for FBO mode
+    virtual bool swapFBO();
 
-	virtual bool isRenderingToMainScreen();
+    /// \privatesection
+    virtual bool useOffscreenRendering(int32_t w, int32_t h);
 
-	virtual void platformReshape(int32_t& w, int32_t& h);
+    virtual bool isRenderingToMainScreen();
 
-	virtual void beginFrame();
+    virtual void platformReshape(int32_t& w, int32_t& h);
 
-	virtual void beginScene();
+    virtual void beginFrame();
 
-	virtual void endScene();
+    virtual void beginScene();
 
-	virtual void endFrame();
+    virtual void endScene();
 
-	virtual void initUI();
+    virtual void endFrame();
 
-	/// Initialize the rendering context
-	virtual void contextInitRendering();
-	virtual bool initialize() { return true; }
+    virtual void initUI();
+
+    /// Initialize the rendering context
+    virtual void contextInitRendering();
+    virtual bool initialize() { return true; }
 
 protected:
 

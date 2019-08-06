@@ -76,10 +76,6 @@ static bool AndroidInitGetProcAddr() {
 void* NvAndroidGetVKProcAddr(const char* name) {
 	return (void*)android_getVkProc(getVkProcInstance, name);
 }
-#else
-static void* SDKGetVKProcAddr(const char* name) {
-	return (void*)vkGetInstanceProcAddr(getVkProcInstance, name);
-}
 #endif
 
 bool NvAppNativeContextVK::initialize() {
@@ -91,23 +87,16 @@ bool NvAppNativeContextVK::initialize() {
 
 	NvImage::setSupportsBGR(false);
 
-	PFN_vkGetProcAddressNV driver_getProc = NULL;
-
-	driver_getProc = NULL;
 #ifdef ANDROID
-	if (!AndroidInitGetProcAddr())
-		return false;
-	driver_getProc = (PFN_vkGetProcAddressNV)NvAndroidGetVKProcAddr;
-#else
-	driver_getProc = (PFN_vkGetProcAddressNV)SDKGetVKProcAddr;
+	AndroidInitGetProcAddr();
 #endif
 
-	if (!initializeInstance(driver_getProc, mAppTitle))
+	if (!initializeInstance(mAppTitle))
 		return false;
 
 	getVkProcInstance = _instance;
 
-	if (!initializeDevice(driver_getProc))
+	if (!initializeDevice())
 		return false;
 
 	// Query for a valid render target format.

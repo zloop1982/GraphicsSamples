@@ -90,13 +90,12 @@ void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, G
 	__nvkglDrawVkImageNV(vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
 }
 
-#ifndef ANDROID
+typedef void (VKAPI_PTR * PFN_vkQueuePresentNV) (VkQueue queue, VkImage image);
 PFN_vkQueuePresentNV pfn_vkQueuePresentNV = NULL;
 VKAPI_ATTR void VKAPI_CALL vkQueuePresentNV(VkQueue queue, VkImage image)
 {
 	pfn_vkQueuePresentNV(queue, image);
 }
-#endif
 
 #define ARRAY_SIZE(a) ( sizeof(a) / sizeof( (a)[0] ))
 
@@ -166,13 +165,14 @@ bool NvAppWrapperContextVK::initialize() {
 	VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
 	mGLContext->bindContext();
-	mGLContext->setSwapInterval(0);
+	mGLContext->setSwapInterval(1);
 
 	NvImage::setSupportsBGR(false);
 
 	mNVVKDrawImageVK = mGLContext->isExtensionSupported("GL_NV_draw_vulkan_image");
 
-	PFN_vkGetProcAddressNV driver_getProc = NULL;
+    typedef PFN_vkVoidFunction(VKAPI_CALL * PFN_vkGetProcAddressNV) (const char *name);
+    PFN_vkGetProcAddressNV driver_getProc = NULL;
 
 	driver_getProc = NULL;
 
@@ -206,12 +206,12 @@ bool NvAppWrapperContextVK::initialize() {
 		}
 	}
 
-	if (!initializeInstance(driver_getProc, mAppTitle))
+	if (!initializeInstance(mAppTitle))
 		return false;
 
 	getVkProcInstance = _instance;
 
-	if (!initializeDevice(driver_getProc))
+	if (!initializeDevice())
 		return false;
 
 	if (mNVVKDrawImageVK) {

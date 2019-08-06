@@ -21,11 +21,11 @@ ModelTestVk_debug_hpaths    += ./../../../extensions/include
 ModelTestVk_debug_hpaths    += ./../../../extensions/externals/include
 ModelTestVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ModelTestVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ModelTestVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ModelTestVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ModelTestVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ModelTestVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ModelTestVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ModelTestVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ModelTestVk_debug_hpaths    += $(VK_SDK_PATH)/include
 ModelTestVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil
 ModelTestVk_debug_lpaths    := 
 ModelTestVk_debug_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -40,7 +40,6 @@ ModelTestVk_debug_defines   += ANDROID
 ModelTestVk_debug_defines   += _LIB
 ModelTestVk_debug_defines   += NV_ANDROID
 ModelTestVk_debug_defines   += __STDC_LIMIT_MACROS
-ModelTestVk_debug_defines   += VK_NO_PROTOTYPES
 ModelTestVk_debug_defines   += GW_APP_NAME=\"ModelTestVk\"
 ModelTestVk_debug_defines   += GL_API_LEVEL_ES2
 ModelTestVk_debug_defines   += USE_REGAL=1
@@ -66,20 +65,21 @@ ModelTestVk_debug_libraries += supc++
 ModelTestVk_debug_libraries += log
 ModelTestVk_debug_libraries += gcc
 ModelTestVk_debug_libraries += GLESv2
+ModelTestVk_debug_libraries += vulkan
 ModelTestVk_debug_libraries += RegalW_static
 ModelTestVk_debug_common_cflags	:= $(ModelTestVk_custom_cflags)
 ModelTestVk_debug_common_cflags    += -MMD
 ModelTestVk_debug_common_cflags    += $(addprefix -D, $(ModelTestVk_debug_defines))
 ModelTestVk_debug_common_cflags    += $(addprefix -I, $(ModelTestVk_debug_hpaths))
 ModelTestVk_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ModelTestVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ModelTestVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ModelTestVk_debug_cflags	:= $(ModelTestVk_debug_common_cflags)
 ModelTestVk_debug_cppflags	:= $(ModelTestVk_debug_common_cflags)
 ModelTestVk_debug_cppflags  += -std="gnu++11"
 ModelTestVk_debug_lflags    := $(ModelTestVk_custom_lflags)
 ModelTestVk_debug_lflags    += $(addprefix -L, $(ModelTestVk_debug_lpaths))
 ModelTestVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ModelTestVk_debug_libraries)) -Wl,--end-group
-ModelTestVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ModelTestVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ModelTestVk_debug_objsdir  = $(OBJS_DIR)/ModelTestVk_debug
 ModelTestVk_debug_cpp_o    = $(addprefix $(ModelTestVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ModelTestVk_cppfiles)))))
 ModelTestVk_debug_cc_o    = $(addprefix $(ModelTestVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ModelTestVk_ccfiles)))))
@@ -155,11 +155,11 @@ ModelTestVk_release_hpaths    += ./../../../extensions/include
 ModelTestVk_release_hpaths    += ./../../../extensions/externals/include
 ModelTestVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 ModelTestVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-ModelTestVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ModelTestVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ModelTestVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ModelTestVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ModelTestVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ModelTestVk_release_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ModelTestVk_release_hpaths    += $(VK_SDK_PATH)/include
 ModelTestVk_release_hpaths    += ./../../../extensions/include/NvVkUtil
 ModelTestVk_release_lpaths    := 
 ModelTestVk_release_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -174,7 +174,6 @@ ModelTestVk_release_defines   += ANDROID
 ModelTestVk_release_defines   += _LIB
 ModelTestVk_release_defines   += NV_ANDROID
 ModelTestVk_release_defines   += __STDC_LIMIT_MACROS
-ModelTestVk_release_defines   += VK_NO_PROTOTYPES
 ModelTestVk_release_defines   += GW_APP_NAME=\"ModelTestVk\"
 ModelTestVk_release_defines   += GL_API_LEVEL_ES2
 ModelTestVk_release_defines   += USE_REGAL=1
@@ -200,20 +199,21 @@ ModelTestVk_release_libraries += supc++
 ModelTestVk_release_libraries += log
 ModelTestVk_release_libraries += gcc
 ModelTestVk_release_libraries += GLESv2
+ModelTestVk_release_libraries += vulkan
 ModelTestVk_release_libraries += RegalW_static
 ModelTestVk_release_common_cflags	:= $(ModelTestVk_custom_cflags)
 ModelTestVk_release_common_cflags    += -MMD
 ModelTestVk_release_common_cflags    += $(addprefix -D, $(ModelTestVk_release_defines))
 ModelTestVk_release_common_cflags    += $(addprefix -I, $(ModelTestVk_release_hpaths))
 ModelTestVk_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ModelTestVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ModelTestVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ModelTestVk_release_cflags	:= $(ModelTestVk_release_common_cflags)
 ModelTestVk_release_cppflags	:= $(ModelTestVk_release_common_cflags)
 ModelTestVk_release_cppflags  += -std="gnu++11"
 ModelTestVk_release_lflags    := $(ModelTestVk_custom_lflags)
 ModelTestVk_release_lflags    += $(addprefix -L, $(ModelTestVk_release_lpaths))
 ModelTestVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(ModelTestVk_release_libraries)) -Wl,--end-group
-ModelTestVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ModelTestVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ModelTestVk_release_objsdir  = $(OBJS_DIR)/ModelTestVk_release
 ModelTestVk_release_cpp_o    = $(addprefix $(ModelTestVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ModelTestVk_cppfiles)))))
 ModelTestVk_release_cc_o    = $(addprefix $(ModelTestVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ModelTestVk_ccfiles)))))

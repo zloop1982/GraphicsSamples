@@ -33,6 +33,8 @@
 //----------------------------------------------------------------------------------
 #include "NvAssetLoader/NvAssetLoader.h"
 #include "NV/NvLogs.h"
+
+#include <io.h>
 #include <string>
 #include <stdio.h>
 #include <vector>
@@ -126,7 +128,7 @@ NvAssetFilePtr NvAssetLoaderOpenFile(const char* name) {
     for (int32_t i = 0; i < 10; i++) {
         std::vector<std::string>::iterator src = s_searchPath.begin();
         bool looping = true;
-        while (looping) {
+        while(looping) {
             fullPath.assign(upPath);  // reset to current upPath.
             if (src != s_searchPath.end()) {
                 //sprintf_s(fullPath, "%s%s/assets/%s", upPath, *src, filePath);
@@ -151,8 +153,8 @@ NvAssetFilePtr NvAssetLoaderOpenFile(const char* name) {
         upPath.append("../");
     }
 
-    return NULL;
-}
+        return NULL;
+    }
 
 void NvAssetLoaderCloseFile(NvAssetFilePtr fp) {
     fclose((FILE*)fp);
@@ -187,4 +189,52 @@ int64_t NvAssetFileRead64(NvAssetFilePtr file, int32_t offset, int32_t size, voi
 
 int64_t NvAssetFileSeek64(NvAssetFilePtr fp, int64_t offset, NvAssetSeekBase whence) {
     return fseek((FILE*)fp, offset, (int32_t)whence);
+}
+
+bool NvAssetGetFilePath(const std::string fileName, std::string& path) {
+	FILE *fp = NULL;
+	// loop N times up the hierarchy, testing at each level
+	std::string upPath;
+	std::string fullPath;
+	for (int32_t i = 0; i < 10; i++) {
+		std::vector<std::string>::iterator src = s_searchPath.begin();
+		bool looping = true;
+		while (looping) {
+			fullPath.assign(upPath);  // reset to current upPath.
+			if (src != s_searchPath.end()) {
+				//sprintf_s(fullPath, "%s%s/assets/%s", upPath, *src, filePath);
+				fullPath.append(*src);
+				fullPath.append("/assets/");
+				src++;
+			}
+			else {
+				//sprintf_s(fullPath, "%sassets/%s", upPath, filePath);
+				fullPath.append("assets/");
+				looping = false;
+			}
+			fullPath.append(fileName);
+
+#ifdef DEBUG
+			fprintf(stderr, "Trying to open %s\n", fullPath.c_str());
+#endif
+            if (fileName.empty()) {
+                if (!_access(fullPath.c_str(), 0)) {
+                    path = fullPath;
+                    return true;
+                }
+            }
+            else {
+                fopen_s(&fp, fullPath.c_str(), "rb");
+                if (fp != NULL) {
+                    fclose(fp);
+                    path = fullPath;
+                    return true;
+                }
+            }
+		}
+
+		upPath.append("../");
+}
+
+	return false;
 }

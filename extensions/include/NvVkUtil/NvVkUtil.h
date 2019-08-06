@@ -38,7 +38,4 @@
 
 #include <string>
 
-/// \privatesection
-extern bool NvVkUtilInit(PFN_vkGetProcAddressNV getProc);
-
 #endif

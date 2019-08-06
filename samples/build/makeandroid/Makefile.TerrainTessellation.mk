@@ -21,7 +21,7 @@ TerrainTessellation_debug_hpaths    += ./../../../extensions/include
 TerrainTessellation_debug_hpaths    += ./../../../extensions/externals/include
 TerrainTessellation_debug_hpaths    += ./../../../extensions/include/NsFoundation
 TerrainTessellation_debug_hpaths    += ./../../../extensions/include/NvFoundation
-TerrainTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+TerrainTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TerrainTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TerrainTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TerrainTessellation_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -37,7 +37,6 @@ TerrainTessellation_debug_defines   += ANDROID
 TerrainTessellation_debug_defines   += _LIB
 TerrainTessellation_debug_defines   += NV_ANDROID
 TerrainTessellation_debug_defines   += __STDC_LIMIT_MACROS
-TerrainTessellation_debug_defines   += VK_NO_PROTOTYPES
 TerrainTessellation_debug_defines   += GW_APP_NAME=\"TerrainTessellation\"
 TerrainTessellation_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 TerrainTessellation_debug_defines   += _DEBUG
@@ -66,14 +65,14 @@ TerrainTessellation_debug_common_cflags    += -MMD
 TerrainTessellation_debug_common_cflags    += $(addprefix -D, $(TerrainTessellation_debug_defines))
 TerrainTessellation_debug_common_cflags    += $(addprefix -I, $(TerrainTessellation_debug_hpaths))
 TerrainTessellation_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-TerrainTessellation_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+TerrainTessellation_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 TerrainTessellation_debug_cflags	:= $(TerrainTessellation_debug_common_cflags)
 TerrainTessellation_debug_cppflags	:= $(TerrainTessellation_debug_common_cflags)
 TerrainTessellation_debug_cppflags  += -std="gnu++11"
 TerrainTessellation_debug_lflags    := $(TerrainTessellation_custom_lflags)
 TerrainTessellation_debug_lflags    += $(addprefix -L, $(TerrainTessellation_debug_lpaths))
 TerrainTessellation_debug_lflags    += -Wl,--start-group $(addprefix -l, $(TerrainTessellation_debug_libraries)) -Wl,--end-group
-TerrainTessellation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+TerrainTessellation_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TerrainTessellation_debug_objsdir  = $(OBJS_DIR)/TerrainTessellation_debug
 TerrainTessellation_debug_cpp_o    = $(addprefix $(TerrainTessellation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TerrainTessellation_cppfiles)))))
 TerrainTessellation_debug_cc_o    = $(addprefix $(TerrainTessellation_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TerrainTessellation_ccfiles)))))
@@ -138,7 +137,7 @@ TerrainTessellation_release_hpaths    += ./../../../extensions/include
 TerrainTessellation_release_hpaths    += ./../../../extensions/externals/include
 TerrainTessellation_release_hpaths    += ./../../../extensions/include/NsFoundation
 TerrainTessellation_release_hpaths    += ./../../../extensions/include/NvFoundation
-TerrainTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+TerrainTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TerrainTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TerrainTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TerrainTessellation_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -154,7 +153,6 @@ TerrainTessellation_release_defines   += ANDROID
 TerrainTessellation_release_defines   += _LIB
 TerrainTessellation_release_defines   += NV_ANDROID
 TerrainTessellation_release_defines   += __STDC_LIMIT_MACROS
-TerrainTessellation_release_defines   += VK_NO_PROTOTYPES
 TerrainTessellation_release_defines   += GW_APP_NAME=\"TerrainTessellation\"
 TerrainTessellation_release_defines   += GL_API_LEVEL_ES3_1_AEP
 TerrainTessellation_release_defines   += NDEBUG
@@ -183,14 +181,14 @@ TerrainTessellation_release_common_cflags    += -MMD
 TerrainTessellation_release_common_cflags    += $(addprefix -D, $(TerrainTessellation_release_defines))
 TerrainTessellation_release_common_cflags    += $(addprefix -I, $(TerrainTessellation_release_hpaths))
 TerrainTessellation_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-TerrainTessellation_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+TerrainTessellation_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 TerrainTessellation_release_cflags	:= $(TerrainTessellation_release_common_cflags)
 TerrainTessellation_release_cppflags	:= $(TerrainTessellation_release_common_cflags)
 TerrainTessellation_release_cppflags  += -std="gnu++11"
 TerrainTessellation_release_lflags    := $(TerrainTessellation_custom_lflags)
 TerrainTessellation_release_lflags    += $(addprefix -L, $(TerrainTessellation_release_lpaths))
 TerrainTessellation_release_lflags    += -Wl,--start-group $(addprefix -l, $(TerrainTessellation_release_libraries)) -Wl,--end-group
-TerrainTessellation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+TerrainTessellation_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TerrainTessellation_release_objsdir  = $(OBJS_DIR)/TerrainTessellation_release
 TerrainTessellation_release_cpp_o    = $(addprefix $(TerrainTessellation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TerrainTessellation_cppfiles)))))
 TerrainTessellation_release_cc_o    = $(addprefix $(TerrainTessellation_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TerrainTessellation_ccfiles)))))

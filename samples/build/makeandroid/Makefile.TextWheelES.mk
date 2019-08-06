@@ -22,7 +22,7 @@ TextWheelES_debug_hpaths    += ./../../../extensions/include
 TextWheelES_debug_hpaths    += ./../../../extensions/externals/include
 TextWheelES_debug_hpaths    += ./../../../extensions/include/NsFoundation
 TextWheelES_debug_hpaths    += ./../../../extensions/include/NvFoundation
-TextWheelES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+TextWheelES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TextWheelES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TextWheelES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TextWheelES_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -38,7 +38,6 @@ TextWheelES_debug_defines   += ANDROID
 TextWheelES_debug_defines   += _LIB
 TextWheelES_debug_defines   += NV_ANDROID
 TextWheelES_debug_defines   += __STDC_LIMIT_MACROS
-TextWheelES_debug_defines   += VK_NO_PROTOTYPES
 TextWheelES_debug_defines   += GW_APP_NAME=\"TextWheelES\"
 TextWheelES_debug_defines   += GL_API_LEVEL_ES2
 TextWheelES_debug_defines   += USE_REGAL=1
@@ -70,14 +69,14 @@ TextWheelES_debug_common_cflags    += -MMD
 TextWheelES_debug_common_cflags    += $(addprefix -D, $(TextWheelES_debug_defines))
 TextWheelES_debug_common_cflags    += $(addprefix -I, $(TextWheelES_debug_hpaths))
 TextWheelES_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-TextWheelES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+TextWheelES_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 TextWheelES_debug_cflags	:= $(TextWheelES_debug_common_cflags)
 TextWheelES_debug_cppflags	:= $(TextWheelES_debug_common_cflags)
 TextWheelES_debug_cppflags  += -std="gnu++11"
 TextWheelES_debug_lflags    := $(TextWheelES_custom_lflags)
 TextWheelES_debug_lflags    += $(addprefix -L, $(TextWheelES_debug_lpaths))
 TextWheelES_debug_lflags    += -Wl,--start-group $(addprefix -l, $(TextWheelES_debug_libraries)) -Wl,--end-group
-TextWheelES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+TextWheelES_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TextWheelES_debug_objsdir  = $(OBJS_DIR)/TextWheelES_debug
 TextWheelES_debug_cpp_o    = $(addprefix $(TextWheelES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TextWheelES_cppfiles)))))
 TextWheelES_debug_cc_o    = $(addprefix $(TextWheelES_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TextWheelES_ccfiles)))))
@@ -141,7 +140,7 @@ TextWheelES_release_hpaths    += ./../../../extensions/include
 TextWheelES_release_hpaths    += ./../../../extensions/externals/include
 TextWheelES_release_hpaths    += ./../../../extensions/include/NsFoundation
 TextWheelES_release_hpaths    += ./../../../extensions/include/NvFoundation
-TextWheelES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+TextWheelES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 TextWheelES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 TextWheelES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 TextWheelES_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -157,7 +156,6 @@ TextWheelES_release_defines   += ANDROID
 TextWheelES_release_defines   += _LIB
 TextWheelES_release_defines   += NV_ANDROID
 TextWheelES_release_defines   += __STDC_LIMIT_MACROS
-TextWheelES_release_defines   += VK_NO_PROTOTYPES
 TextWheelES_release_defines   += GW_APP_NAME=\"TextWheelES\"
 TextWheelES_release_defines   += GL_API_LEVEL_ES2
 TextWheelES_release_defines   += USE_REGAL=1
@@ -189,14 +187,14 @@ TextWheelES_release_common_cflags    += -MMD
 TextWheelES_release_common_cflags    += $(addprefix -D, $(TextWheelES_release_defines))
 TextWheelES_release_common_cflags    += $(addprefix -I, $(TextWheelES_release_hpaths))
 TextWheelES_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-TextWheelES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+TextWheelES_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 TextWheelES_release_cflags	:= $(TextWheelES_release_common_cflags)
 TextWheelES_release_cppflags	:= $(TextWheelES_release_common_cflags)
 TextWheelES_release_cppflags  += -std="gnu++11"
 TextWheelES_release_lflags    := $(TextWheelES_custom_lflags)
 TextWheelES_release_lflags    += $(addprefix -L, $(TextWheelES_release_lpaths))
 TextWheelES_release_lflags    += -Wl,--start-group $(addprefix -l, $(TextWheelES_release_libraries)) -Wl,--end-group
-TextWheelES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+TextWheelES_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 TextWheelES_release_objsdir  = $(OBJS_DIR)/TextWheelES_release
 TextWheelES_release_cpp_o    = $(addprefix $(TextWheelES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(TextWheelES_cppfiles)))))
 TextWheelES_release_cc_o    = $(addprefix $(TextWheelES_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(TextWheelES_ccfiles)))))

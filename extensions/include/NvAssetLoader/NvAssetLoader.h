@@ -198,5 +198,13 @@ inline std::string NvAssetLoadTextFile(const char* fileName)
 	return result;
 }
 
+/// Return a path to the file on the system, relative to the app's
+/// current directory, if the platform supports it.  Returns true
+/// if the platform supports returning the filename and the file
+/// can be found, false otherwise
+/// \param[in] fileName the name of the file to find
+/// \param[out] path the path (including the filename) if found
+/// \return true if platform supports the function AND the file is found
+bool NvAssetGetFilePath(const std::string fileName, std::string& path);
 
 #endif

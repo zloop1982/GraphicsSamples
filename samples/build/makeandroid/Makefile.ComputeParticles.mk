@@ -22,7 +22,7 @@ ComputeParticles_debug_hpaths    += ./../../../extensions/include
 ComputeParticles_debug_hpaths    += ./../../../extensions/externals/include
 ComputeParticles_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeParticles_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeParticles_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeParticles_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ComputeParticles_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeParticles_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeParticles_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -38,7 +38,6 @@ ComputeParticles_debug_defines   += ANDROID
 ComputeParticles_debug_defines   += _LIB
 ComputeParticles_debug_defines   += NV_ANDROID
 ComputeParticles_debug_defines   += __STDC_LIMIT_MACROS
-ComputeParticles_debug_defines   += VK_NO_PROTOTYPES
 ComputeParticles_debug_defines   += GW_APP_NAME=\"ComputeParticles\"
 ComputeParticles_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 ComputeParticles_debug_defines   += _DEBUG
@@ -67,14 +66,14 @@ ComputeParticles_debug_common_cflags    += -MMD
 ComputeParticles_debug_common_cflags    += $(addprefix -D, $(ComputeParticles_debug_defines))
 ComputeParticles_debug_common_cflags    += $(addprefix -I, $(ComputeParticles_debug_hpaths))
 ComputeParticles_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeParticles_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ComputeParticles_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ComputeParticles_debug_cflags	:= $(ComputeParticles_debug_common_cflags)
 ComputeParticles_debug_cppflags	:= $(ComputeParticles_debug_common_cflags)
 ComputeParticles_debug_cppflags  += -std="gnu++11"
 ComputeParticles_debug_lflags    := $(ComputeParticles_custom_lflags)
 ComputeParticles_debug_lflags    += $(addprefix -L, $(ComputeParticles_debug_lpaths))
 ComputeParticles_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeParticles_debug_libraries)) -Wl,--end-group
-ComputeParticles_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeParticles_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ComputeParticles_debug_objsdir  = $(OBJS_DIR)/ComputeParticles_debug
 ComputeParticles_debug_cpp_o    = $(addprefix $(ComputeParticles_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeParticles_cppfiles)))))
 ComputeParticles_debug_cc_o    = $(addprefix $(ComputeParticles_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeParticles_ccfiles)))))
@@ -139,7 +138,7 @@ ComputeParticles_release_hpaths    += ./../../../extensions/include
 ComputeParticles_release_hpaths    += ./../../../extensions/externals/include
 ComputeParticles_release_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeParticles_release_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeParticles_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeParticles_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ComputeParticles_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeParticles_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeParticles_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -155,7 +154,6 @@ ComputeParticles_release_defines   += ANDROID
 ComputeParticles_release_defines   += _LIB
 ComputeParticles_release_defines   += NV_ANDROID
 ComputeParticles_release_defines   += __STDC_LIMIT_MACROS
-ComputeParticles_release_defines   += VK_NO_PROTOTYPES
 ComputeParticles_release_defines   += GW_APP_NAME=\"ComputeParticles\"
 ComputeParticles_release_defines   += GL_API_LEVEL_ES3_1_AEP
 ComputeParticles_release_defines   += NDEBUG
@@ -184,14 +182,14 @@ ComputeParticles_release_common_cflags    += -MMD
 ComputeParticles_release_common_cflags    += $(addprefix -D, $(ComputeParticles_release_defines))
 ComputeParticles_release_common_cflags    += $(addprefix -I, $(ComputeParticles_release_hpaths))
 ComputeParticles_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeParticles_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ComputeParticles_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ComputeParticles_release_cflags	:= $(ComputeParticles_release_common_cflags)
 ComputeParticles_release_cppflags	:= $(ComputeParticles_release_common_cflags)
 ComputeParticles_release_cppflags  += -std="gnu++11"
 ComputeParticles_release_lflags    := $(ComputeParticles_custom_lflags)
 ComputeParticles_release_lflags    += $(addprefix -L, $(ComputeParticles_release_lpaths))
 ComputeParticles_release_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeParticles_release_libraries)) -Wl,--end-group
-ComputeParticles_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeParticles_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ComputeParticles_release_objsdir  = $(OBJS_DIR)/ComputeParticles_release
 ComputeParticles_release_cpp_o    = $(addprefix $(ComputeParticles_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeParticles_cppfiles)))))
 ComputeParticles_release_cc_o    = $(addprefix $(ComputeParticles_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeParticles_ccfiles)))))

@@ -72,8 +72,8 @@ public:
 
 protected:
 
-	bool initializeInstance(PFN_vkGetProcAddressNV getProc, const std::string& appTitle);
-	bool initializeDevice(PFN_vkGetProcAddressNV getProc);
+	bool initializeInstance(const std::string& appTitle);
+	bool initializeDevice();
 
     /// \privatesection
 	NvAppContextVK(const NvVKConfiguration& config, NvPlatformInfo info) 

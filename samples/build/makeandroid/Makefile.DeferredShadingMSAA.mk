@@ -19,7 +19,7 @@ DeferredShadingMSAA_debug_hpaths    += ./../../../extensions/include
 DeferredShadingMSAA_debug_hpaths    += ./../../../extensions/externals/include
 DeferredShadingMSAA_debug_hpaths    += ./../../../extensions/include/NsFoundation
 DeferredShadingMSAA_debug_hpaths    += ./../../../extensions/include/NvFoundation
-DeferredShadingMSAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+DeferredShadingMSAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 DeferredShadingMSAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DeferredShadingMSAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DeferredShadingMSAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ DeferredShadingMSAA_debug_defines   += ANDROID
 DeferredShadingMSAA_debug_defines   += _LIB
 DeferredShadingMSAA_debug_defines   += NV_ANDROID
 DeferredShadingMSAA_debug_defines   += __STDC_LIMIT_MACROS
-DeferredShadingMSAA_debug_defines   += VK_NO_PROTOTYPES
 DeferredShadingMSAA_debug_defines   += GW_APP_NAME=\"DeferredShadingMSAA\"
 DeferredShadingMSAA_debug_defines   += GL_API_LEVEL_ES2
 DeferredShadingMSAA_debug_defines   += USE_REGAL=1
@@ -66,14 +65,14 @@ DeferredShadingMSAA_debug_common_cflags    += -MMD
 DeferredShadingMSAA_debug_common_cflags    += $(addprefix -D, $(DeferredShadingMSAA_debug_defines))
 DeferredShadingMSAA_debug_common_cflags    += $(addprefix -I, $(DeferredShadingMSAA_debug_hpaths))
 DeferredShadingMSAA_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-DeferredShadingMSAA_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+DeferredShadingMSAA_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 DeferredShadingMSAA_debug_cflags	:= $(DeferredShadingMSAA_debug_common_cflags)
 DeferredShadingMSAA_debug_cppflags	:= $(DeferredShadingMSAA_debug_common_cflags)
 DeferredShadingMSAA_debug_cppflags  += -std="gnu++11"
 DeferredShadingMSAA_debug_lflags    := $(DeferredShadingMSAA_custom_lflags)
 DeferredShadingMSAA_debug_lflags    += $(addprefix -L, $(DeferredShadingMSAA_debug_lpaths))
 DeferredShadingMSAA_debug_lflags    += -Wl,--start-group $(addprefix -l, $(DeferredShadingMSAA_debug_libraries)) -Wl,--end-group
-DeferredShadingMSAA_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+DeferredShadingMSAA_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 DeferredShadingMSAA_debug_objsdir  = $(OBJS_DIR)/DeferredShadingMSAA_debug
 DeferredShadingMSAA_debug_cpp_o    = $(addprefix $(DeferredShadingMSAA_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DeferredShadingMSAA_cppfiles)))))
 DeferredShadingMSAA_debug_cc_o    = $(addprefix $(DeferredShadingMSAA_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DeferredShadingMSAA_ccfiles)))))
@@ -137,7 +136,7 @@ DeferredShadingMSAA_release_hpaths    += ./../../../extensions/include
 DeferredShadingMSAA_release_hpaths    += ./../../../extensions/externals/include
 DeferredShadingMSAA_release_hpaths    += ./../../../extensions/include/NsFoundation
 DeferredShadingMSAA_release_hpaths    += ./../../../extensions/include/NvFoundation
-DeferredShadingMSAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+DeferredShadingMSAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 DeferredShadingMSAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 DeferredShadingMSAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 DeferredShadingMSAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ DeferredShadingMSAA_release_defines   += ANDROID
 DeferredShadingMSAA_release_defines   += _LIB
 DeferredShadingMSAA_release_defines   += NV_ANDROID
 DeferredShadingMSAA_release_defines   += __STDC_LIMIT_MACROS
-DeferredShadingMSAA_release_defines   += VK_NO_PROTOTYPES
 DeferredShadingMSAA_release_defines   += GW_APP_NAME=\"DeferredShadingMSAA\"
 DeferredShadingMSAA_release_defines   += GL_API_LEVEL_ES2
 DeferredShadingMSAA_release_defines   += USE_REGAL=1
@@ -184,14 +182,14 @@ DeferredShadingMSAA_release_common_cflags    += -MMD
 DeferredShadingMSAA_release_common_cflags    += $(addprefix -D, $(DeferredShadingMSAA_release_defines))
 DeferredShadingMSAA_release_common_cflags    += $(addprefix -I, $(DeferredShadingMSAA_release_hpaths))
 DeferredShadingMSAA_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-DeferredShadingMSAA_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+DeferredShadingMSAA_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 DeferredShadingMSAA_release_cflags	:= $(DeferredShadingMSAA_release_common_cflags)
 DeferredShadingMSAA_release_cppflags	:= $(DeferredShadingMSAA_release_common_cflags)
 DeferredShadingMSAA_release_cppflags  += -std="gnu++11"
 DeferredShadingMSAA_release_lflags    := $(DeferredShadingMSAA_custom_lflags)
 DeferredShadingMSAA_release_lflags    += $(addprefix -L, $(DeferredShadingMSAA_release_lpaths))
 DeferredShadingMSAA_release_lflags    += -Wl,--start-group $(addprefix -l, $(DeferredShadingMSAA_release_libraries)) -Wl,--end-group
-DeferredShadingMSAA_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+DeferredShadingMSAA_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 DeferredShadingMSAA_release_objsdir  = $(OBJS_DIR)/DeferredShadingMSAA_release
 DeferredShadingMSAA_release_cpp_o    = $(addprefix $(DeferredShadingMSAA_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(DeferredShadingMSAA_cppfiles)))))
 DeferredShadingMSAA_release_cc_o    = $(addprefix $(DeferredShadingMSAA_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(DeferredShadingMSAA_ccfiles)))))

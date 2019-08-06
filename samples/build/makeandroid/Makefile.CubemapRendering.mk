@@ -19,7 +19,7 @@ CubemapRendering_debug_hpaths    += ./../../../extensions/include
 CubemapRendering_debug_hpaths    += ./../../../extensions/externals/include
 CubemapRendering_debug_hpaths    += ./../../../extensions/include/NsFoundation
 CubemapRendering_debug_hpaths    += ./../../../extensions/include/NvFoundation
-CubemapRendering_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+CubemapRendering_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 CubemapRendering_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CubemapRendering_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CubemapRendering_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -35,7 +35,6 @@ CubemapRendering_debug_defines   += ANDROID
 CubemapRendering_debug_defines   += _LIB
 CubemapRendering_debug_defines   += NV_ANDROID
 CubemapRendering_debug_defines   += __STDC_LIMIT_MACROS
-CubemapRendering_debug_defines   += VK_NO_PROTOTYPES
 CubemapRendering_debug_defines   += GW_APP_NAME=\"CubemapRendering\"
 CubemapRendering_debug_defines   += GL_API_LEVEL_ES2
 CubemapRendering_debug_defines   += USE_REGAL=1
@@ -67,14 +66,14 @@ CubemapRendering_debug_common_cflags    += $(addprefix -D, $(CubemapRendering_de
 CubemapRendering_debug_common_cflags    += $(addprefix -I, $(CubemapRendering_debug_hpaths))
 CubemapRendering_debug_common_cflags  += -std="gnu++11"
 CubemapRendering_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-CubemapRendering_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+CubemapRendering_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 CubemapRendering_debug_cflags	:= $(CubemapRendering_debug_common_cflags)
 CubemapRendering_debug_cppflags	:= $(CubemapRendering_debug_common_cflags)
 CubemapRendering_debug_cppflags  += -std="gnu++11"
 CubemapRendering_debug_lflags    := $(CubemapRendering_custom_lflags)
 CubemapRendering_debug_lflags    += $(addprefix -L, $(CubemapRendering_debug_lpaths))
 CubemapRendering_debug_lflags    += -Wl,--start-group $(addprefix -l, $(CubemapRendering_debug_libraries)) -Wl,--end-group
-CubemapRendering_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+CubemapRendering_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 CubemapRendering_debug_objsdir  = $(OBJS_DIR)/CubemapRendering_debug
 CubemapRendering_debug_cpp_o    = $(addprefix $(CubemapRendering_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CubemapRendering_cppfiles)))))
 CubemapRendering_debug_cc_o    = $(addprefix $(CubemapRendering_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CubemapRendering_ccfiles)))))
@@ -138,7 +137,7 @@ CubemapRendering_release_hpaths    += ./../../../extensions/include
 CubemapRendering_release_hpaths    += ./../../../extensions/externals/include
 CubemapRendering_release_hpaths    += ./../../../extensions/include/NsFoundation
 CubemapRendering_release_hpaths    += ./../../../extensions/include/NvFoundation
-CubemapRendering_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+CubemapRendering_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 CubemapRendering_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 CubemapRendering_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 CubemapRendering_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -154,7 +153,6 @@ CubemapRendering_release_defines   += ANDROID
 CubemapRendering_release_defines   += _LIB
 CubemapRendering_release_defines   += NV_ANDROID
 CubemapRendering_release_defines   += __STDC_LIMIT_MACROS
-CubemapRendering_release_defines   += VK_NO_PROTOTYPES
 CubemapRendering_release_defines   += GW_APP_NAME=\"CubemapRendering\"
 CubemapRendering_release_defines   += GL_API_LEVEL_ES2
 CubemapRendering_release_defines   += USE_REGAL=1
@@ -186,14 +184,14 @@ CubemapRendering_release_common_cflags    += $(addprefix -D, $(CubemapRendering_
 CubemapRendering_release_common_cflags    += $(addprefix -I, $(CubemapRendering_release_hpaths))
 CubemapRendering_release_common_cflags  += -std="gnu++11"
 CubemapRendering_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-CubemapRendering_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+CubemapRendering_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 CubemapRendering_release_cflags	:= $(CubemapRendering_release_common_cflags)
 CubemapRendering_release_cppflags	:= $(CubemapRendering_release_common_cflags)
 CubemapRendering_release_cppflags  += -std="gnu++11"
 CubemapRendering_release_lflags    := $(CubemapRendering_custom_lflags)
 CubemapRendering_release_lflags    += $(addprefix -L, $(CubemapRendering_release_lpaths))
 CubemapRendering_release_lflags    += -Wl,--start-group $(addprefix -l, $(CubemapRendering_release_libraries)) -Wl,--end-group
-CubemapRendering_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+CubemapRendering_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 CubemapRendering_release_objsdir  = $(OBJS_DIR)/CubemapRendering_release
 CubemapRendering_release_cpp_o    = $(addprefix $(CubemapRendering_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(CubemapRendering_cppfiles)))))
 CubemapRendering_release_cc_o    = $(addprefix $(CubemapRendering_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(CubemapRendering_ccfiles)))))

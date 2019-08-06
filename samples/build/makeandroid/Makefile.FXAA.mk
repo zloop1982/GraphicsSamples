@@ -20,7 +20,7 @@ FXAA_debug_hpaths    += ./../../../extensions/include
 FXAA_debug_hpaths    += ./../../../extensions/externals/include
 FXAA_debug_hpaths    += ./../../../extensions/include/NsFoundation
 FXAA_debug_hpaths    += ./../../../extensions/include/NvFoundation
-FXAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+FXAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 FXAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 FXAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 FXAA_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -36,7 +36,6 @@ FXAA_debug_defines   += ANDROID
 FXAA_debug_defines   += _LIB
 FXAA_debug_defines   += NV_ANDROID
 FXAA_debug_defines   += __STDC_LIMIT_MACROS
-FXAA_debug_defines   += VK_NO_PROTOTYPES
 FXAA_debug_defines   += GW_APP_NAME=\"FXAA\"
 FXAA_debug_defines   += GL_API_LEVEL_ES3
 FXAA_debug_defines   += _DEBUG
@@ -65,14 +64,14 @@ FXAA_debug_common_cflags    += -MMD
 FXAA_debug_common_cflags    += $(addprefix -D, $(FXAA_debug_defines))
 FXAA_debug_common_cflags    += $(addprefix -I, $(FXAA_debug_hpaths))
 FXAA_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-FXAA_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+FXAA_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 FXAA_debug_cflags	:= $(FXAA_debug_common_cflags)
 FXAA_debug_cppflags	:= $(FXAA_debug_common_cflags)
 FXAA_debug_cppflags  += -std="gnu++11"
 FXAA_debug_lflags    := $(FXAA_custom_lflags)
 FXAA_debug_lflags    += $(addprefix -L, $(FXAA_debug_lpaths))
 FXAA_debug_lflags    += -Wl,--start-group $(addprefix -l, $(FXAA_debug_libraries)) -Wl,--end-group
-FXAA_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+FXAA_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 FXAA_debug_objsdir  = $(OBJS_DIR)/FXAA_debug
 FXAA_debug_cpp_o    = $(addprefix $(FXAA_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(FXAA_cppfiles)))))
 FXAA_debug_cc_o    = $(addprefix $(FXAA_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(FXAA_ccfiles)))))
@@ -137,7 +136,7 @@ FXAA_release_hpaths    += ./../../../extensions/include
 FXAA_release_hpaths    += ./../../../extensions/externals/include
 FXAA_release_hpaths    += ./../../../extensions/include/NsFoundation
 FXAA_release_hpaths    += ./../../../extensions/include/NvFoundation
-FXAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+FXAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 FXAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 FXAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 FXAA_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ FXAA_release_defines   += ANDROID
 FXAA_release_defines   += _LIB
 FXAA_release_defines   += NV_ANDROID
 FXAA_release_defines   += __STDC_LIMIT_MACROS
-FXAA_release_defines   += VK_NO_PROTOTYPES
 FXAA_release_defines   += GW_APP_NAME=\"FXAA\"
 FXAA_release_defines   += GL_API_LEVEL_ES3
 FXAA_release_defines   += NDEBUG
@@ -182,14 +180,14 @@ FXAA_release_common_cflags    += -MMD
 FXAA_release_common_cflags    += $(addprefix -D, $(FXAA_release_defines))
 FXAA_release_common_cflags    += $(addprefix -I, $(FXAA_release_hpaths))
 FXAA_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-FXAA_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+FXAA_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 FXAA_release_cflags	:= $(FXAA_release_common_cflags)
 FXAA_release_cppflags	:= $(FXAA_release_common_cflags)
 FXAA_release_cppflags  += -std="gnu++11"
 FXAA_release_lflags    := $(FXAA_custom_lflags)
 FXAA_release_lflags    += $(addprefix -L, $(FXAA_release_lpaths))
 FXAA_release_lflags    += -Wl,--start-group $(addprefix -l, $(FXAA_release_libraries)) -Wl,--end-group
-FXAA_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+FXAA_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 FXAA_release_objsdir  = $(OBJS_DIR)/FXAA_release
 FXAA_release_cpp_o    = $(addprefix $(FXAA_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(FXAA_cppfiles)))))
 FXAA_release_cc_o    = $(addprefix $(FXAA_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(FXAA_ccfiles)))))

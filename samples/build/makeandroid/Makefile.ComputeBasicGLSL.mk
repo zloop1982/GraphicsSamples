@@ -20,7 +20,7 @@ ComputeBasicGLSL_debug_hpaths    += ./../../../extensions/include
 ComputeBasicGLSL_debug_hpaths    += ./../../../extensions/externals/include
 ComputeBasicGLSL_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeBasicGLSL_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeBasicGLSL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeBasicGLSL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ComputeBasicGLSL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeBasicGLSL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeBasicGLSL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -36,7 +36,6 @@ ComputeBasicGLSL_debug_defines   += ANDROID
 ComputeBasicGLSL_debug_defines   += _LIB
 ComputeBasicGLSL_debug_defines   += NV_ANDROID
 ComputeBasicGLSL_debug_defines   += __STDC_LIMIT_MACROS
-ComputeBasicGLSL_debug_defines   += VK_NO_PROTOTYPES
 ComputeBasicGLSL_debug_defines   += GW_APP_NAME=\"ComputeBasicGLSL\"
 ComputeBasicGLSL_debug_defines   += GL_API_LEVEL_ES3_1_AEP
 ComputeBasicGLSL_debug_defines   += _DEBUG
@@ -65,14 +64,14 @@ ComputeBasicGLSL_debug_common_cflags    += -MMD
 ComputeBasicGLSL_debug_common_cflags    += $(addprefix -D, $(ComputeBasicGLSL_debug_defines))
 ComputeBasicGLSL_debug_common_cflags    += $(addprefix -I, $(ComputeBasicGLSL_debug_hpaths))
 ComputeBasicGLSL_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeBasicGLSL_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ComputeBasicGLSL_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ComputeBasicGLSL_debug_cflags	:= $(ComputeBasicGLSL_debug_common_cflags)
 ComputeBasicGLSL_debug_cppflags	:= $(ComputeBasicGLSL_debug_common_cflags)
 ComputeBasicGLSL_debug_cppflags  += -std="gnu++11"
 ComputeBasicGLSL_debug_lflags    := $(ComputeBasicGLSL_custom_lflags)
 ComputeBasicGLSL_debug_lflags    += $(addprefix -L, $(ComputeBasicGLSL_debug_lpaths))
 ComputeBasicGLSL_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeBasicGLSL_debug_libraries)) -Wl,--end-group
-ComputeBasicGLSL_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeBasicGLSL_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ComputeBasicGLSL_debug_objsdir  = $(OBJS_DIR)/ComputeBasicGLSL_debug
 ComputeBasicGLSL_debug_cpp_o    = $(addprefix $(ComputeBasicGLSL_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeBasicGLSL_cppfiles)))))
 ComputeBasicGLSL_debug_cc_o    = $(addprefix $(ComputeBasicGLSL_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeBasicGLSL_ccfiles)))))
@@ -137,7 +136,7 @@ ComputeBasicGLSL_release_hpaths    += ./../../../extensions/include
 ComputeBasicGLSL_release_hpaths    += ./../../../extensions/externals/include
 ComputeBasicGLSL_release_hpaths    += ./../../../extensions/include/NsFoundation
 ComputeBasicGLSL_release_hpaths    += ./../../../extensions/include/NvFoundation
-ComputeBasicGLSL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ComputeBasicGLSL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ComputeBasicGLSL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ComputeBasicGLSL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ComputeBasicGLSL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -153,7 +152,6 @@ ComputeBasicGLSL_release_defines   += ANDROID
 ComputeBasicGLSL_release_defines   += _LIB
 ComputeBasicGLSL_release_defines   += NV_ANDROID
 ComputeBasicGLSL_release_defines   += __STDC_LIMIT_MACROS
-ComputeBasicGLSL_release_defines   += VK_NO_PROTOTYPES
 ComputeBasicGLSL_release_defines   += GW_APP_NAME=\"ComputeBasicGLSL\"
 ComputeBasicGLSL_release_defines   += GL_API_LEVEL_ES3_1_AEP
 ComputeBasicGLSL_release_defines   += NDEBUG
@@ -182,14 +180,14 @@ ComputeBasicGLSL_release_common_cflags    += -MMD
 ComputeBasicGLSL_release_common_cflags    += $(addprefix -D, $(ComputeBasicGLSL_release_defines))
 ComputeBasicGLSL_release_common_cflags    += $(addprefix -I, $(ComputeBasicGLSL_release_hpaths))
 ComputeBasicGLSL_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ComputeBasicGLSL_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ComputeBasicGLSL_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ComputeBasicGLSL_release_cflags	:= $(ComputeBasicGLSL_release_common_cflags)
 ComputeBasicGLSL_release_cppflags	:= $(ComputeBasicGLSL_release_common_cflags)
 ComputeBasicGLSL_release_cppflags  += -std="gnu++11"
 ComputeBasicGLSL_release_lflags    := $(ComputeBasicGLSL_custom_lflags)
 ComputeBasicGLSL_release_lflags    += $(addprefix -L, $(ComputeBasicGLSL_release_lpaths))
 ComputeBasicGLSL_release_lflags    += -Wl,--start-group $(addprefix -l, $(ComputeBasicGLSL_release_libraries)) -Wl,--end-group
-ComputeBasicGLSL_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ComputeBasicGLSL_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ComputeBasicGLSL_release_objsdir  = $(OBJS_DIR)/ComputeBasicGLSL_release
 ComputeBasicGLSL_release_cpp_o    = $(addprefix $(ComputeBasicGLSL_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ComputeBasicGLSL_cppfiles)))))
 ComputeBasicGLSL_release_cc_o    = $(addprefix $(ComputeBasicGLSL_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ComputeBasicGLSL_ccfiles)))))

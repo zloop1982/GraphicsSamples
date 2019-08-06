@@ -35,7 +35,7 @@ ThreadedRenderingGL_debug_hpaths    += ./../../../extensions/include
 ThreadedRenderingGL_debug_hpaths    += ./../../../extensions/externals/include
 ThreadedRenderingGL_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ThreadedRenderingGL_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ThreadedRenderingGL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ThreadedRenderingGL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ThreadedRenderingGL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ThreadedRenderingGL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ThreadedRenderingGL_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -51,7 +51,6 @@ ThreadedRenderingGL_debug_defines   += ANDROID
 ThreadedRenderingGL_debug_defines   += _LIB
 ThreadedRenderingGL_debug_defines   += NV_ANDROID
 ThreadedRenderingGL_debug_defines   += __STDC_LIMIT_MACROS
-ThreadedRenderingGL_debug_defines   += VK_NO_PROTOTYPES
 ThreadedRenderingGL_debug_defines   += GW_APP_NAME=\"ThreadedRenderingGL\"
 ThreadedRenderingGL_debug_defines   += GL_API_LEVEL_GL4
 ThreadedRenderingGL_debug_defines   += USE_REGAL=1
@@ -82,14 +81,14 @@ ThreadedRenderingGL_debug_common_cflags    += -MMD
 ThreadedRenderingGL_debug_common_cflags    += $(addprefix -D, $(ThreadedRenderingGL_debug_defines))
 ThreadedRenderingGL_debug_common_cflags    += $(addprefix -I, $(ThreadedRenderingGL_debug_hpaths))
 ThreadedRenderingGL_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ThreadedRenderingGL_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ThreadedRenderingGL_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ThreadedRenderingGL_debug_cflags	:= $(ThreadedRenderingGL_debug_common_cflags)
 ThreadedRenderingGL_debug_cppflags	:= $(ThreadedRenderingGL_debug_common_cflags)
 ThreadedRenderingGL_debug_cppflags  += -std="gnu++11"
 ThreadedRenderingGL_debug_lflags    := $(ThreadedRenderingGL_custom_lflags)
 ThreadedRenderingGL_debug_lflags    += $(addprefix -L, $(ThreadedRenderingGL_debug_lpaths))
 ThreadedRenderingGL_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ThreadedRenderingGL_debug_libraries)) -Wl,--end-group
-ThreadedRenderingGL_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ThreadedRenderingGL_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ThreadedRenderingGL_debug_objsdir  = $(OBJS_DIR)/ThreadedRenderingGL_debug
 ThreadedRenderingGL_debug_cpp_o    = $(addprefix $(ThreadedRenderingGL_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ThreadedRenderingGL_cppfiles)))))
 ThreadedRenderingGL_debug_cc_o    = $(addprefix $(ThreadedRenderingGL_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ThreadedRenderingGL_ccfiles)))))
@@ -153,7 +152,7 @@ ThreadedRenderingGL_release_hpaths    += ./../../../extensions/include
 ThreadedRenderingGL_release_hpaths    += ./../../../extensions/externals/include
 ThreadedRenderingGL_release_hpaths    += ./../../../extensions/include/NsFoundation
 ThreadedRenderingGL_release_hpaths    += ./../../../extensions/include/NvFoundation
-ThreadedRenderingGL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ThreadedRenderingGL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ThreadedRenderingGL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ThreadedRenderingGL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ThreadedRenderingGL_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
@@ -169,7 +168,6 @@ ThreadedRenderingGL_release_defines   += ANDROID
 ThreadedRenderingGL_release_defines   += _LIB
 ThreadedRenderingGL_release_defines   += NV_ANDROID
 ThreadedRenderingGL_release_defines   += __STDC_LIMIT_MACROS
-ThreadedRenderingGL_release_defines   += VK_NO_PROTOTYPES
 ThreadedRenderingGL_release_defines   += GW_APP_NAME=\"ThreadedRenderingGL\"
 ThreadedRenderingGL_release_defines   += GL_API_LEVEL_GL4
 ThreadedRenderingGL_release_defines   += USE_REGAL=1
@@ -200,14 +198,14 @@ ThreadedRenderingGL_release_common_cflags    += -MMD
 ThreadedRenderingGL_release_common_cflags    += $(addprefix -D, $(ThreadedRenderingGL_release_defines))
 ThreadedRenderingGL_release_common_cflags    += $(addprefix -I, $(ThreadedRenderingGL_release_hpaths))
 ThreadedRenderingGL_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ThreadedRenderingGL_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ThreadedRenderingGL_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ThreadedRenderingGL_release_cflags	:= $(ThreadedRenderingGL_release_common_cflags)
 ThreadedRenderingGL_release_cppflags	:= $(ThreadedRenderingGL_release_common_cflags)
 ThreadedRenderingGL_release_cppflags  += -std="gnu++11"
 ThreadedRenderingGL_release_lflags    := $(ThreadedRenderingGL_custom_lflags)
 ThreadedRenderingGL_release_lflags    += $(addprefix -L, $(ThreadedRenderingGL_release_lpaths))
 ThreadedRenderingGL_release_lflags    += -Wl,--start-group $(addprefix -l, $(ThreadedRenderingGL_release_libraries)) -Wl,--end-group
-ThreadedRenderingGL_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ThreadedRenderingGL_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ThreadedRenderingGL_release_objsdir  = $(OBJS_DIR)/ThreadedRenderingGL_release
 ThreadedRenderingGL_release_cpp_o    = $(addprefix $(ThreadedRenderingGL_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ThreadedRenderingGL_cppfiles)))))
 ThreadedRenderingGL_release_cc_o    = $(addprefix $(ThreadedRenderingGL_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ThreadedRenderingGL_ccfiles)))))

@@ -27,11 +27,11 @@ ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/include
 ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/externals/include
 ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/include/NsFoundation
 ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/include/NvFoundation
-ThreadedRenderingVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ThreadedRenderingVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ThreadedRenderingVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ThreadedRenderingVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ThreadedRenderingVk_debug_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ThreadedRenderingVk_debug_hpaths    += $(VK_SDK_PATH)/include
 ThreadedRenderingVk_debug_hpaths    += ./../../../extensions/include/NvVkUtil
 ThreadedRenderingVk_debug_lpaths    := 
 ThreadedRenderingVk_debug_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -46,7 +46,6 @@ ThreadedRenderingVk_debug_defines   += ANDROID
 ThreadedRenderingVk_debug_defines   += _LIB
 ThreadedRenderingVk_debug_defines   += NV_ANDROID
 ThreadedRenderingVk_debug_defines   += __STDC_LIMIT_MACROS
-ThreadedRenderingVk_debug_defines   += VK_NO_PROTOTYPES
 ThreadedRenderingVk_debug_defines   += GW_APP_NAME=\"ThreadedRenderingVk\"
 ThreadedRenderingVk_debug_defines   += GL_API_LEVEL_ES2
 ThreadedRenderingVk_debug_defines   += USE_REGAL=1
@@ -72,20 +71,21 @@ ThreadedRenderingVk_debug_libraries += supc++
 ThreadedRenderingVk_debug_libraries += log
 ThreadedRenderingVk_debug_libraries += gcc
 ThreadedRenderingVk_debug_libraries += GLESv2
+ThreadedRenderingVk_debug_libraries += vulkan
 ThreadedRenderingVk_debug_libraries += RegalW_static
 ThreadedRenderingVk_debug_common_cflags	:= $(ThreadedRenderingVk_custom_cflags)
 ThreadedRenderingVk_debug_common_cflags    += -MMD
 ThreadedRenderingVk_debug_common_cflags    += $(addprefix -D, $(ThreadedRenderingVk_debug_defines))
 ThreadedRenderingVk_debug_common_cflags    += $(addprefix -I, $(ThreadedRenderingVk_debug_hpaths))
 ThreadedRenderingVk_debug_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ThreadedRenderingVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer
+ThreadedRenderingVk_debug_common_cflags  += -funwind-tables -O0 -g -ggdb -fno-omit-frame-pointer -Wno-attributes
 ThreadedRenderingVk_debug_cflags	:= $(ThreadedRenderingVk_debug_common_cflags)
 ThreadedRenderingVk_debug_cppflags	:= $(ThreadedRenderingVk_debug_common_cflags)
 ThreadedRenderingVk_debug_cppflags  += -std="gnu++11"
 ThreadedRenderingVk_debug_lflags    := $(ThreadedRenderingVk_custom_lflags)
 ThreadedRenderingVk_debug_lflags    += $(addprefix -L, $(ThreadedRenderingVk_debug_lpaths))
 ThreadedRenderingVk_debug_lflags    += -Wl,--start-group $(addprefix -l, $(ThreadedRenderingVk_debug_libraries)) -Wl,--end-group
-ThreadedRenderingVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ThreadedRenderingVk_debug_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ThreadedRenderingVk_debug_objsdir  = $(OBJS_DIR)/ThreadedRenderingVk_debug
 ThreadedRenderingVk_debug_cpp_o    = $(addprefix $(ThreadedRenderingVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ThreadedRenderingVk_cppfiles)))))
 ThreadedRenderingVk_debug_cc_o    = $(addprefix $(ThreadedRenderingVk_debug_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ThreadedRenderingVk_ccfiles)))))
@@ -167,11 +167,11 @@ ThreadedRenderingVk_release_hpaths    += ./../../../extensions/include
 ThreadedRenderingVk_release_hpaths    += ./../../../extensions/externals/include
 ThreadedRenderingVk_release_hpaths    += ./../../../extensions/include/NsFoundation
 ThreadedRenderingVk_release_hpaths    += ./../../../extensions/include/NvFoundation
-ThreadedRenderingVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-18/arch-arm/usr/include
+ThreadedRenderingVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/platforms/android-24/arch-arm/usr/include
 ThreadedRenderingVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include
 ThreadedRenderingVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/libs/armeabi-v7a/include
 ThreadedRenderingVk_release_hpaths    += $(if $(NVPACK_ROOT),$(NVPACK_ROOT),$(error the environment must define NVPACK_ROOT))/$(if $(NVPACK_NDK_VERSION),$(NVPACK_NDK_VERSION),android-ndk-r9d)/sources/cxx-stl/gnu-libstdc++/$(if $(NVPACK_NDK_TOOL_VERSION),$(NVPACK_NDK_TOOL_VERSION),4.8)/include/backward
-ThreadedRenderingVk_release_hpaths    += ./../../../extensions/include/NvVkUtil/nosdk
+ThreadedRenderingVk_release_hpaths    += $(VK_SDK_PATH)/include
 ThreadedRenderingVk_release_hpaths    += ./../../../extensions/include/NvVkUtil
 ThreadedRenderingVk_release_lpaths    := 
 ThreadedRenderingVk_release_lpaths    += ./../../../extensions/externals/lib/Tegra-Android
@@ -186,7 +186,6 @@ ThreadedRenderingVk_release_defines   += ANDROID
 ThreadedRenderingVk_release_defines   += _LIB
 ThreadedRenderingVk_release_defines   += NV_ANDROID
 ThreadedRenderingVk_release_defines   += __STDC_LIMIT_MACROS
-ThreadedRenderingVk_release_defines   += VK_NO_PROTOTYPES
 ThreadedRenderingVk_release_defines   += GW_APP_NAME=\"ThreadedRenderingVk\"
 ThreadedRenderingVk_release_defines   += GL_API_LEVEL_ES2
 ThreadedRenderingVk_release_defines   += USE_REGAL=1
@@ -212,20 +211,21 @@ ThreadedRenderingVk_release_libraries += supc++
 ThreadedRenderingVk_release_libraries += log
 ThreadedRenderingVk_release_libraries += gcc
 ThreadedRenderingVk_release_libraries += GLESv2
+ThreadedRenderingVk_release_libraries += vulkan
 ThreadedRenderingVk_release_libraries += RegalW_static
 ThreadedRenderingVk_release_common_cflags	:= $(ThreadedRenderingVk_custom_cflags)
 ThreadedRenderingVk_release_common_cflags    += -MMD
 ThreadedRenderingVk_release_common_cflags    += $(addprefix -D, $(ThreadedRenderingVk_release_defines))
 ThreadedRenderingVk_release_common_cflags    += $(addprefix -I, $(ThreadedRenderingVk_release_hpaths))
 ThreadedRenderingVk_release_common_cflags  += -fpic -fPIC -ffunction-sections -funwind-tables -fstack-protector -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fstrict-aliasing -funswitch-loops -finline-limit=300
-ThreadedRenderingVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer
+ThreadedRenderingVk_release_common_cflags  += -funwind-tables -O2 -fno-omit-frame-pointer -Wno-attributes
 ThreadedRenderingVk_release_cflags	:= $(ThreadedRenderingVk_release_common_cflags)
 ThreadedRenderingVk_release_cppflags	:= $(ThreadedRenderingVk_release_common_cflags)
 ThreadedRenderingVk_release_cppflags  += -std="gnu++11"
 ThreadedRenderingVk_release_lflags    := $(ThreadedRenderingVk_custom_lflags)
 ThreadedRenderingVk_release_lflags    += $(addprefix -L, $(ThreadedRenderingVk_release_lpaths))
 ThreadedRenderingVk_release_lflags    += -Wl,--start-group $(addprefix -l, $(ThreadedRenderingVk_release_libraries)) -Wl,--end-group
-ThreadedRenderingVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-18/arch-arm -shared -Wl,--no-undefined
+ThreadedRenderingVk_release_lflags  += --sysroot=$(NDKROOT)/platforms/android-24/arch-arm -shared -Wl,--no-undefined
 ThreadedRenderingVk_release_objsdir  = $(OBJS_DIR)/ThreadedRenderingVk_release
 ThreadedRenderingVk_release_cpp_o    = $(addprefix $(ThreadedRenderingVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cpp, %.cpp.o, $(ThreadedRenderingVk_cppfiles)))))
 ThreadedRenderingVk_release_cc_o    = $(addprefix $(ThreadedRenderingVk_release_objsdir)/, $(subst ./, , $(subst ../, , $(patsubst %.cc, %.cc.o, $(ThreadedRenderingVk_ccfiles)))))
